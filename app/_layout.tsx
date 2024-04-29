@@ -50,7 +50,15 @@ function RootLayoutNav() {
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+        <Stack.Screen name="index" options={{headerShown: false }} />
+        <Stack.Screen name="(hours)/prime" options={{title: "Prime"}} />
+        <Stack.Screen name="(hours)/matins" options={{title: "Matins"}} />
+        <Stack.Screen name="(hours)/terce" options={{title: "Terce"}} />
+        <Stack.Screen name="(hours)/sext" options={{title: "Sext"}} />
+        <Stack.Screen name="(hours)/nones" options={{title: "Nones"}} />
+        <Stack.Screen name="(hours)/vespers" options={{title: "Vespers"}} />
+        <Stack.Screen name="(hours)/compline" options={{title: "Compline"}} />
+        <Stack.Screen name="(hours)/vigil" options={{title: "Vigil"}} />
         <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
       </Stack>
     </ThemeProvider>
