@@ -1,12 +1,12 @@
-import { Hour } from '@/components/Service';
+import { Hour, Versicle } from '@/components/Service';
 import HourService from '@/components/Service';
+
 
 export class Matins extends Hour {
   constructor(date: Date) {
       super(date);
-      this.title = "Matins";
-      this.title2 = "Morning Prayer";
-      this.text = "The text of matins. This should be very long.";
+      this.title = "Morning Prayer";
+      this.text = <Versicle />
       this.prev = "prime";
       this.next = "terce";
   }

@@ -1,13 +1,14 @@
-import { StyleSheet, TextStyle } from 'react-native';
-import { Text, View } from '@/components/Themed';
+import { StyleSheet } from 'react-native';
+import { Text, TextProps, View } from '@/components/Themed';
 import { Href, Link, LinkComponent } from 'expo-router';
 import { Pressable } from 'react-native';
+import { PropsWithChildren } from 'react';
 
 export class Hour {
     date: Date = new Date();
     title?: string;
     title2?: string;
-    text?: string;
+    text?: JSX.Element;
     prev?: string;
     next?: string;
     prevLink?: LinkComponent;
@@ -53,6 +54,9 @@ export default function HourService(props: HourServiceProps): JSX.Element {
         <View style={styles.body}>
             <Text style={styles.title}>{props.hour.title}</Text>
         </View>
+        <View style={styles.body}>
+            <Versicle>{props.hour.text}</Versicle>
+        </View>
         <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
         <View style={styles.footer}>
             <View >{privLink !== null && privLink}</View>
@@ -92,3 +96,45 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     }
 });
+
+export function Versicle(props: TextProps) {
+    return (
+        <Section>
+            <SectionTitle>Versicle</SectionTitle>
+            <LText>Oh Lord, open my lips,</LText>
+            <CText>and my mouth shall declare your praise.</CText>
+            <GloryBe />
+        </Section>
+    )
+}
+
+export function Section(props: PropsWithChildren) {
+    return (
+        <View style={{paddingVertical: 20}}>{props.children}</View>
+    )
+}
+export function SectionTitle(props: TextProps): JSX.Element {
+    return (
+        <Text style={{fontVariant: ['small-caps'], paddingBottom: 5, fontSize: 16}}>{props.children}</Text>
+    )
+}
+export function LText(props:TextProps) {
+    return <Text style={{fontWeight: 'bold'}}>{props.children}</Text>
+}
+
+export function CText(props:TextProps) {
+    return <Text style={{fontStyle: 'italic', fontWeight: 'normal'}}>{props.children}</Text>
+}
+
+export function AText(props:TextProps) {
+    return <Text style={{fontStyle: 'normal', fontWeight: 'normal'}}>{props.children}</Text>
+}
+
+export function GloryBe() {
+    return (
+    <Section>
+        <SectionTitle>Gloria Patri</SectionTitle>
+        <AText>Glory be to the Father, and to the Son, and to the Holy Spirit; as it was in the beginning, is now and will be forever. Amen</AText>
+    </Section>
+    )
+}
