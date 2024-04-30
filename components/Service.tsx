@@ -3,7 +3,11 @@ import { Text, TextProps, View } from '@/components/Themed';
 import { Href, Link, LinkComponent } from 'expo-router';
 import { Pressable } from 'react-native';
 import { PropsWithChildren } from 'react';
-import { GetEaster, AddDays, InLent, InAdvent, In12DaysOfXmas, InEpiphany, ThroughBaptism, IsTransfiguration } from '@/components/Calendar';
+import { InLent, InAdvent, In12DaysOfXmas, InEpiphany, ThroughBaptism, IsTransfiguration } from '@/components/Calendar';
+
+export function randstr(prefix: string) {
+    return Math.random().toString(36).replace('0.',prefix + '_' || '');
+}
 
 export class Hour {
     date: Date = new Date();

@@ -1,4 +1,4 @@
-import { AText, CText, GloryBe, Hour, LText, Section, SectionTitle } from '@/components/Service';
+import { AText, CText, GloryBe, Hour, LText, Section, SectionTitle, randstr } from '@/components/Service';
 import HourService from '@/components/Service';
 import { View } from '@/components/Themed';
 
@@ -6,22 +6,39 @@ import { View } from '@/components/Themed';
 export class Matins extends Hour {
   constructor(date: Date) {
       super(new Date('2024-02-17T12:01:00'));
-      let antiphon: React.JSX.Element;
+      //super(date);
+
+      let antiphon: React.JSX.Element[];
       if (this.inAdvent()) {
-        antiphon = <Advent />;
+        antiphon = [
+          <LText key={randstr('antiphon')}>Give glory to the coming King.</LText>,
+          <CText key={randstr('antiphon')}>Oh, come let us worship him.</CText>
+        ];
       } else if (this.in12Days()) {
-        antiphon = <In12Xmas />;
+        antiphon = [
+          <LText key={randstr('antiphon')}>Alleluia. Unto us a child is born.</LText>,
+          <CText key={randstr('antiphon')}>Oh come, let us worship him. Alleluia.</CText>
+        ];
       } else if (this.isTransfiguration() || this.throughBaptism()) {
-        antiphon = <Transfig />;
+        antiphon = [
+          <LText key={randstr('antiphon')}>The Word was made flesh, and we beheld his glory.</LText>,
+          <CText key={randstr('antiphon')}>Oh, come, let us worship him.</CText>
+        ];
       } else if (this.inEpiphany()) {
-        antiphon = <Epiphany />;
+        antiphon = [
+          <LText key={randstr('antiphon')}>Give glory to God, our light and our life.</LText>,
+          <CText key={randstr('antiphon')}>Oh, come, let us worship him.</CText>
+        ];
       } else if (this.inLent()) {
-        antiphon = <Lent />;
+        antiphon = [
+          <LText key={randstr('antiphon')}>The Lord is near to those who call on him.</LText>,
+          <CText key={randstr('antiphon')}>Oh, come, let us worship him.</CText>
+        ];
       }
       else {
-        antiphon = <Section />
+        antiphon = []
       }
-      //super(date);
+
       this.title = "Morning Prayer";
       this.text = (
         <View style={{paddingBottom: 20}}>
@@ -32,62 +49,15 @@ export class Matins extends Hour {
             <GloryBe />
             {!this.inLent() && <AText>Alleluia! Alleluia!</AText>}
         </Section>
+        <Section>
+      <SectionTitle>Antiphon</SectionTitle>
         {antiphon}
+    </Section>
       </View>
     )
       this.prev = "prime";
       this.next = "terce";
   }
-}
-
-function Advent() {
-  return (
-    <Section>
-      <SectionTitle>Antiphon</SectionTitle>
-      <LText>Give glory to the coming King.</LText>
-      <CText>Oh, come let us worship him.</CText>
-    </Section>
-  )
-}
-
-function In12Xmas() {
-  return (
-    <Section>
-      <SectionTitle>Antiphon</SectionTitle>
-      <LText>Alleluia. Unto us a child is born.</LText>
-      <CText>Oh come, let us worship him. Alleluia.</CText>
-    </Section>
-  )
-}
-
-function Transfig() {
-  return (
-    <Section>
-      <SectionTitle>Antiphon</SectionTitle>
-      <LText>The Word was made flesh, and we beheld his glory.</LText>
-      <CText>Oh, come, let us worship him.</CText>
-    </Section>
-  )
-}
-
-function Epiphany() {
-  return (
-    <Section>
-      <SectionTitle>Antiphon</SectionTitle>
-      <LText>Give glory to God, our light and our life.</LText>
-      <CText>Oh, come, let us worship him.</CText>
-    </Section>
-  )
-}
-
-function Lent() {
-  return (
-    <Section>
-      <SectionTitle>Antiphon</SectionTitle>
-      <LText>The Lord is near to those who call on him.</LText>
-      <CText>Oh, come, let us worship him.</CText>
-    </Section>
-  )
 }
 
 export default function Service() {
