@@ -3,6 +3,7 @@ import { Text, TextProps, View } from '@/components/Themed';
 import { Href, Link, LinkComponent } from 'expo-router';
 import { Pressable } from 'react-native';
 import { PropsWithChildren } from 'react';
+import { GetEaster, AddDays, InLent, InAdvent, In12DaysOfXmas, InEpiphany, ThroughBaptism, IsTransfiguration } from '@/components/Calendar';
 
 export class Hour {
     date: Date = new Date();
@@ -16,7 +17,35 @@ export class Hour {
     
 
     constructor(date: Date) {
+        // Advent
+        //this.date = new Date('2024-12-02');
+        // Lent
+        //this.date = new Date('2024-03-10');
         this.date = date;
+    }
+
+    inLent() {
+        return InLent(this.date);
+    }
+
+    inAdvent() {
+        return InAdvent(this.date);
+    }
+
+    in12Days() {
+        return In12DaysOfXmas(this.date);
+    }
+
+    inEpiphany() {
+        return InEpiphany(this.date);
+    }
+
+    throughBaptism() {
+        return ThroughBaptism(this.date);
+    }
+
+    isTransfiguration() {
+        return IsTransfiguration(this.date);
     }
 
     private _makeLink(hourName: string | undefined, isPrev: boolean) {
@@ -46,6 +75,8 @@ interface HourServiceProps {
     hour: Hour;
 }
 
+
+
 export default function HourService(props: HourServiceProps): JSX.Element {
     const privLink: any = props.hour.makePrev();
     const nextLink: any = props.hour.makeNext();
@@ -55,7 +86,7 @@ export default function HourService(props: HourServiceProps): JSX.Element {
             <Text style={styles.title}>{props.hour.title}</Text>
         </View>
         <View style={styles.body}>
-            <Versicle>{props.hour.text}</Versicle>
+            {props.hour.text}
         </View>
         <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
         <View style={styles.footer}>
@@ -77,11 +108,12 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-start',
     },
     body: {
-        padding: 20,
+        paddingHorizontal: 15,
     },
     title: {
         fontSize: 16,
         fontWeight: 'normal',
+        paddingTop: 20
     },
     separator: {
         marginVertical: 20,
@@ -97,20 +129,9 @@ const styles = StyleSheet.create({
     }
 });
 
-export function Versicle(props: TextProps) {
-    return (
-        <Section>
-            <SectionTitle>Versicle</SectionTitle>
-            <LText>Oh Lord, open my lips,</LText>
-            <CText>and my mouth shall declare your praise.</CText>
-            <GloryBe />
-        </Section>
-    )
-}
-
 export function Section(props: PropsWithChildren) {
     return (
-        <View style={{paddingVertical: 20}}>{props.children}</View>
+        <View style={{paddingTop: 20}}>{props.children}</View>
     )
 }
 export function SectionTitle(props: TextProps): JSX.Element {
@@ -119,15 +140,27 @@ export function SectionTitle(props: TextProps): JSX.Element {
     )
 }
 export function LText(props:TextProps) {
-    return <Text style={{fontWeight: 'bold'}}>{props.children}</Text>
+    return (
+        <View style={{flex: 1, flexDirection: 'row'}}>
+        <Text>L:    </Text><Text style={{fontStyle: 'normal', fontWeight: 'normal'}}>{props.children}</Text>
+        </View>
+    )
 }
 
 export function CText(props:TextProps) {
-    return <Text style={{fontStyle: 'italic', fontWeight: 'normal'}}>{props.children}</Text>
+    return (
+        <View style={{flex: 1, flexDirection: 'row'}}>
+        <Text>C:    </Text><Text style={{fontStyle: 'normal', fontWeight: 'normal'}}>{props.children}</Text>
+        </View>
+    )
 }
 
 export function AText(props:TextProps) {
-    return <Text style={{fontStyle: 'normal', fontWeight: 'normal'}}>{props.children}</Text>
+    return (
+        <View style={{flex: 1, flexDirection: 'row'}}>
+        <Text>A:    </Text><Text style={{fontStyle: 'normal', fontWeight: 'normal'}}>{props.children}</Text>
+        </View>
+    )
 }
 
 export function GloryBe() {

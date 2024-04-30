@@ -1,12 +1,20 @@
-import { Hour } from '@/components/Service';
+import { AText, CText, GloryBe, Hour, LText, Section, SectionTitle } from '@/components/Service';
 import HourService from '@/components/Service';
+
 
 export class Prime extends Hour {
   constructor(date: Date) {
       super(date);
-      this.title = "Prime";
-      this.title2 = "Early Morning Prayer";
-      this.text = "The text of matins. This should be very long.";
+      this.title = "Early Morning Prayer";
+      this.text = (
+          <Section>
+            <SectionTitle>Versicle</SectionTitle>
+            <LText>Oh Lord, open my lips,</LText>
+            <CText>and my mouth shall declare your praise.</CText>
+            <GloryBe />
+            {!this.inLent() && <AText>Alleluia! Alleluia!</AText>}
+        </Section>
+      )
       this.next = "matins";
   }
 }
