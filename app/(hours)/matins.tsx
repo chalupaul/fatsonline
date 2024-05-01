@@ -1,12 +1,13 @@
-import { AText, CText, GloryBe, Hour, LText, Section, SectionTitle, randstr } from '@/components/Service';
+import { GetAscension, GetPentecost } from '@/components/Calendar';
+import { AText, CText, GloryBe, Hour, LText, Section, SectionTitle, Venite, randstr } from '@/components/Service';
 import HourService from '@/components/Service';
 import { View } from '@/components/Themed';
 
 
 export class Matins extends Hour {
   constructor(date: Date) {
-      super(new Date('2024-02-17T12:01:00'));
-      //super(date);
+      //super(new Date('2024-05-18T12:01:00'));
+      super(date);
 
       let antiphon: React.JSX.Element[];
       if (this.inAdvent()) {
@@ -34,6 +35,21 @@ export class Matins extends Hour {
           <LText key={randstr('antiphon')}>The Lord is near to those who call on him.</LText>,
           <CText key={randstr('antiphon')}>Oh, come, let us worship him.</CText>
         ];
+      } else if (this.isBeforeAscension()) {
+        antiphon = [
+          <LText key={randstr('antiphon')}>Alleluia. The Lord is risen indeed.</LText>,
+          <CText key={randstr('antiphon')}>Oh, come, let us worship him. Alleluia.</CText>
+        ];
+      } else if (this.isBeforePentecost()) {
+        antiphon = [
+          <LText key={randstr('antiphon')}>Alleluia. Christ the Lord ascends into heaven.</LText>,
+          <CText key={randstr('antiphon')}>Oh, come, let us worship him. Alleluia.</CText>
+        ];
+      } else if (this.isAfterPentecost()) {
+        antiphon = [
+          <LText key={randstr('antiphon')}>Give glory to God, our light and our life.</LText>,
+          <CText key={randstr('antiphon')}>Oh, come, let us worship him. Allelulia.</CText>
+        ];
       }
       else {
         antiphon = []
@@ -50,9 +66,25 @@ export class Matins extends Hour {
             {!this.inLent() && <AText>Alleluia! Alleluia!</AText>}
         </Section>
         <Section>
-      <SectionTitle>Antiphon</SectionTitle>
-        {antiphon}
-    </Section>
+            <SectionTitle>Antiphon</SectionTitle>
+            {antiphon}
+        </Section>
+        <Venite />
+        <GloryBe />
+        <Section>
+          <SectionTitle>Antiphon Repeated</SectionTitle>
+        </Section>
+        <Section>
+          <SectionTitle>Lectio</SectionTitle>
+        </Section>
+        <Section>
+          <LText>In many and various ways God spoke to his people of old by the prophets.</LText>
+          <CText>But now in these last days he has spoken to us by his Son.</CText>
+        </Section>
+        <Section>
+          <SectionTitle>Gospel Canticle</SectionTitle>
+        </Section>
+        
       </View>
     )
       this.prev = "prime";

@@ -73,6 +73,41 @@ export function IsTransfiguration(date: Date) {
     return tfigString === dayString;
 }
 
+export function GetAscension(year: number) {
+    const easter = GetEaster(year);
+    const ascension = easter.getTime() + (39 * dayMS);
+    return new Date(ascension);
+}
+
+export function GetPentecost(year: number) {
+    const easter = GetEaster(year);
+    const pentecost = easter.getTime() + (49 * dayMS);
+    return new Date(pentecost);
+}
+
+export function UntilAscension(date: Date) {
+    const year = date.getUTCFullYear();
+    const easter = GetEaster(year);
+    const ascension = GetAscension(year);
+    const dateMS = date.getTime();
+    return dateMS > easter.getTime() && dateMS < ascension.getTime();
+}
+
+export function UntilPentecost(date: Date) {
+    const year = date.getUTCFullYear();
+    const ascension = GetAscension(year);
+    const pentecost = GetPentecost(year);
+    const dateMS = date.getTime();
+    return dateMS > ascension.getTime() && dateMS < pentecost.getTime();
+}
+
+export function AfterPentecost(date:Date) {
+    const year = date.getUTCFullYear();
+    const pentecost = GetPentecost(year);
+    return date.getTime() >= pentecost.getTime();
+
+}
+
 function zeroPad(num: number, pos: number = 2) {
     return String(num).padStart(pos, '0')
 }

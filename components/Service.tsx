@@ -3,7 +3,7 @@ import { Text, TextProps, View } from '@/components/Themed';
 import { Href, Link, LinkComponent } from 'expo-router';
 import { Pressable } from 'react-native';
 import { PropsWithChildren } from 'react';
-import { InLent, InAdvent, In12DaysOfXmas, InEpiphany, ThroughBaptism, IsTransfiguration } from '@/components/Calendar';
+import { InLent, InAdvent, In12DaysOfXmas, InEpiphany, ThroughBaptism, IsTransfiguration, UntilAscension, UntilPentecost, AfterPentecost } from '@/components/Calendar';
 
 export function randstr(prefix: string) {
     return Math.random().toString(36).replace('0.',prefix + '_' || '');
@@ -50,6 +50,18 @@ export class Hour {
 
     isTransfiguration() {
         return IsTransfiguration(this.date);
+    }
+
+    isBeforeAscension() {
+        return UntilAscension(this.date);
+    }
+
+    isBeforePentecost() {
+        return UntilPentecost(this.date);
+    }
+
+    isAfterPentecost() {
+        return AfterPentecost(this.date);
     }
 
     private _makeLink(hourName: string | undefined, isPrev: boolean) {
@@ -130,8 +142,22 @@ const styles = StyleSheet.create({
         paddingHorizontal: 40,
         flexDirection: "row",
         justifyContent: 'space-between',
+    },
+    textContainer: {
+        flex: 1,
+        flexDirection: 'row'
+    },
+    textHeader: {
+        flex: .035
+    },
+    text: {
+        flex: 1, 
+        fontStyle: 'normal', 
+        fontWeight: 'normal'
     }
 });
+
+const Tab = <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
 
 export function Section(props: PropsWithChildren) {
     return (
@@ -145,24 +171,32 @@ export function SectionTitle(props: TextProps): JSX.Element {
 }
 export function LText(props:TextProps) {
     return (
-        <View style={{flex: 1, flexDirection: 'row'}}>
-        <Text>L:    </Text><Text style={{fontStyle: 'normal', fontWeight: 'normal'}}>{props.children}</Text>
+        <View style={styles.textContainer}>
+        <Text style={styles.textHeader}>L:</Text><Text style={styles.text}>{props.children}</Text>
         </View>
     )
 }
 
 export function CText(props:TextProps) {
     return (
-        <View style={{flex: 1, flexDirection: 'row'}}>
-        <Text>C:    </Text><Text style={{fontStyle: 'normal', fontWeight: 'normal'}}>{props.children}</Text>
+        <View style={styles.textContainer}>
+        <Text style={styles.textHeader}>C:</Text><Text style={styles.text}>{props.children}</Text>
         </View>
     )
 }
 
 export function AText(props:TextProps) {
     return (
-        <View style={{flex: 1, flexDirection: 'row'}}>
-        <Text>A:    </Text><Text style={{fontStyle: 'normal', fontWeight: 'normal'}}>{props.children}</Text>
+        <View style={styles.textContainer}>
+        <Text style={styles.textHeader}>A:</Text><Text style={styles.text}>{props.children}</Text>
+        </View>
+    )
+}
+
+export function NText(props:TextProps) {
+    return (
+        <View style={styles.textContainer}>
+        <Text style={styles.textHeader}></Text><Text style={styles.text}>{props.children}</Text>
         </View>
     )
 }
@@ -173,5 +207,42 @@ export function GloryBe() {
         <SectionTitle>Gloria Patri</SectionTitle>
         <AText>Glory be to the Father, and to the Son, and to the Holy Spirit; as it was in the beginning, is now and will be forever. Amen</AText>
     </Section>
+    )
+}
+
+export function Venite() {
+    return (
+        <Section>
+            <SectionTitle>Venite</SectionTitle>
+            <AText>
+            Oh come, let us sing to the Lord;
+            let us make a joyful noise to the rock of our salvation!
+            Let us come into his presence with thanksgiving;
+            let us make a joyful noise to him with songs of praise!
+            For the Lord is a great God,
+            and a great King above all gods.
+            In his hand are the depths of the earth;
+            the heights of the mountains are his also.
+            The sea is his, for he made it,
+            and his hands formed the dry land.
+            </AText>
+            <NText>
+            Oh come, let us worship and bow down;
+            let us kneel before the Lord, our Maker!
+            For he is our God,
+            and we are the people of his pasture,
+            and the sheep of his hand.
+            Today, if you hear his voice,
+            do not harden your hearts, as at Meribah,
+            as on the day at Massah in the wilderness,
+            when your fathers put me to the test
+            and put me to the proof, though they had seen my work.
+            For forty years I loathed that generation
+            and said, “They are a people who go astray in their heart,
+            and they have not known my ways.”
+            Therefore I swore in my wrath,
+            “They shall not enter my rest.”
+            </NText>
+        </Section>
     )
 }
