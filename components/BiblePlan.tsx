@@ -51,6 +51,7 @@ export function ProduceCalendar(totalDays: number, data: string) {
         buckets[0].push(r);
         solver(buckets, dailyTarget)
     })
+    // We do it once more in case of 0 remainders. Also, it's frankly good to run this a lot.
     solver(buckets, dailyTarget);
     buckets.reverse();
     return buckets;
