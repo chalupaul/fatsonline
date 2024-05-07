@@ -1,6 +1,5 @@
 import { create, all } from 'mathjs'
 
-import { OTNT } from '@/constants/BibleInfo';
 const mathjs = create(all, {});
 
 class Chapter {
