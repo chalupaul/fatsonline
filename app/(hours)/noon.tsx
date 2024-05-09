@@ -5,7 +5,6 @@ export class Noon extends Hour {
   constructor(date: Date) {
       super(date);
       this.title = "Noontime Prayers";
-      this.title2 = "Noonday Prayer";
       this.prev = "matins";
       this.next = "vespers";
   }

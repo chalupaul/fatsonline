@@ -9,6 +9,8 @@ export class Matins extends Hour {
   constructor(date: Date) {
       //super(new Date('2024-05-18T12:01:00'));
       super(date);
+      this.title = "Morning Prayer";
+      this.next = "noon";
 
       // -1 for index starting at 0, -1 for the morning reading.
       const psalmReading = ProduceCalendar(this.DaysInMonth() * 2, psalms2readings)[this.date.getUTCDate() * 2 - 2];
@@ -151,7 +153,6 @@ export class Matins extends Hour {
         canticleAntiphon = <View></View>
       }
 
-      this.title = "Morning Prayer";
       this.text = (
         <View style={{paddingBottom: 20}}>
           <Section>
@@ -170,7 +171,8 @@ export class Matins extends Hour {
             <SectionTitle>Antiphon Repeated</SectionTitle>
           </Section>
           <Section>
-            <SectionTitle>Psalms ({psalmReadingTitle.includes('-') ? psalmReadingTitle : psalmReadingTitle.replace('Psalms', 'Psalm')})</SectionTitle>
+            <SectionTitle>Psalms</SectionTitle>
+            <Text>{psalmReadingTitle.includes('-') ? psalmReadingTitle : psalmReadingTitle.replace('Psalms', 'Psalm')}</Text>
             {
               psalmReading.map((v: Chapter,i) => {
                 let final = i != psalmReading.length - 1 ? <TextSpacer /> : <View />;
@@ -191,7 +193,8 @@ export class Matins extends Hour {
             <CText>Amen.</CText>
           </Section>
           <Section>
-            <SectionTitle>Lectio ({dailyReadingTitle})</SectionTitle>
+            <SectionTitle>Lectio </SectionTitle>
+            <Text>{dailyReadingTitle}</Text>
               {
                 dailyReading.map((v: Chapter, i) => {
                   return (
@@ -228,7 +231,6 @@ export class Matins extends Hour {
           </Section>
         </View>
     )
-      this.next = "noon";
   }
 }
 

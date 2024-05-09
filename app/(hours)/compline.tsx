@@ -5,9 +5,7 @@ export class Compline extends Hour {
   constructor(date: Date) {
       super(date);
       this.title = "Night Prayer";
-      this.title2 = "Night Prayer";
       this.prev = "vespers";
-      this.next = "vigil";
   }
 }
 

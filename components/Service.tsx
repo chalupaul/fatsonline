@@ -12,7 +12,6 @@ export function randstr(prefix: string) {
 export class Hour {
     date: Date = new Date();
     title?: string;
-    title2?: string;
     text?: JSX.Element;
     prev?: string;
     next?: string;
