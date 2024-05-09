@@ -3,7 +3,7 @@ import { Text, TextProps, View } from '@/components/Themed';
 import { Href, Link, LinkComponent } from 'expo-router';
 import { Pressable } from 'react-native';
 import { PropsWithChildren } from 'react';
-import { InLent, InAdvent, In12DaysOfXmas, InEpiphany, ThroughBaptism, IsTransfiguration, UntilAscension, UntilPentecost, AfterPentecost } from '@/components/Calendar';
+import { InLent, InAdvent, In12DaysOfXmas, InEpiphany, ThroughBaptism, IsTransfiguration, UntilAscension, UntilPentecost, AfterPentecost, InHolyWeek } from '@/components/Calendar';
 
 export function randstr(prefix: string) {
     return Math.random().toString(36).replace('0.',prefix + '_' || '');
@@ -28,8 +28,26 @@ export class Hour {
         this.date = date;
     }
 
+    DaysInMonth() {
+        const month = this.date.getUTCMonth() + 1  // Remember indexes start at 0, but months start at 1
+        const year = this.date.getUTCFullYear()
+        const monthdate = new Date(year, month, 0).getDate();
+        return monthdate
+    }
+    DaysInYear() {
+        const year = this.date.getUTCFullYear()
+        return ((year % 4 === 0 && year % 100 > 0) || year %400 == 0) ? 366 : 365;
+    }
+    DayOfYear() {
+        return (Date.UTC(this.date.getUTCFullYear(), this.date.getUTCMonth(), this.date.getUTCDate()) - Date.UTC(this.date.getUTCFullYear(), 0, 0)) / 24 / 60 / 60 / 1000;
+    }
+
     inLent() {
         return InLent(this.date);
+    }
+
+    inHolyWeek() {
+        return InHolyWeek(this.date);
     }
 
     inAdvent() {
@@ -118,7 +136,7 @@ export default function HourService(props: HourServiceProps): JSX.Element {
   
 const styles = StyleSheet.create({
     container: {
-        padding: 0,
+        padding: 10,
         flex: 1,
         alignItems: 'flex-start',
         justifyContent: 'flex-start',
@@ -129,7 +147,7 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 16,
         fontWeight: 'normal',
-        paddingTop: 20
+        paddingTop: 20,
     },
     separator: {
         marginVertical: 20,
@@ -138,6 +156,7 @@ const styles = StyleSheet.create({
     },
     footer: {
         flex: 1,
+        flexWrap: 'wrap',
         width: '100%',
         paddingHorizontal: 40,
         flexDirection: "row",
@@ -145,13 +164,16 @@ const styles = StyleSheet.create({
     },
     textContainer: {
         flex: 1,
-        flexDirection: 'row'
+        flexWrap: 'wrap',
+        flexDirection: 'row',
     },
     textHeader: {
         flex: .035
     },
     text: {
         flex: 1, 
+        flexDirection: 'row',
+        flexWrap: 'wrap',
         fontStyle: 'normal', 
         fontWeight: 'normal'
     }
@@ -161,7 +183,7 @@ const Tab = <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
 
 export function Section(props: PropsWithChildren) {
     return (
-        <View style={{paddingTop: 20}}>{props.children}</View>
+        <View style={{marginVertical: 10}}>{props.children}</View>
     )
 }
 export function SectionTitle(props: TextProps): JSX.Element {
@@ -171,41 +193,73 @@ export function SectionTitle(props: TextProps): JSX.Element {
 }
 export function LText(props:TextProps) {
     return (
-        <View style={styles.textContainer}>
-        <Text style={styles.textHeader}>L:</Text><Text style={styles.text}>{props.children}</Text>
+        <View>
+            <View style={styles.textContainer}>
+                <Text style={styles.textHeader}>
+                    L:
+                </Text>
+                <Text style={styles.text}>
+                    {props.children}
+                </Text>
         </View>
+    </View>
     )
 }
 
 export function CText(props:TextProps) {
     return (
-        <View style={styles.textContainer}>
-        <Text style={styles.textHeader}>C:</Text><Text style={styles.text}>{props.children}</Text>
+        <View>
+            <View style={styles.textContainer}>
+                <Text style={styles.textHeader}>
+                    C:
+                </Text>
+                <Text style={styles.text}>
+                    {props.children}
+                </Text>
         </View>
+    </View>
     )
 }
 
 export function AText(props:TextProps) {
     return (
-        <View style={styles.textContainer}>
-        <Text style={styles.textHeader}>A:</Text><Text style={styles.text}>{props.children}</Text>
+        <View>
+            <View style={styles.textContainer}>
+                <Text style={styles.textHeader}>
+                    A:
+                </Text>
+                <Text style={styles.text}>
+                    {props.children}
+                </Text>
         </View>
+    </View>
     )
 }
 
 export function NText(props:TextProps) {
     return (
-        <View style={styles.textContainer}>
-        <Text style={styles.textHeader}></Text><Text style={styles.text}>{props.children}</Text>
+        <View>
+            <View style={styles.textContainer}>
+                <Text style={styles.textHeader}>
+                </Text>
+                <Text style={styles.text}>
+                    {props.children}
+                </Text>
         </View>
+    </View>
     )
 }
 
-export function GloryBe() {
+export function TextSpacer() {
+    return <View><span>&nbsp;</span></View>
+}
+
+export function GloryBe(props:TextProps) {
     return (
     <Section>
         <SectionTitle>Gloria Patri</SectionTitle>
-        <AText>Glory be to the Father, and to the Son, and to the Holy Spirit; as it was in the beginning, is now and will be forever. Amen</AText>
+        <View><AText>Glory be to the Father, and to the Son, and to the Holy Spirit; as it was in the beginning, is now and will be forever. Amen.</AText></View>
+        <View>{props.children}</View>
     </Section>
     )
 }
@@ -226,6 +280,7 @@ export function Venite() {
             The sea is his, for he made it,
             and his hands formed the dry land.
             </AText>
+            <TextSpacer />
             <NText>
             Oh come, let us worship and bow down;
             let us kneel before the Lord, our Maker!
@@ -243,6 +298,61 @@ export function Venite() {
             Therefore I swore in my wrath,
             “They shall not enter my rest.”
             </NText>
+        </Section>
+    )
+}
+
+export function Benedictus() {
+    return (
+        <Section>
+            <SectionTitle>Benedictus</SectionTitle>
+            <AText>
+            Blessed be the Lord God of Israel,
+            for he has visited and redeemed his people
+            and has raised up a horn of salvation for us
+            in the house of his servant David,
+            as he spoke by the mouth of his holy prophets from of old,
+            that we should be saved from our enemies
+            and from the hand of all who hate us;
+            to show the mercy promised to our fathers
+            and to remember his holy covenant,
+            the oath that he swore to our father Abraham, to grant us
+            that we, being delivered from the hand of our enemies,
+            might serve him without fear,
+            in holiness and righteousness before him all our days.
+            </AText>
+            <TextSpacer />
+            <NText>
+            And you, child, will be called the prophet of the Most High;
+            for you will go before the Lord to prepare his ways,
+            to give knowledge of salvation to his people
+            in the forgiveness of their sins,
+            because of the tender mercy of our God,
+            whereby the sunrise shall visit us from on high
+            to give light to those who sit in darkness and in the shadow of death,
+            to guide our feet into the way of peace.
+            </NText>
+        </Section>
+    )
+}
+export function OurFatherText() {
+    return (
+        <AText>
+            Our Father, who art in heaven, halowed be thy name.
+            Thy kingdom come, thy will be done, on earth as it is in heaven.
+            Give us this day our daily bread, and forgive us our tresspasses
+            as we forgive those who tresspass against us.
+            And lead us not into temptation, but deliver us from evil.
+            For thine is the kingdom, and the power, and the glory forever and ever. Amen.
+        </AText>
+    )
+}
+export function OurFather() {
+    return (
+        <Section>
+            <SectionTitle>Pater Noster</SectionTitle>
+            <LText>Lord, remember us in your kingdom, and teach us to pray:</LText>
+            <OurFatherText />
         </Section>
     )
 }

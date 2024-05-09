@@ -24,16 +24,24 @@ export function AddDays(date: Date, days: number) {
 }
 
 export function InLent(date: Date) {
-    const year: number = date.getUTCFullYear();
+    const year: number = date.getFullYear();
     const easter = GetEaster(year).getTime();
     const lent = GetLent(year).getTime();
     const dateMS = date.getTime();
     return dateMS < easter && dateMS > lent;
 }
 
+export function InHolyWeek(date: Date) {
+    const year: number = date.getFullYear();
+    const easter = GetEaster(year).getTime();
+    const holyWeek = GetHolyWeek(year).getTime();
+    const dateMS = date.getTime();
+    return dateMS < easter && dateMS >= holyWeek;
+}
+
 export function InAdvent(date: Date) {
     // Remember, js months start at 0 (jan == 0)
-    const xmasEve = new Date(date.getUTCFullYear(), 11, 24, 0, 0, 0, 0);
+    const xmasEve = new Date(date.getFullYear(), 11, 24, 0, 0, 0, 0);
     let advent = new Date(xmasEve.getTime() - 3 * 7 * dayMS);
     while (advent.getDay() != 0) {
         advent = new Date(advent.getTime() - dayMS);
@@ -43,34 +51,43 @@ export function InAdvent(date: Date) {
 }
 
 export function In12DaysOfXmas(date: Date) {
-    const xmas = new Date(date.getUTCFullYear(), 11, 25, 0, 0, 0, 0);
-    const jan5 = new Date(date.getUTCFullYear(), 0, 5, 0, 0, 0, 0);
+    const xmas = new Date(date.getFullYear(), 11, 25, 0, 0, 0, 0);
+    const jan5 = new Date(date.getFullYear(), 0, 5, 0, 0, 0, 0);
     const dateMS = date.getTime();
     return dateMS > xmas.getTime() || dateMS < jan5.getTime();
 }
 
 export function InEpiphany(date: Date) {
-    const epiph = new Date(date.getUTCFullYear(), 0, 6, 0, 0, 0, 0);
-    const ashWed = GetLent(date.getUTCFullYear());
+    const epiph = new Date(date.getFullYear(), 0, 6, 0, 0, 0, 0);
+    const ashWed = GetLent(date.getFullYear());
     const dateMS = date.getTime();
     return dateMS > epiph.getTime() && dateMS < ashWed.getTime();
 }
 
 export function ThroughBaptism(date: Date) {
-    const epiph = new Date(date.getUTCFullYear(), 0, 6, 0, 0, 0, 0);
-    const dow = epiph.getUTCDay();
+    const epiph = new Date(date.getFullYear(), 0, 6, 0, 0, 0, 0);
+    const dow = epiph.getDay();
     const diff = 7 - dow;
     const bapt = new Date(epiph.getTime() + (diff * dayMS));
     return InEpiphany(date) && date.getTime() < (bapt.getTime() + dayMS);
 }
 
 export function IsTransfiguration(date: Date) {
-    const ashWed = GetLent(date.getUTCFullYear());
-    const dow = ashWed.getUTCDay();
+    const ashWed = GetLent(date.getFullYear());
+    const dow = ashWed.getDay();
     const tfig = new Date(ashWed.getTime() - (dow * dayMS));
-    const dayString = `${date.getUTCFullYear()}-${date.getUTCMonth() + 1}-${date.getUTCDate()}`;
-    const tfigString = `${tfig.getUTCFullYear()}-${tfig.getUTCMonth() + 1}-${tfig.getUTCDate()}`;;
+    const dayString = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
+    const tfigString = `${tfig.getFullYear()}-${tfig.getMonth() + 1}-${tfig.getDate()}`;;
     return tfigString === dayString;
+}
+
+export function InEastertide(date: Date) {
+    const year = date.getFullYear();
+    const easter = GetEaster(year).getTime();
+    const pentecost = GetPentecost(year).getTime();
+    const MSdate = date.getTime();
+    return MSdate < pentecost && MSdate >= easter;
+
 }
 
 export function GetAscension(year: number) {
@@ -86,7 +103,7 @@ export function GetPentecost(year: number) {
 }
 
 export function UntilAscension(date: Date) {
-    const year = date.getUTCFullYear();
+    const year = date.getFullYear();
     const easter = GetEaster(year);
     const ascension = GetAscension(year);
     const dateMS = date.getTime();
@@ -94,7 +111,7 @@ export function UntilAscension(date: Date) {
 }
 
 export function UntilPentecost(date: Date) {
-    const year = date.getUTCFullYear();
+    const year = date.getFullYear();
     const ascension = GetAscension(year);
     const pentecost = GetPentecost(year);
     const dateMS = date.getTime();
@@ -102,7 +119,7 @@ export function UntilPentecost(date: Date) {
 }
 
 export function AfterPentecost(date:Date) {
-    const year = date.getUTCFullYear();
+    const year = date.getFullYear();
     const pentecost = GetPentecost(year);
     return date.getTime() >= pentecost.getTime();
 
@@ -133,4 +150,9 @@ export function GetEaster(year: number) {
 function GetLent(year: number): Date {
     const easter: Date = GetEaster(year);
     return AddDays(easter, -46);
+}
+
+function GetHolyWeek(year: number): Date {
+    const easter: Date = GetEaster(year);
+    return AddDays(easter, -7);
 }

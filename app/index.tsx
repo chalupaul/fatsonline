@@ -24,7 +24,7 @@ export default function index() {
     SplashScreen.hideAsync();
   }, [navigation?.isReady]);
 
-  if (ready) return <Redirect href="/prime" />;
+  if (ready) return <Redirect href="/matins" />;
 
   return (
     <View style={styles.container}>

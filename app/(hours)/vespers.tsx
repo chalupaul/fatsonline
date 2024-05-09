@@ -5,10 +5,9 @@ import HourService from '@/components/Service';
 export class Vespers extends Hour {
   constructor(date: Date) {
       super(date);
-      this.title = "Nones";
+      this.title = "Evening Prayer";
       this.title2 = "Evening Prayer";
-      this.text = "The text of matins. This should be very long.";
-      this.prev = "nones";
+      this.prev = "noon";
       this.next = "compline";
   }
 }

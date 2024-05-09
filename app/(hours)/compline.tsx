@@ -4,9 +4,8 @@ import HourService from '@/components/Service';
 export class Compline extends Hour {
   constructor(date: Date) {
       super(date);
-      this.title = "Compline";
+      this.title = "Night Prayer";
       this.title2 = "Night Prayer";
-      this.text = "The text of matins. This should be very long.";
       this.prev = "vespers";
       this.next = "vigil";
   }
