@@ -232,10 +232,6 @@ Judges,18,31,1009
 Judges,19,30,1052
 Judges,20,48,1372
 Judges,21,25,702
-Ruth,1,22,619
-Ruth,2,23,721
-Ruth,3,18,473
-Ruth,4,22,624
 1 Samuel,1,28,758
 1 Samuel,2,36,1113
 1 Samuel,3,21,527
@@ -338,166 +334,6 @@ Ruth,4,22,624
 2 Kings,23,37,1433
 2 Kings,24,20,573
 2 Kings,25,30,945
-1 Chronicles,1,54,582
-1 Chronicles,2,55,744
-1 Chronicles,3,24,308
-1 Chronicles,4,43,744
-1 Chronicles,5,26,594
-1 Chronicles,6,81,1140
-1 Chronicles,7,40,695
-1 Chronicles,8,40,419
-1 Chronicles,9,44,871
-1 Chronicles,10,14,354
-1 Chronicles,11,47,926
-1 Chronicles,12,40,837
-1 Chronicles,13,14,376
-1 Chronicles,14,17,335
-1 Chronicles,15,29,663
-1 Chronicles,16,43,807
-1 Chronicles,17,27,739
-1 Chronicles,18,17,397
-1 Chronicles,19,19,580
-1 Chronicles,20,8,275
-1 Chronicles,21,30,882
-1 Chronicles,22,19,579
-1 Chronicles,23,32,625
-1 Chronicles,24,31,502
-1 Chronicles,25,31,484
-1 Chronicles,26,32,703
-1 Chronicles,27,34,692
-1 Chronicles,28,21,779
-1 Chronicles,29,30,948
-2 Chronicles,1,17,501
-2 Chronicles,2,18,572
-2 Chronicles,3,17,428
-2 Chronicles,4,22,525
-2 Chronicles,5,14,462
-2 Chronicles,6,42,1336
-2 Chronicles,7,22,704
-2 Chronicles,8,18,497
-2 Chronicles,9,31,843
-2 Chronicles,10,19,533
-2 Chronicles,11,23,451
-2 Chronicles,12,16,456
-2 Chronicles,13,22,598
-2 Chronicles,14,15,430
-2 Chronicles,15,19,510
-2 Chronicles,16,14,453
-2 Chronicles,17,19,391
-2 Chronicles,18,34,993
-2 Chronicles,19,11,344
-2 Chronicles,20,37,1087
-2 Chronicles,21,20,592
-2 Chronicles,22,12,455
-2 Chronicles,23,21,764
-2 Chronicles,24,27,895
-2 Chronicles,25,28,899
-2 Chronicles,26,23,690
-2 Chronicles,27,9,231
-2 Chronicles,28,27,869
-2 Chronicles,29,36,1125
-2 Chronicles,30,27,845
-2 Chronicles,31,21,716
-2 Chronicles,32,33,1096
-2 Chronicles,33,25,771
-2 Chronicles,34,33,1175
-2 Chronicles,35,27,890
-2 Chronicles,36,23,729
-Ezra,1,11,343
-Ezra,2,70,798
-Ezra,3,13,525
-Ezra,4,24,739
-Ezra,5,17,573
-Ezra,6,22,754
-Ezra,7,28,833
-Ezra,8,36,919
-Ezra,9,15,597
-Ezra,10,44,840
-Nehemiah,1,11,362
-Nehemiah,2,20,698
-Nehemiah,3,32,829
-Nehemiah,4,23,678
-Nehemiah,5,19,617
-Nehemiah,6,19,590
-Nehemiah,7,73,958
-Nehemiah,8,18,665
-Nehemiah,9,38,1302
-Nehemiah,10,39,631
-Nehemiah,11,36,691
-Nehemiah,12,47,906
-Nehemiah,13,31,947
-Esther,1,22,672
-Esther,2,23,775
-Esther,3,15,561
-Esther,4,17,518
-Esther,5,14,466
-Esther,6,14,462
-Esther,7,10,339
-Esther,8,17,649
-Esther,9,32,945
-Esther,10,3,97
-Job,1,22,629
-Job,2,13,382
-Job,3,26,404
-Job,4,21,329
-Job,5,27,426
-Job,6,30,444
-Job,7,21,371
-Job,8,22,327
-Job,9,35,539
-Job,10,22,370
-Job,11,20,319
-Job,12,25,383
-Job,13,28,398
-Job,14,22,403
-Job,15,35,547
-Job,16,22,374
-Job,17,16,250
-Job,18,21,306
-Job,19,29,477
-Job,20,29,489
-Job,21,34,512
-Job,22,30,460
-Job,23,17,280
-Job,24,25,465
-Job,25,6,87
-Job,26,14,202
-Job,27,23,370
-Job,28,28,449
-Job,29,25,400
-Job,30,31,523
-Job,31,40,698
-Job,32,22,378
-Job,33,33,527
-Job,34,37,584
-Job,35,16,253
-Job,36,33,479
-Job,37,24,389
-Job,38,41,638
-Job,39,30,487
-Job,40,24,359
-Job,41,34,494
-Job,42,17,426
-Ecclesiastes,1,18,362
-Ecclesiastes,2,26,707
-Ecclesiastes,3,22,499
-Ecclesiastes,4,16,371
-Ecclesiastes,5,20,518
-Ecclesiastes,6,12,303
-Ecclesiastes,7,29,612
-Ecclesiastes,8,17,482
-Ecclesiastes,9,18,540
-Ecclesiastes,10,20,381
-Ecclesiastes,11,10,260
-Ecclesiastes,12,14,341
-Song of Solomon,1,17,318
-Song of Solomon,2,17,335
-Song of Solomon,3,11,276
-Song of Solomon,4,16,363
-Song of Solomon,5,16,374
-Song of Solomon,6,13,285
-Song of Solomon,7,13,274
-Song of Solomon,8,14,351
 Isaiah,1,31,738
 Isaiah,2,22,548
 Isaiah,3,26,537
@@ -616,11 +452,6 @@ Jeremiah,49,39,1110
 Jeremiah,50,46,1366
 Jeremiah,51,64,1753
 Jeremiah,52,34,1024
-Lamentations,1,22,730
-Lamentations,2,22,824
-Lamentations,3,66,842
-Lamentations,4,22,560
-Lamentations,5,22,297
 Ezekiel,1,28,805
 Ezekiel,2,10,272
 Ezekiel,3,27,805
@@ -669,18 +500,6 @@ Ezekiel,45,25,802
 Ezekiel,46,24,858
 Ezekiel,47,23,713
 Ezekiel,48,35,940
-Daniel,1,21,561
-Daniel,2,49,1466
-Daniel,3,30,935
-Daniel,4,37,1289
-Daniel,5,31,946
-Daniel,6,28,885
-Daniel,7,28,927
-Daniel,8,27,845
-Daniel,9,27,967
-Daniel,10,21,611
-Daniel,11,45,1453
-Daniel,12,13,387
 Hosea,1,11,346
 Hosea,2,23,661
 Hosea,3,5,145
@@ -748,6 +567,145 @@ Malachi,1,14,484
 Malachi,2,17,543
 Malachi,3,18,554
 Malachi,4,6,171
+Song of Solomon,1,17,318
+Song of Solomon,2,17,335
+Song of Solomon,3,11,276
+Song of Solomon,4,16,363
+Song of Solomon,5,16,374
+Song of Solomon,6,13,285
+Song of Solomon,7,13,274
+Song of Solomon,8,14,351
+Ruth,1,22,619
+Ruth,2,23,721
+Ruth,3,18,473
+Ruth,4,22,624
+Lamentations,1,22,730
+Lamentations,2,22,824
+Lamentations,3,66,842
+Lamentations,4,22,560
+Lamentations,5,22,297
+Ecclesiastes,1,18,362
+Ecclesiastes,2,26,707
+Ecclesiastes,3,22,499
+Ecclesiastes,4,16,371
+Ecclesiastes,5,20,518
+Ecclesiastes,6,12,303
+Ecclesiastes,7,29,612
+Ecclesiastes,8,17,482
+Ecclesiastes,9,18,540
+Ecclesiastes,10,20,381
+Ecclesiastes,11,10,260
+Ecclesiastes,12,14,341
+Esther,1,22,672
+Esther,2,23,775
+Esther,3,15,561
+Esther,4,17,518
+Esther,5,14,466
+Esther,6,14,462
+Esther,7,10,339
+Esther,8,17,649
+Esther,9,32,945
+Esther,10,3,97
+Daniel,1,21,561
+Daniel,2,49,1466
+Daniel,3,30,935
+Daniel,4,37,1289
+Daniel,5,31,946
+Daniel,6,28,885
+Daniel,7,28,927
+Daniel,8,27,845
+Daniel,9,27,967
+Daniel,10,21,611
+Daniel,11,45,1453
+Daniel,12,13,387
+Ezra,1,11,343
+Ezra,2,70,798
+Ezra,3,13,525
+Ezra,4,24,739
+Ezra,5,17,573
+Ezra,6,22,754
+Ezra,7,28,833
+Ezra,8,36,919
+Ezra,9,15,597
+Ezra,10,44,840
+Nehemiah,1,11,362
+Nehemiah,2,20,698
+Nehemiah,3,32,829
+Nehemiah,4,23,678
+Nehemiah,5,19,617
+Nehemiah,6,19,590
+Nehemiah,7,73,958
+Nehemiah,8,18,665
+Nehemiah,9,38,1302
+Nehemiah,10,39,631
+Nehemiah,11,36,691
+Nehemiah,12,47,906
+Nehemiah,13,31,947
+1 Chronicles,1,54,582
+1 Chronicles,2,55,744
+1 Chronicles,3,24,308
+1 Chronicles,4,43,744
+1 Chronicles,5,26,594
+1 Chronicles,6,81,1140
+1 Chronicles,7,40,695
+1 Chronicles,8,40,419
+1 Chronicles,9,44,871
+1 Chronicles,10,14,354
+1 Chronicles,11,47,926
+1 Chronicles,12,40,837
+1 Chronicles,13,14,376
+1 Chronicles,14,17,335
+1 Chronicles,15,29,663
+1 Chronicles,16,43,807
+1 Chronicles,17,27,739
+1 Chronicles,18,17,397
+1 Chronicles,19,19,580
+1 Chronicles,20,8,275
+1 Chronicles,21,30,882
+1 Chronicles,22,19,579
+1 Chronicles,23,32,625
+1 Chronicles,24,31,502
+1 Chronicles,25,31,484
+1 Chronicles,26,32,703
+1 Chronicles,27,34,692
+1 Chronicles,28,21,779
+1 Chronicles,29,30,948
+2 Chronicles,1,17,501
+2 Chronicles,2,18,572
+2 Chronicles,3,17,428
+2 Chronicles,4,22,525
+2 Chronicles,5,14,462
+2 Chronicles,6,42,1336
+2 Chronicles,7,22,704
+2 Chronicles,8,18,497
+2 Chronicles,9,31,843
+2 Chronicles,10,19,533
+2 Chronicles,11,23,451
+2 Chronicles,12,16,456
+2 Chronicles,13,22,598
+2 Chronicles,14,15,430
+2 Chronicles,15,19,510
+2 Chronicles,16,14,453
+2 Chronicles,17,19,391
+2 Chronicles,18,34,993
+2 Chronicles,19,11,344
+2 Chronicles,20,37,1087
+2 Chronicles,21,20,592
+2 Chronicles,22,12,455
+2 Chronicles,23,21,764
+2 Chronicles,24,27,895
+2 Chronicles,25,28,899
+2 Chronicles,26,23,690
+2 Chronicles,27,9,231
+2 Chronicles,28,27,869
+2 Chronicles,29,36,1125
+2 Chronicles,30,27,845
+2 Chronicles,31,21,716
+2 Chronicles,32,33,1096
+2 Chronicles,33,25,771
+2 Chronicles,34,33,1175
+2 Chronicles,35,27,890
+2 Chronicles,36,23,729
 Matthew,1,25,527
 Matthew,2,23,591
 Matthew,3,17,386
@@ -1195,3 +1153,46 @@ Proverbs,28,28,498
 Proverbs,29,27,428
 Proverbs,30,33,595
 Proverbs,31,31,467`
+
+export const job = `Job,1,22,629
+Job,2,13,382
+Job,3,26,404
+Job,4,21,329
+Job,5,27,426
+Job,6,30,444
+Job,7,21,371
+Job,8,22,327
+Job,9,35,539
+Job,10,22,370
+Job,11,20,319
+Job,12,25,383
+Job,13,28,398
+Job,14,22,403
+Job,15,35,547
+Job,16,22,374
+Job,17,16,250
+Job,18,21,306
+Job,19,29,477
+Job,20,29,489
+Job,21,34,512
+Job,22,30,460
+Job,23,17,280
+Job,24,25,465
+Job,25,6,87
+Job,26,14,202
+Job,27,23,370
+Job,28,28,449
+Job,29,25,400
+Job,30,31,523
+Job,31,40,698
+Job,32,22,378
+Job,33,33,527
+Job,34,37,584
+Job,35,16,253
+Job,36,33,479
+Job,37,24,389
+Job,38,41,638
+Job,39,30,487
+Job,40,24,359
+Job,41,34,494
+Job,42,17,426`

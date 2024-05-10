@@ -1,6 +1,6 @@
 import { Text, View } from '@/components/Themed';
 import React from "react";
-import { Redirect } from "expo-router";
+import { Href, Redirect } from "expo-router";
 import { useNavigationContainerRef } from "expo-router";
 import { StyleSheet } from 'react-native';
 //import { LoadingScreen } from "../components/StyleComponents";
@@ -24,7 +24,20 @@ export default function index() {
     SplashScreen.hideAsync();
   }, [navigation?.isReady]);
 
-  if (ready) return <Redirect href="/matins" />;
+  const hour = new Date().getHours();
+  let landingPath: string = '/matins';
+
+  if (hour < 3 || hour > 19) { // 8pm - 4:59am
+    landingPath = '/compline';
+  } else if (hour < 10) { // < 11am
+    landingPath = '/matins';
+  } else if (hour < 15) {// < 4pm
+    landingPath = '/noon';
+  } else if (hour < 19) {
+    landingPath = '/vespers';
+  }
+
+  if (ready) return <Redirect href={'' + landingPath as Href<'pathname'>} />;
 
   return (
     <View style={styles.container}>
