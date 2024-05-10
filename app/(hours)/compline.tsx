@@ -124,14 +124,14 @@ export class Compline extends Hour {
               You have given me relief when I was in distress. 
               Be gracious to me and hear my prayer! 
               O men, how long shall my honor be turned into shame?
-              How long will you love vain words and seek after lies? <Text style={{fontStyle: "italic"}}>Selah.</Text>
+              How long will you love vain words and seek after lies? <Text style={{fontStyle: "italic"}}>Selah. </Text>
             </NText>
             <TextSpacer />
             <NText>
-              But know that the Lord has set apart the godly for himself;
+              But know that the Lord has set apart the godly for himself; 
               the Lord hears when I call to him. 
               Be angry, and do not sin; 
-              ponder in your own hearts on your beds, and be silent. <Text style={{fontStyle: "italic"}}>Selah.</Text>
+              ponder in your own hearts on your beds, and be silent. <Text style={{fontStyle: "italic"}}>Selah. </Text> 
               Offer right sacrifices, and put your trust in the Lord.
             </NText>
             <TextSpacer />
@@ -172,11 +172,11 @@ export class Compline extends Hour {
           </Section>
           <Section>
             <SectionTitle>Nunc Dimittis Antiphon</SectionTitle>
-            <LText>
+            <CText>
               Guide us waking, O Lord, and guard us sleeping;
               that awake we may watch with Christ and asleep
               we may rest in peace.
-            </LText>
+            </CText>
           </Section>
           <Section>
             <SectionTitle>Nunc Dimittis</SectionTitle>
@@ -186,15 +186,15 @@ export class Compline extends Hour {
               a light for revelation to the Gentiles, and for glory to your people Israel. 
             </CText>
           </Section>
+          <GloryBe />
           <Section>
             <SectionTitle>Nunc Dimittis Antiphon Repeated</SectionTitle>
-            <LText>
+            <CText>
               Guide us waking, O Lord, and guard us sleeping;
               that awake we may watch with Christ and asleep
               we may rest in peace.
-            </LText>
+            </CText>
           </Section>
-          <GloryBe />
           <Section>
             <SectionTitle>Benediction</SectionTitle>
             <LText>The almighty and merciful Lord, the Father, the Son, and the Holy Spirit, bless us and keep us.</LText>
