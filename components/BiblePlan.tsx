@@ -67,6 +67,7 @@ export function ProduceCalendar(totalDays: number, data: string) {
 }
 
 function solver(buckets: Chapter[][], dailyTarget: number) {
+    buckets.reverse()
     let solving = true;
     let iterations = 0;
     while (solving && iterations < 1000 ) {
@@ -100,6 +101,7 @@ function solver(buckets: Chapter[][], dailyTarget: number) {
         iterations++;
         if (!tainted) solving = false;
     }
+    buckets.reverse()
 }
 
 function StringIt(book: string, start: string, end: string) {

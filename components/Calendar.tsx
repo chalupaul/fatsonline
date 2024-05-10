@@ -57,11 +57,15 @@ export function In12DaysOfXmas(date: Date) {
     return dateMS > xmas.getTime() || dateMS < jan5.getTime();
 }
 
+export function IsEpiphany(date: Date) {
+    return date.getMonth() == 0 && date.getDate() == 6
+}
+
 export function InEpiphany(date: Date) {
     const epiph = new Date(date.getFullYear(), 0, 6, 0, 0, 0, 0);
     const ashWed = GetLent(date.getFullYear());
     const dateMS = date.getTime();
-    return dateMS > epiph.getTime() && dateMS < ashWed.getTime();
+    return dateMS >= epiph.getTime() && dateMS < ashWed.getTime();
 }
 
 export function ThroughBaptism(date: Date) {
@@ -87,7 +91,6 @@ export function InEastertide(date: Date) {
     const pentecost = GetPentecost(year).getTime();
     const MSdate = date.getTime();
     return MSdate < pentecost && MSdate >= easter;
-
 }
 
 export function GetAscension(year: number) {

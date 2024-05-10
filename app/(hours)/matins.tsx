@@ -1,5 +1,5 @@
 import { ProduceCalendar, MakeReadingTitles, Chapter } from '@/components/BiblePlan';
-import { AText, Benedictus, CText, GloryBe, Hour, LText, NText, OurFather, Section, SectionTitle, TextSpacer, Venite, randstr } from '@/components/Service';
+import { Benedictus, CText, GloryBe, Hour, LText, NText, OurFather, Section, SectionTitle, TextSpacer, Venite, randstr } from '@/components/Service';
 import HourService from '@/components/Service';
 import { View, Text } from '@/components/Themed';
 import { psalms2readings, OTNT } from '@/constants/BibleInfo';
@@ -20,139 +20,6 @@ export class Matins extends Hour {
 
       const prayer = this.date.getDay() != 0 ? <NormalPrayer /> : <SundayPrayer />
 
-      let antiphon: React.JSX.Element[];
-      let canticleAntiphon: React.JSX.Element;
-      if (this.inAdvent()) {
-        antiphon = [
-          <LText key={randstr('antiphon')}>Give glory to the coming King.</LText>,
-          <CText key={randstr('antiphon')}>Oh, come let us worship him.</CText>
-        ];
-        if (this.date.getMonth() == 11 && this.date.getDate() == 17) {
-          canticleAntiphon = (<CText>
-            O Wisdom, 
-            proceeding from the mouth of the Most High, 
-            pervading and permeating all ceration, 
-            mightily ordering all things: 
-            Come and teach us the way of prudence.
-          </CText>)
-        } else if (this.date.getMonth() == 11 && this.date.getDate() == 18) {
-          canticleAntiphon = (<CText>
-            O Adonai and ruler of the house of Israel,
-            who appeared to Moses in the burning bush
-            and gave him the Law on Sinai:
-            Come with an outstretched arm and redeem us.
-          </CText>)
-        } else if (this.date.getMonth() == 11 && this.date.getDate() == 19) {
-          canticleAntiphon = (<CText>
-            O Root of Jesse,
-            standing as an ensign before the peoples,
-            before whom all kings are mute,
-            to whom the nations will do homage:
-            Come quickly to deliver us.
-          </CText>)
-        } else if (this.date.getMonth() == 11 && this.date.getDate() == 20) {
-          canticleAntiphon = (<CText>
-            O Key of David and scepter of the house of Israel,
-            you open and no one can close,
-            you close and no one can open:
-            Come and rescue the prisoners 
-            who are in darkness and the shadow of death.
-          </CText>)
-        } else if (this.date.getMonth() == 11 && this.date.getDate() == 21) {
-          canticleAntiphon = (<CText>
-            O Dayspring,
-            splendor of light everlasting:
-            Come and enlighten those who sit in darknessand in the shadow of death.
-          </CText>)
-        } else if (this.date.getMonth() == 11 && this.date.getDate() == 22) {
-          canticleAntiphon = (<CText>
-            O King of the nations,
-            the ruler they long for,
-            the cornerstone uniting all people:
-            Come and save us all, whom you formed out of clay.
-          </CText>)
-        } else if (this.date.getMonth() == 11 && this.date.getDate() == 23) {
-          canticleAntiphon = (<CText>
-            O Emmanuel,
-            our king and our lawgiver,
-            the anointed of the nations and their Savior:
-            Come and save us,  o Lord our God.
-          </CText>)
-        } else {
-          canticleAntiphon = (<CText>
-            Fear no,t Mary, you have found favor with the Lord: Behold, you shall conceive and bear a Son. Alleluia.
-          </CText>)
-        }
-      } else if (this.in12Days()) {
-        antiphon = [
-          <LText key={randstr('antiphon')}>Alleluia. Unto us a child is born.</LText>,
-          <CText key={randstr('antiphon')}>Oh come, let us worship him. Alleluia.</CText>
-        ];
-        canticleAntiphon = (
-          <CText>
-            Today Christ is born; today salvation has appeared. Today the just exult and say, "Glory to God in the highest."
-          </CText>
-        )
-      } else if (this.isTransfiguration() || this.throughBaptism()) {
-        antiphon = [
-          <LText key={randstr('antiphon')}>The Word was made flesh, and we beheld his glory.</LText>,
-          <CText key={randstr('antiphon')}>Oh, come, let us worship him.</CText>
-        ];
-        canticleAntiphon = (<CText>
-          Our Lord and Savior, begotten before all ages, revealed himself to the world. Alleluia.
-        </CText>);
-      } else if (this.inEpiphany()) {
-        antiphon = [
-          <LText key={randstr('antiphon')}>Give glory to God, our light and our life.</LText>,
-          <CText key={randstr('antiphon')}>Oh, come, let us worship him.</CText>
-        ];
-        canticleAntiphon = (<CText>
-          Our Lord and Savior, begotten before all ages, revealed himself to the world. Alleluia.
-        </CText>);
-      } else if (this.inLent()) {
-        antiphon = [
-          <LText key={randstr('antiphon')}>The Lord is near to those who call on him.</LText>,
-          <CText key={randstr('antiphon')}>Oh, come, let us worship him.</CText>
-        ];
-        if (this.inHolyWeek()) {
-          canticleAntiphon = (<CText>
-            Glory to the cross of our Lord Jesus Christ, our salvation, life, and resurrection.
-          </CText>);
-        } else {
-          canticleAntiphon = (<CText>
-            Let justice roll down like water, and righteousness like an overflowing stream.
-          </CText>);
-        }
-      } else if (this.isBeforeAscension()) {
-        antiphon = [
-          <LText key={randstr('antiphon')}>Alleluia. The Lord is risen indeed.</LText>,
-          <CText key={randstr('antiphon')}>Oh, come, let us worship him. Alleluia.</CText>
-        ];
-        canticleAntiphon = (<CText>
-          This is the day the Lord has made. Alleluia. Let us rejoice and be glad in it. Alleluia.
-        </CText>);
-      } else if (this.isBeforePentecost()) {
-        antiphon = [
-          <LText key={randstr('antiphon')}>Alleluia. Christ the Lord ascends into heaven.</LText>,
-          <CText key={randstr('antiphon')}>Oh, come, let us worship him. Alleluia.</CText>
-        ];
-        canticleAntiphon = (<CText>
-          This is the day the Lord has made. Alleluia. Let us rejoice and be glad in it. Alleluia.
-        </CText>);
-      } else if (this.isAfterPentecost()) {
-        antiphon = [
-          <LText key={randstr('antiphon')}>Give glory to God, our light and our life.</LText>,
-          <CText key={randstr('antiphon')}>Oh, come, let us worship him. Allelulia.</CText>
-        ];
-        canticleAntiphon = (<CText>
-          When he ascended on high he led a host of captives, and he gave gifts to men.
-        </CText>)
-      }
-      else {
-        antiphon = []
-        canticleAntiphon = <View></View>
-      }
-
       this.text = (
         <View style={{paddingBottom: 20}}>
           <Section>
@@ -160,18 +27,19 @@ export class Matins extends Hour {
             <LText>Oh Lord, open my lips,</LText>
             <CText>and my mouth shall declare your praise.</CText>
           </Section>
-            <GloryBe>{!this.inLent() && <AText>Alleluia! Alleluia!</AText>}</GloryBe>
+            <GloryBe>{!this.inLent() && <CText>Alleluia! Alleluia!</CText>}</GloryBe>
           <Section>
             <SectionTitle>Antiphon</SectionTitle>
-            {antiphon}
+            {this.antiphon}
           </Section>
           <Venite />
           <GloryBe />
           <Section>
             <SectionTitle>Antiphon Repeated</SectionTitle>
+            {this.antiphon}
           </Section>
           <Section>
-            <SectionTitle>Psalms</SectionTitle>
+            <SectionTitle>Psalmody</SectionTitle>
             <Text>{psalmReadingTitle.includes('-') ? psalmReadingTitle : psalmReadingTitle.replace('Psalms', 'Psalm')}</Text>
             {
               psalmReading.map((v: Chapter,i) => {
@@ -213,13 +81,14 @@ export class Matins extends Hour {
           </Section>
           <Section>
             <SectionTitle>Benedictus Antiphon</SectionTitle>
-            {canticleAntiphon}
+            {this.canticleAntiphon}
           </Section>
           <Benedictus />
+          <GloryBe />
           <Section>
             <SectionTitle>Benedictus Antiphon Repeated</SectionTitle>
+            {this.canticleAntiphon}
           </Section>
-          <GloryBe />
           {prayer}
           <Section>
             <SectionTitle>Benediction</SectionTitle>
@@ -245,7 +114,6 @@ function NormalPrayer(){
     <Section>
       <SectionTitle>Prayer of the Day</SectionTitle>
       <LText><Text style={{fontStyle: "italic"}}>The Prayer of the Day is Said.</Text></LText>
-      <CText>Amen.</CText>
       <TextSpacer />
       <LText>
         O Lord, almighty and everlasting God, you have brought us in safety to this new day; 
@@ -266,7 +134,6 @@ function SundayPrayer() {
       <Section>
         <SectionTitle>Prayer of the Day</SectionTitle>
         <LText><Text style={{fontStyle: "italic"}}>The Prayer of the Day is Said.</Text></LText>
-        <CText>Amen.</CText>
       </Section>
       <Section>
         <SectionTitle>Paschal Blessing</SectionTitle>
@@ -285,7 +152,7 @@ function SundayPrayer() {
       </Section>
       <Section>
         <SectionTitle>Te Deum</SectionTitle>
-        <AText>
+        <CText>
           You are God; we praise you. You are the Lord; we acclaim you.
           You are the eternal Father; all creation worships you.
           To you all angels, all the powers of heaven, cherubim and seraphim, sing in endless praise:
@@ -307,7 +174,7 @@ function SundayPrayer() {
           Come, then, Lord, and help your people,
           bought with the price of your own blood,
           and bring us with your saints to glory everlasting.
-        </AText>
+        </CText>
         <LText>
           O God, for our redemption you gave your only Son to suffer death on the cross, 
           and by his glorious resurrection you delivered us from the power of death. 
