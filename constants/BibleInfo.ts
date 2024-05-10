@@ -706,6 +706,31 @@ Nehemiah,13,31,947
 2 Chronicles,34,33,1175
 2 Chronicles,35,27,890
 2 Chronicles,36,23,729
+Mark,1,45,896
+Mark,2,28,682
+Mark,3,35,644
+Mark,4,41,876
+Mark,5,43,907
+Mark,6,56,1235
+Mark,7,36,736
+Mark,8,38,840
+Mark,9,48,1107
+Mark,10,52,1164
+Mark,11,32,722
+Mark,12,44,1032
+Mark,13,37,803
+Mark,14,72,1569
+Mark,15,46,916
+Mark,16,20,467
+1 Peter,1,25,587
+1 Peter,2,25,555
+1 Peter,3,22,539
+1 Peter,4,19,431
+1 Peter,5,14,293
+2 Peter,1,21,497
+2 Peter,2,22,563
+2 Peter,3,18,489
+Jude,1,25,610
 Matthew,1,25,527
 Matthew,2,23,591
 Matthew,3,17,386
@@ -734,22 +759,24 @@ Matthew,25,46,968
 Matthew,26,75,1602
 Matthew,27,66,1346
 Matthew,28,20,411
-Mark,1,45,896
-Mark,2,28,682
-Mark,3,35,644
-Mark,4,41,876
-Mark,5,43,907
-Mark,6,56,1235
-Mark,7,36,736
-Mark,8,38,840
-Mark,9,48,1107
-Mark,10,52,1164
-Mark,11,32,722
-Mark,12,44,1032
-Mark,13,37,803
-Mark,14,72,1569
-Mark,15,46,916
-Mark,16,20,467
+Hebrews,1,14,331
+Hebrews,2,18,441
+Hebrews,3,19,373
+Hebrews,4,16,392
+Hebrews,5,14,299
+Hebrews,6,20,441
+Hebrews,7,28,631
+Hebrews,8,13,392
+Hebrews,9,28,715
+Hebrews,10,39,791
+Hebrews,11,40,913
+Hebrews,12,29,696
+Hebrews,13,25,520
+James,1,27,543
+James,2,26,542
+James,3,18,387
+James,4,17,380
+James,5,20,479
 Luke,1,80,1509
 Luke,2,52,1066
 Luke,3,38,858
@@ -774,27 +801,6 @@ Luke,21,38,789
 Luke,22,71,1428
 Luke,23,55,1063
 Luke,24,53,1010
-John,1,51,983
-John,2,25,505
-John,3,36,755
-John,4,54,1074
-John,5,46,987
-John,6,71,1477
-John,7,52,996
-John,8,48,1090
-John,9,41,847
-John,10,42,828
-John,11,57,1146
-John,12,50,1089
-John,13,38,843
-John,14,31,732
-John,15,27,612
-John,16,33,802
-John,17,26,627
-John,18,40,962
-John,19,42,1018
-John,20,31,752
-John,21,25,716
 Acts,1,26,636
 Acts,2,47,983
 Acts,3,26,599
@@ -823,22 +829,11 @@ Acts,25,27,733
 Acts,26,32,799
 Acts,27,44,1024
 Acts,28,30,781
-Romans,1,32,691
-Romans,2,29,597
-Romans,3,31,560
-Romans,4,25,570
-Romans,5,21,498
-Romans,6,23,521
-Romans,7,25,635
-Romans,8,39,910
-Romans,9,33,715
-Romans,10,21,462
-Romans,11,36,797
-Romans,12,21,412
-Romans,13,14,363
-Romans,14,23,544
-Romans,15,33,752
-Romans,16,26,503
+1 Thessalonians,1,10,242
+1 Thessalonians,2,20,486
+1 Thessalonians,3,13,305
+1 Thessalonians,4,18,402
+1 Thessalonians,5,28,419
 1 Corinthians,1,31,642
 1 Corinthians,2,16,359
 1 Corinthians,3,23,440
@@ -855,6 +850,15 @@ Romans,16,26,503
 1 Corinthians,14,40,845
 1 Corinthians,15,58,1178
 1 Corinthians,16,24,436
+2 Thessalonians,1,12,298
+2 Thessalonians,2,17,394
+2 Thessalonians,3,18,373
+Galatians,1,24,480
+Galatians,2,21,572
+Galatians,3,29,623
+Galatians,4,31,644
+Galatians,5,26,444
+Galatians,6,18,370
 2 Corinthians,1,24,605
 2 Corinthians,2,17,387
 2 Corinthians,3,18,390
@@ -868,12 +872,27 @@ Romans,16,26,503
 2 Corinthians,11,33,722
 2 Corinthians,12,21,606
 2 Corinthians,13,14,337
-Galatians,1,24,480
-Galatians,2,21,572
-Galatians,3,29,623
-Galatians,4,31,644
-Galatians,5,26,444
-Galatians,6,18,370
+Romans,1,32,691
+Romans,2,29,597
+Romans,3,31,560
+Romans,4,25,570
+Romans,5,21,498
+Romans,6,23,521
+Romans,7,25,635
+Romans,8,39,910
+Romans,9,33,715
+Romans,10,21,462
+Romans,11,36,797
+Romans,12,21,412
+Romans,13,14,363
+Romans,14,23,544
+Romans,15,33,752
+Romans,16,26,503
+Philemon,1,25,461
+Colossians,1,29,625
+Colossians,2,23,507
+Colossians,3,25,442
+Colossians,4,18,376
 Ephesians,1,23,483
 Ephesians,2,22,456
 Ephesians,3,21,408
@@ -884,58 +903,40 @@ Philippians,1,30,650
 Philippians,2,30,589
 Philippians,3,21,470
 Philippians,4,23,451
-Colossians,1,29,625
-Colossians,2,23,507
-Colossians,3,25,442
-Colossians,4,18,376
-1 Thessalonians,1,10,242
-1 Thessalonians,2,20,486
-1 Thessalonians,3,13,305
-1 Thessalonians,4,18,402
-1 Thessalonians,5,28,419
-2 Thessalonians,1,12,298
-2 Thessalonians,2,17,394
-2 Thessalonians,3,18,373
 1 Timothy,1,20,436
 1 Timothy,2,15,256
 1 Timothy,3,16,317
 1 Timothy,4,16,311
 1 Timothy,5,25,500
 1 Timothy,6,21,494
+Titus,1,16,347
+Titus,2,15,264
+Titus,3,15,317
 2 Timothy,1,18,415
 2 Timothy,2,26,501
 2 Timothy,3,17,309
 2 Timothy,4,22,422
-Titus,1,16,347
-Titus,2,15,264
-Titus,3,15,317
-Philemon,1,25,461
-Hebrews,1,14,331
-Hebrews,2,18,441
-Hebrews,3,19,373
-Hebrews,4,16,392
-Hebrews,5,14,299
-Hebrews,6,20,441
-Hebrews,7,28,631
-Hebrews,8,13,392
-Hebrews,9,28,715
-Hebrews,10,39,791
-Hebrews,11,40,913
-Hebrews,12,29,696
-Hebrews,13,25,520
-James,1,27,543
-James,2,26,542
-James,3,18,387
-James,4,17,380
-James,5,20,479
-1 Peter,1,25,587
-1 Peter,2,25,555
-1 Peter,3,22,539
-1 Peter,4,19,431
-1 Peter,5,14,293
-2 Peter,1,21,497
-2 Peter,2,22,563
-2 Peter,3,18,489
+John,1,51,983
+John,2,25,505
+John,3,36,755
+John,4,54,1074
+John,5,46,987
+John,6,71,1477
+John,7,52,996
+John,8,48,1090
+John,9,41,847
+John,10,42,828
+John,11,57,1146
+John,12,50,1089
+John,13,38,843
+John,14,31,732
+John,15,27,612
+John,16,33,802
+John,17,26,627
+John,18,40,962
+John,19,42,1018
+John,20,31,752
+John,21,25,716
 1 John,1,10,247
 1 John,2,29,732
 1 John,3,24,547
@@ -943,7 +944,6 @@ James,5,20,479
 1 John,5,21,499
 2 John,1,13,302
 3 John,1,15,303
-Jude,1,25,610
 Revelation,1,20,556
 Revelation,2,29,800
 Revelation,3,22,652
