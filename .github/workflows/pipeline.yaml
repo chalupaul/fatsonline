@@ -48,6 +48,7 @@ jobs:
   deploy-prod:
     outputs:
       s3output: ${{ steps.s3output.outputs.s3bucket }}
+      cfdistroid: ${{ steps.cfdistrooutput.outputs.cfdistroid }}
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     # Configure GitHub Action Environment to have a manual approval step before deployment to production
@@ -84,6 +85,12 @@ jobs:
           echo s3bucket=$(sam list stack-outputs --stack-name ${PROD_STACK_NAME} \
             --output json | \
             jq -r '.[] | select(.OutputKey=="S3BucketDomain").OutputValue') >> $GITHUB_OUTPUT
+      - name: Save CF Distro Output
+        id: cfdistrooutput
+        run: |
+          echo cfdistroid=$(sam list stack-outputs --stack-name ${PROD_STACK_NAME} \
+            --output json | \
+            jq -r '.[] | select(.OutputKey=="CFDistroID").OutputValue') >> $GITHUB_OUTPUT
   upload-artifacts:
     needs: [build, deploy-prod]
     if: github.ref == 'refs/heads/main'
@@ -104,5 +111,7 @@ jobs:
           name: fatsonline
       - name: Display structure of downloaded files
         run: ls -R
-      - name: Get s3 bucket name
-        run: echo ${{ needs.deploy-prod.outputs.s3output }}
+      - name: Sync to S3
+        run: aws s3 sync . s3://${{ needs.deploy-prod.outputs.s3output }}/
+      - name: Invalidate CF cache
+        run: aws cloudfront create-invalidation --distribution-id ${{ needs.deploy-prod.outputs.cddistroid }} --paths '/*'

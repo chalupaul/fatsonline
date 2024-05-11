@@ -12,6 +12,8 @@ Parameters:
 Outputs:
   S3BucketDomain:
     Value: !GetAtt S3Bucket.DomainName
+  CFDistroID:
+    Value: !GetAtt CloudFrontDistribution.Id
 Resources:
   Cert:
     Type: AWS::CertificateManager::Certificate
