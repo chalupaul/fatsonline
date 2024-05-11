@@ -89,6 +89,16 @@ jobs:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
+      - name: Assume the prod pipeline user role
+        uses: aws-actions/configure-aws-credentials@v3-node20
+        with:
+          aws-region: ${{ env.PROD_REGION }}
+          role-to-assume: ${{ env.PROD_PIPELINE_EXECUTION_ROLE }}
+          role-session-name: prod-deployment
+          role-duration-seconds: 3600
+          role-skip-session-tagging: true
+      - name: Display structure of base dirs
+        run: ls -R
       - uses: actions/download-artifact@v4
         with:
           name: fatsonline
