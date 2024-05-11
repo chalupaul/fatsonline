@@ -4,7 +4,7 @@ Parameters:
     Type: String
     Default: mybreviary.com
 Resources:
- Cert:
+  Cert:
     Type: AWS::CertificateManager::Certificate
     Properties:
       DomainName: !Ref DomainName
@@ -12,6 +12,7 @@ Resources:
         - DomainName: !Ref DomainName
           ValidationDomain: !Ref DomainName
       ValidationMethod: DNS
+
   S3Bucket:
     Type: AWS::S3::Bucket
     DeletionPolicy: Retain
@@ -23,6 +24,7 @@ Resources:
       Tags:
         - Key: Domain
           Value: !Ref DomainName
+
   BucketPolicy:
     Type: AWS::S3::BucketPolicy
     Properties:
@@ -35,11 +37,13 @@ Resources:
             Resource: !Join ['', ['arn:aws:s3:::', !Ref S3Bucket, '/*']]
             Principal:
               CanonicalUser: !GetAtt CloudFrontOriginAccessIdentity.S3CanonicalUserId
+
   CloudFrontOriginAccessIdentity:
     Type: AWS::CloudFront::CloudFrontOriginAccessIdentity
     Properties:
       CloudFrontOriginAccessIdentityConfig:
         Comment: !Sub 'CloudFront OAI for ${DomainName}'
+
   CloudFrontDistribution:
     Type: AWS::CloudFront::Distribution
     Properties:
