@@ -32,6 +32,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
+        with:
+          cache: 'npm
       - name: install deps
         run: npm install
       - name: build web
@@ -39,9 +41,9 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: my-artifact
+          name: fatsonline
           path: dist
-          retention-days: 3
+          retention-days: 1
 
   deploy-prod:
     if: github.ref == 'refs/heads/main'
@@ -73,5 +75,16 @@ jobs:
             --region ${PROD_REGION} \
             --s3-bucket ${PROD_ARTIFACTS_BUCKET} \
             --no-fail-on-empty-changeset \
-            --role-arn ${PROD_CLOUDFORMATION_EXECUTION_ROLE} \
-            --output json | jq -r '.[] | select(.OutputKey=="S3BucketDomain").OutputValue' >> $GITHUB_OUTPUT
+            --role-arn ${PROD_CLOUDFORMATION_EXECUTION_ROLE}
+      - name: Save S3 Output
+        id: s3output
+        run: |
+          sam list stack-outputs --stack-name ${PROD_STACK_NAME} \
+            --output json | \
+            jq -r '.[] | select(.OutputKey=="S3BucketDomain").OutputValue' >> $GITHUB_OUTPUT
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+          with:
+            name: fatsonline
+      - name: LS
+        run: ls
