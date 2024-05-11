@@ -46,6 +46,8 @@ jobs:
           retention-days: 1
 
   deploy-prod:
+    outputs:
+      s3output: ${{ steps.s3output.outputs.s3bucket }}
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     # Configure GitHub Action Environment to have a manual approval step before deployment to production
@@ -82,6 +84,10 @@ jobs:
           echo s3bucket=$(sam list stack-outputs --stack-name ${PROD_STACK_NAME} \
             --output json | \
             jq -r '.[] | select(.OutputKey=="S3BucketDomain").OutputValue') >> $GITHUB_OUTPUT
+  upload-artifacts:
+    needs: [build, deploy-prod]
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
       - uses: actions/download-artifact@v4
         with:
           name: fatsonline
