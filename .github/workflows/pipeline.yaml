@@ -26,6 +26,23 @@ permissions:
   id-token: write
   contents: read
 jobs:
+  build:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+      - name: install deps
+        run: npm install
+      - name: build web
+        run: npx export -p web
+      - name: Upload Artifact
+    uses: actions/upload-artifact@v4
+    with:
+      name: my-artifact
+      path: dist
+      retention-days: 3
+
   deploy-prod:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
@@ -33,13 +50,13 @@ jobs:
     # https://docs.github.com/en/actions/reference/environments
     # environment: <configured-environment>
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: aws-actions/setup-sam@v2
         with:
           use-installer: true
 
       - name: Assume the prod pipeline user role
-        uses: aws-actions/configure-aws-credentials@v1-node16
+        uses: aws-actions/configure-aws-credentials@v3-node20
         with:
           aws-region: ${{ env.PROD_REGION }}
           role-to-assume: ${{ env.PROD_PIPELINE_EXECUTION_ROLE }}
@@ -48,6 +65,7 @@ jobs:
           role-skip-session-tagging: true
 
       - name: Deploy to production account
+        id: samdeploy
         run: |
           sam deploy --stack-name ${PROD_STACK_NAME} \
             --template ${{ env.SAM_TEMPLATE }} \
@@ -55,4 +73,5 @@ jobs:
             --region ${PROD_REGION} \
             --s3-bucket ${PROD_ARTIFACTS_BUCKET} \
             --no-fail-on-empty-changeset \
-            --role-arn ${PROD_CLOUDFORMATION_EXECUTION_ROLE}
+            --role-arn ${PROD_CLOUDFORMATION_EXECUTION_ROLE} \
+            --output json | jq -r '.[] | select(.OutputKey=="S3BucketDomain").OutputValue' >> $GITHUB_OUTPUT

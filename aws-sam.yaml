@@ -10,7 +10,7 @@ Parameters:
     Type: String
     Default: Z084663938LQYFDODE4JC
 Outputs:
-  S3BucketArn:
+  S3BucketDomain:
     Value: !GetAtt S3Bucket.DomainName
 Resources:
   Cert:
