@@ -1,5 +1,8 @@
 Transform: AWS::Serverless-2016-10-31
 Parameters:
+  PriceClasss:
+    Type: String
+    Default: PriceClass_100
   DomainName:
     Type: String
     Default: mybreviary.com
@@ -69,7 +72,7 @@ Resources:
         Enabled: true
         HttpVersion: http2
         Origins:
-          - DomainName: !Join ['', [!Ref Bucket, '.s3.amazonaws.com']]
+          - DomainName: !Join ['', [!Ref S3Bucket, '.s3.amazonaws.com']]
             Id: !Sub '${DomainName}-S3'
             S3OriginConfig:
               OriginAccessIdentity:
