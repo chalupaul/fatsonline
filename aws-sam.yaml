@@ -1,0 +1,17 @@
+Transform: AWS::Serverless-2016-10-31
+Parameters:
+  DomainName:
+    Type: String
+    Default: fatsonline.net
+Resources:
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    Properties:
+      BucketEncryption:
+        ServerSideEncryptionConfiguration:
+          - ServerSideEncryptionByDefault:
+              SSEAlgorithm: AES256
+      Tags:
+        - Key: Domain
+          Value: !Ref DomainName
