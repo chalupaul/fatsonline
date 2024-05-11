@@ -6,6 +6,9 @@ Parameters:
   DomainName:
     Type: String
     Default: mybreviary.com
+  HostedZoneId:
+    Type: String
+    Default: Z084663938LQYFDODE4JC
 Resources:
   Cert:
     Type: AWS::CertificateManager::Certificate
@@ -13,12 +16,12 @@ Resources:
       DomainName: !Ref DomainName
       DomainValidationOptions:
         - DomainName: !Ref DomainName
-          ValidationDomain: !Ref DomainName
+          HostedZoneId: !Ref HostedZoneId
       ValidationMethod: DNS
 
   S3Bucket:
     Type: AWS::S3::Bucket
-    DeletionPolicy: Retain
+    DeletionPolicy: Delete
     Properties:
       BucketEncryption:
         ServerSideEncryptionConfiguration:
