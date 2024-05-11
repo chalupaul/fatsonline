@@ -104,3 +104,5 @@ jobs:
           name: fatsonline
       - name: Display structure of downloaded files
         run: ls -R
+      - name: Get s3 bucket name
+        run: echo ${{ needs.deploy-prod.outputs.s3output }}
