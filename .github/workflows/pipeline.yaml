@@ -84,7 +84,7 @@ jobs:
         run: |
           echo s3bucket=$(sam list stack-outputs --stack-name ${PROD_STACK_NAME} \
             --output json | \
-            jq -r '.[] | select(.OutputKey=="S3BucketDomain").OutputValue') >> $GITHUB_OUTPUT
+            jq -r '.[] | select(.OutputKey=="S3Bucket").OutputValue') >> $GITHUB_OUTPUT
       - name: Save CF Distro Output
         id: cfdistrooutput
         run: |
