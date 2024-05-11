@@ -79,9 +79,9 @@ jobs:
       - name: Save S3 Output
         id: s3output
         run: |
-          sam list stack-outputs --stack-name ${PROD_STACK_NAME} \
+          echo s3bucket=$(sam list stack-outputs --stack-name ${PROD_STACK_NAME} \
             --output json | \
-            jq -r '.[] | select(.OutputKey=="S3BucketDomain").OutputValue' >> $GITHUB_OUTPUT
+            jq -r '.[] | select(.OutputKey=="S3BucketDomain").OutputValue') >> $GITHUB_OUTPUT
       - uses: actions/download-artifact@v4
         with:
           name: fatsonline
