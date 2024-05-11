@@ -82,9 +82,8 @@ jobs:
           sam list stack-outputs --stack-name ${PROD_STACK_NAME} \
             --output json | \
             jq -r '.[] | select(.OutputKey=="S3BucketDomain").OutputValue' >> $GITHUB_OUTPUT
-      - name: Download artifacts
-        uses: actions/download-artifact@v4
-          with:
-            name: fatsonline
-      - name: LS
-        run: ls
+      - uses: actions/download-artifact@v4
+        with:
+          name: fatsonline
+      - name: Display structure of downloaded files
+        run: ls -R
