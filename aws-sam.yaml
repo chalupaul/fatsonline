@@ -1,6 +1,6 @@
 Transform: AWS::Serverless-2016-10-31
 Parameters:
-  PriceClasss:
+  PriceClass:
     Type: String
     Default: PriceClass_100
   DomainName:
