@@ -9,6 +9,10 @@ Parameters:
   HostedZoneId:
     Type: String
     Default: Z084663938LQYFDODE4JC
+Outputs:
+  S3BucketArn:
+    Type: String
+    Value: !GetAtt S3Bucket.DomainName
 Resources:
   Cert:
     Type: AWS::CertificateManager::Certificate
