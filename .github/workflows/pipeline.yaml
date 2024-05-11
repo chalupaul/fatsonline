@@ -50,7 +50,7 @@ jobs:
       - name: Deploy to production account
         run: |
           sam deploy --stack-name ${PROD_STACK_NAME} \
-            --template packaged-prod.yaml \
+            --template ${{ env.SAM_TEMPLATE }} \
             --capabilities CAPABILITY_IAM \
             --region ${PROD_REGION} \
             --s3-bucket ${PROD_ARTIFACTS_BUCKET} \
