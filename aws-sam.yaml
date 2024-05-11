@@ -24,7 +24,7 @@ Resources:
           - Action:
               - s3:GetObject
             Effect: Allow
-            Resource: !Join ['', ['arn:aws:s3:::', !Ref Bucket, '/*']]
+            Resource: !Join ['', ['arn:aws:s3:::', !Ref S3Bucket, '/*']]
             Principal:
               CanonicalUser: !GetAtt CloudFrontOriginAccessIdentity.S3CanonicalUserId
   CloudFrontOriginAccessIdentity:
