@@ -257,20 +257,21 @@ export default function HourService(props: HourServiceProps): JSX.Element {
     const nextLink: any = props.hour.makeNext();
     return (
         <View style={styles.container}>
-        <View style={styles.body}>
-            <Text style={styles.title}>{props.hour.title}</Text>
-        </View>
-        <View style={styles.body}>
-            {props.hour.text}
-        </View>
-        <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-        <View style={styles.footer}>
-            <View style={{paddingBottom: 40}}>{privLink !== null && privLink}</View>
-            <View></View>
-            <View style={{paddingBottom: 40}}>
-                {nextLink !== null && nextLink}
+            <View style={styles.body}>
+                <Text style={styles.title}>{props.hour.title}</Text>
             </View>
-        </View>
+            <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+            <View style={styles.body}>
+                {props.hour.text}
+            </View>
+            <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
+            <View style={styles.footer}>
+                <View style={{paddingBottom: 40}}>{privLink !== null && privLink}</View>
+                <View></View>
+                <View style={{paddingBottom: 40}}>
+                    {nextLink !== null && nextLink}
+                </View>
+            </View>
         </View>
     );
 }
@@ -319,8 +320,6 @@ const styles = StyleSheet.create({
         fontWeight: 'normal'
     }
 });
-
-const Tab = <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
 
 export function Section(props: PropsWithChildren) {
     return (
@@ -384,9 +383,70 @@ export function GloryBe(props:TextProps) {
     return (
     <Section>
         <SectionTitle>Gloria Patri</SectionTitle>
-        <View><CText>Glory be to the Father, and to the Son, and to the Holy Spirit; as it was in the beginning, is now and will be forever. Amen.</CText></View>
+        <View>
+            <CText>
+                Glory be to the Father, and to the Son, and to the Holy Spirit; 
+                as it was in the beginning, is now and will be forever.
+            </CText>
+            <TextSpacer />
+            <NText>Amen.</NText>
+        </View>
         <View>{props.children}</View>
     </Section>
+    )
+}
+
+export function Kyrie() {
+    return (
+        <Section>
+            <SectionTitle>Kyrie Eleison</SectionTitle>
+            <LText>O Lord,</LText>
+            <CText>Have mercy upon us.</CText>
+            <TextSpacer />
+            <LText>O Christ,</LText>
+            <CText>Have mercy upon us.</CText>
+            <TextSpacer />
+            <LText>O Lord,</LText>
+            <CText>Have mercy upon us.</CText>
+            <TextSpacer />
+            <NText>Amen.</NText>
+        </Section>
+    )
+}
+
+export function Gloria() {
+    return (
+        <Section>
+            <SectionTitle>Gloria</SectionTitle>
+            <LText>Glory to God in the highest!</LText>
+            <CText>And on earth peace among those with whom he is pleased!</CText>
+            <TextSpacer />
+            <NText>Amen.</NText>
+        </Section>
+    )
+}
+
+export function AgnusDei() {
+    return (
+        <Section>
+            <SectionTitle>Agnus Dei</SectionTitle>
+            <LText>Lamb of God, you take away the sins of the world.</LText>
+            <CText>Grant us peace.</CText>
+        </Section>
+    )
+}
+
+export function Oremus() {
+    return (
+        <>
+        <Section>
+            <SectionTitle>Oremus</SectionTitle>
+            <LText>Let us pray...</LText>
+            <TextSpacer />
+            <NText><Text style={{fontStyle: "italic"}}>Prayer is Spoken.</Text></NText>
+        </Section>
+            
+        </>
     )
 }
 
@@ -528,14 +588,18 @@ export function Magnificat() {
 
 export function OurFatherText() {
     return (
+        <>
         <CText>
             Our Father, who art in heaven, halowed be thy name.
             Thy kingdom come, thy will be done, on earth as it is in heaven.
             Give us this day our daily bread, and forgive us our tresspasses
             as we forgive those who tresspass against us.
             And lead us not into temptation, but deliver us from evil.
-            For thine is the kingdom, and the power, and the glory forever and ever. Amen.
+            For thine is the kingdom, and the power, and the glory forever and ever.
         </CText>
+        <TextSpacer />
+        <NText>Amen.</NText>
+        </>
     )
 }
 export function OurFather() {
@@ -544,6 +608,71 @@ export function OurFather() {
             <SectionTitle>Pater Noster</SectionTitle>
             <LText>Lord, remember us in your kingdom, and teach us to pray:</LText>
             <OurFatherText />
+        </Section>
+    )
+}
+
+export function ApostlesCreed() {
+    return (
+        <Section>
+          <SectionTitle>Apostles Creed</SectionTitle>
+          <CText>
+            I believe in God, the father almighty, creator of heaven and earth.
+          </CText>
+          <TextSpacer />
+          <NText>
+            I believe in Jesus Christ, his only Son, our Lord,
+            who was conceived by the Holy Spirit,
+            born of the Virgin Mary,
+            suffered under Pontius Pilate,
+            was crucified, died, and was buried.
+            He descended to the dead.
+            On the third day he rose again.
+            He ascended into heaven.
+            He is seated at the right hand of the Father,
+            and he will come to judge the living and the dead.
+          </NText>
+          <TextSpacer />
+          <NText>
+            I believe in the Holy Spirit,
+            the holy catholic church,
+            the communion of saints,
+            the forgiveness of sins,
+            the resurrection of the body,
+            and the life everlasting.
+          </NText>
+          <TextSpacer />
+          <NText>Amen.</NText>
+        </Section>
+    )
+}
+
+export function NiceneCreed() {
+    return (
+        <Section>
+            <SectionTitle>Nicene Creed</SectionTitle>
+            <CText>
+                I believe in one God, the Father Almighty, maker of heaven and earth and of all things visible and invisible.
+            </CText>
+            <TextSpacer />
+            <NText>
+                And in one Lord Jesus Christ, the only-begotten Son of God, begotten of His Father before all worlds, 
+                God of God, Light of Light, very God of very God, begotten, not made, being of one substance with the Father, 
+                by whom all things were made; who for us men and for our salvation came down from heaven and was incarnate 
+                by the Holy Spirit of the virgin Mary and was made man; and was crucified also for us under Pontius Pilate. 
+                He suffered and was buried. And the third day He rose again according to the Scriptures and ascended into 
+                heaven and sits at the right hand of the Father. And He will come again with glory to judge both the living and the dead, 
+                whose kingdom will have no end.
+            </NText>
+            <TextSpacer />
+            <NText>
+                And I believe in the Holy Spirit, the Lord and Giver of Life, who proceeds from the Father and the Son, 
+                who with the Father and the Son together is worshiped and glorified, who spoke by the prophets. 
+                And I believe in one holy Christian and apostolic Church, I acknowledge one Baptism for the remission of sins, 
+                and I look for the resurrection of the dead and the life of the world to come.
+            </NText>
+            <TextSpacer />
+            <NText>Amen.</NText>
         </Section>
     )
 }

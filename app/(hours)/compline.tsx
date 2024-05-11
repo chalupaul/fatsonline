@@ -1,4 +1,4 @@
-import { CText, GloryBe, Hour, LText, NText, OurFatherText, Section, SectionTitle, TextSpacer } from '@/components/Service';
+import { CText, Gloria, GloryBe, Hour, Kyrie, LText, NText, OurFatherText, PrayerOfTheDayText, Section, SectionTitle, TextSpacer } from '@/components/Service';
 import HourService from '@/components/Service';
 import { View, Text } from '@/components/Themed';
 
@@ -124,14 +124,14 @@ export class Compline extends Hour {
               You have given me relief when I was in distress. 
               Be gracious to me and hear my prayer! 
               O men, how long shall my honor be turned into shame?
-              How long will you love vain words and seek after lies? <Text style={{fontStyle: "italic"}}>Selah. </Text>
+              How long will you love vain words and seek after lies? Selah 
             </NText>
             <TextSpacer />
             <NText>
               But know that the Lord has set apart the godly for himself; 
               the Lord hears when I call to him. 
               Be angry, and do not sin; 
-              ponder in your own hearts on your beds, and be silent. <Text style={{fontStyle: "italic"}}>Selah. </Text> 
+              ponder in your own hearts on your beds, and be silent. Selah 
               Offer right sacrifices, and put your trust in the Lord.
             </NText>
             <TextSpacer />
@@ -144,16 +144,15 @@ export class Compline extends Hour {
               for you alone, O Lord, make me dwell in safety.
             </NText>
           </Section>
-          <Section>
-            <LText>O Lord, have mercy upon us.</LText>
-            <CText>Amen.</CText>
-          </Section>
+          <Kyrie />
+          <Gloria />
           <Section>
             <SectionTitle>Lectio</SectionTitle>
               <NText>{lesson}</NText>
           </Section>
           <Section>
             <SectionTitle>Call and Response Prayer</SectionTitle>
+            <PrayerOfTheDayText />
             <LText>Hear my prayer, O Lord;</LText>
             <CText>listen to my cry.</CText>
             <TextSpacer />

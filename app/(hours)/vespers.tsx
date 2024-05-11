@@ -1,5 +1,5 @@
 import { Chapter, MakeReadingTitles, ProduceCalendar } from '@/components/BiblePlan';
-import { CText, GloryBe, Hour, LText, Magnificat, NText, OurFather, Section, SectionTitle, TextSpacer, VoceMea, randstr } from '@/components/Service';
+import { CText, Gloria, GloryBe, Hour, Kyrie, LText, Magnificat, NText, Oremus, OurFather, Section, SectionTitle, TextSpacer, VoceMea, randstr } from '@/components/Service';
 import HourService from '@/components/Service';
 import { View, Text } from '@/components/Themed';
 import { proverbs, psalms2readings } from '@/constants/BibleInfo';
@@ -155,10 +155,8 @@ export class Vespers extends Hour {
               })
             }
           </Section>
-          <Section>
-            <LText>O Lord, have mercy upon us.</LText>
-            <CText>Amen.</CText>
-          </Section>
+          <Kyrie />
+          <Gloria />
           <Section>
             <SectionTitle>Lectio</SectionTitle>
             <Text>{dailyReadingTitle}</Text>
@@ -188,10 +186,8 @@ export class Vespers extends Hour {
             <SectionTitle>Magnificat Antiphon Repeated</SectionTitle>
             {this.canticleAntiphon}
           </Section>
+          <Oremus />
           <Section>
-            <SectionTitle>Prayer of the Day</SectionTitle>
-            <LText><Text style={{fontStyle: "italic"}}>The Prayer of the Day is Said.</Text></LText>
-            <TextSpacer />
             <LText>
               Rejoicing in the fellowship of all the saints, 
               let us commend ourselves, one another, 

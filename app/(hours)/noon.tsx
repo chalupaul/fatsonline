@@ -1,5 +1,5 @@
 import { Chapter, MakeReadingTitles, ProduceCalendar } from '@/components/BiblePlan';
-import { CText, Hour, LText, NText, OurFatherText, Section, SectionTitle, TextSpacer, randstr } from '@/components/Service';
+import { ApostlesCreed, CText, Gloria, Hour, Kyrie, LText, NText, NiceneCreed, Oremus, OurFatherText, Section, SectionTitle, TextSpacer, randstr } from '@/components/Service';
 import HourService from '@/components/Service';
 import { View, Text } from '@/components/Themed';
 import { job } from '@/constants/BibleInfo';
@@ -14,6 +14,8 @@ export class Noon extends Hour {
     const dailyReading = ProduceCalendar(this.DaysInMonth(), job)[this.date.getUTCDate() - 1]; 
     const dailyReadingTitle = MakeReadingTitles(dailyReading);
 
+    const creed = this.date.getDate() % 2 === 0 ? <NiceneCreed /> : <ApostlesCreed />
+
     this.text = (
       <View style={{paddingBottom: 20}}>
         <Section>
@@ -21,44 +23,13 @@ export class Noon extends Hour {
           <LText>Holy God, holy and mighty, holy and immortal,</LText>
           <CText>have mercy and hear us.</CText>
         </Section>
+        {creed}
         <Section>
           <SectionTitle>Pater Noster</SectionTitle>
           <OurFatherText />
         </Section>
-        <Section>
-          <SectionTitle>Apostles Creed</SectionTitle>
-          <CText>
-            I believe in God, the father almighty, creator of heaven and earth.
-          </CText>
-          <TextSpacer />
-          <NText>
-            I believe in Jesus Christ, his only Son, our Lord,
-            who was conceived by the Holy Spirit,
-            born of the Virgin Mary,
-            suffered under Pontius Pilate,
-            was crucified, died, and was buried.
-            He descended to the dead.
-            On the third day he rose again.
-            He ascended into heaven.
-            He is seated at the right hand of the Father,
-            and he will come to judge the living and the dead.
-          </NText>
-          <TextSpacer />
-          <NText>
-            I believe in the Holy Spirit,
-            the holy catholic church,
-            the communion of saints,
-            the forgiveness of sins,
-            the resurrection of the body,
-            and the life everlasting.
-          </NText>
-          <TextSpacer />
-          <NText>Amen.</NText>
-        </Section>
-        <Section>
-          <LText>O Lord, have mercy upon us.</LText>
-          <CText>Amen.</CText>
-        </Section>
+        <Kyrie />
+        <Gloria />
         <Section>
           <SectionTitle>Lectio </SectionTitle>
           <Text>{dailyReadingTitle}</Text>
@@ -106,11 +77,8 @@ export class Noon extends Hour {
           <LText>The Lord be with you.</LText>
           <CText>And also with you.</CText>
         </Section>
+        <Oremus />
         <Section>
-          <LText>Let us pray...</LText>
-          <LText><Text style={{fontStyle: "italic"}}>The Prayer of the Day is Said.</Text></LText>
-          <CText>Amen.</CText>
-          <TextSpacer />
           <LText>
             Gracious Jesus, our Lord and our God, 
             at this hour you bore our sins in your own body on the tree so that we,

@@ -1,5 +1,5 @@
 import { ProduceCalendar, MakeReadingTitles, Chapter } from '@/components/BiblePlan';
-import { Benedictus, CText, GloryBe, Hour, LText, NText, OurFather, Section, SectionTitle, TextSpacer, Venite, randstr } from '@/components/Service';
+import { AgnusDei, Benedictus, CText, Gloria, GloryBe, Hour, Kyrie, LText, NText, Oremus, OurFather, Section, SectionTitle, TextSpacer, Venite, randstr } from '@/components/Service';
 import HourService from '@/components/Service';
 import { View, Text } from '@/components/Themed';
 import { psalms2readings, OTNT } from '@/constants/BibleInfo';
@@ -56,10 +56,8 @@ export class Matins extends Hour {
               })
             }
           </Section>
-          <Section>
-            <LText>O Lord, have mercy upon us.</LText>
-            <CText>Amen.</CText>
-          </Section>
+          <Kyrie />
+          <Gloria />
           <Section>
             <SectionTitle>Lectio </SectionTitle>
             <Text>{dailyReadingTitle}</Text>
@@ -89,6 +87,7 @@ export class Matins extends Hour {
             <SectionTitle>Benedictus Antiphon Repeated</SectionTitle>
             {this.canticleAntiphon}
           </Section>
+          <AgnusDei />
           {prayer}
           <Section>
             <SectionTitle>Benediction</SectionTitle>
@@ -108,13 +107,11 @@ export default function Service() {
   return <HourService hour={service} />
 }
 
-function NormalPrayer(){
+function NormalPrayer() {
   return (
     <>
+    <Oremus />
     <Section>
-      <SectionTitle>Prayer of the Day</SectionTitle>
-      <LText><Text style={{fontStyle: "italic"}}>The Prayer of the Day is Said.</Text></LText>
-      <TextSpacer />
       <LText>
         O Lord, almighty and everlasting God, you have brought us in safety to this new day; 
         Preserve us with your mighty power, that we may not fall into sin, nor be overcome 
@@ -131,15 +128,13 @@ function NormalPrayer(){
 function SundayPrayer() {
   return (
     <>
+      <Oremus />
       <Section>
-        <SectionTitle>Prayer of the Day</SectionTitle>
-        <LText><Text style={{fontStyle: "italic"}}>The Prayer of the Day is Said.</Text></LText>
+        <LText>As many as have been baptized into Christ have put on Christ.</LText>
+        <CText>Amen.</CText>
       </Section>
       <Section>
         <SectionTitle>Paschal Blessing</SectionTitle>
-        <LText>As many as have been baptized into Christ have put on Christ.</LText>
-        <CText>Amen.</CText>
-        <TextSpacer />
         <LText>
         But on the first day of the week, at early dawn, they went to the tomb, taking the spices they had prepared. 
         And they found the stone rolled away from the tomb, 
