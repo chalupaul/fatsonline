@@ -93,3 +93,22 @@ Resources:
       Tags:
         - Key: Domain
           Value: !Ref DomainName
+  
+  DeployerRole:
+    Type: AWS::IAM::Policy
+    Properties:
+      PolicyName: fatsonline-deployer
+      PolicyDocument:
+        Version: 2012-10-17,
+        Statement: 
+          - Effect: Allow
+            Action: 
+              - s3:PutObject
+              - s3:GetObject
+              - s3:ListBucket
+              - s3:DeleteObject
+              - s3:GetBucketLocation
+              - cloudfront:CreateInvalidation
+            Resource:
+              - !GetAtt S3Bucket.Arn
+              - !GetAtt CloudFrontDistribution.Arn
