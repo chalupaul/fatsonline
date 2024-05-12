@@ -118,14 +118,17 @@ Resources:
               - !GetAtt S3Bucket.Arn
               - !Sub ${S3Bucket.Arn}/*
               - !Sub arn:aws:cloudfront::${AWS::AccountId}:distribution/${CloudFrontDistribution.Id}
-  
-  Route53RecordSet:
-    Type: AWS::Route53::RecordSetGroup
-    Properties: 
-      HostedZoneId: !Ref HostedZoneId
-      RecordSets:
+
+  Route53RecordSetGroup:
+      Type: AWS::Route53::RecordSetGroup
+      Properties:
+        HostedZoneId: !Ref HostedZoneId
+        RecordSets:
         - Name: !Ref DomainName
           Type: A
-          AliasTarget: !Ref DomainName
+          AliasTarget:
+            DNSName: !GetAtt CloudFrontDistribution.DomainName
+            EvaluateTargetHealth: false
+            HostedZoneId: Z2FDTNDATAQYW2
 
 
