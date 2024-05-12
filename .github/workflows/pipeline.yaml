@@ -114,4 +114,4 @@ jobs:
       - name: Sync to S3
         run: aws s3 sync . s3://${{ needs.deploy-prod.outputs.s3output }}/
       - name: Invalidate CF cache
-        run: aws cloudfront create-invalidation --distribution-id ${{ needs.deploy-prod.outputs.cddistroid }} --paths '/*'
+        run: aws cloudfront create-invalidation --distribution-id ${{ needs.deploy-prod.outputs.cfdistroid }} --paths '/*'
