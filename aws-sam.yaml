@@ -102,7 +102,7 @@ Resources:
     Properties:
       PolicyName: fatsonline-deployer
       Roles: 
-          - !Ref CICDRoleName
+        - !Ref CICDRoleName
       PolicyDocument:
         Version: 2012-10-17,
         Statement: 
