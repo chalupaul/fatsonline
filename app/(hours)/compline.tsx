@@ -118,7 +118,7 @@ export class Compline extends Hour {
             <LText>The almighty and merciful Lord grant you pardon, forgiveness, and remission of all your sins. Amen.</LText>
           </Section>
           <Section>
-            <SectionTitle>Psalmody</SectionTitle>
+            <SectionTitle>Cum Invocarem</SectionTitle>
             <NText>
               Answer me when I call, O God of my righteousness! 
               You have given me relief when I was in distress. 

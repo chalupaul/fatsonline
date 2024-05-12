@@ -7,7 +7,7 @@ import { job } from '@/constants/BibleInfo';
 export class Noon extends Hour {
   constructor(date: Date) {
     super(date);
-    this.title = "Noontime Prayers";
+    this.title = "Midday Prayers";
     this.prev = "matins";
     this.next = "vespers";
 

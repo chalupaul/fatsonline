@@ -1,9 +1,11 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, ImageSourcePropType } from 'react-native';
 import { Text, TextProps, View } from '@/components/Themed';
 import { Href, Link, LinkComponent } from 'expo-router';
 import { Pressable } from 'react-native';
 import { PropsWithChildren } from 'react';
 import { InLent, InAdvent, In12DaysOfXmas, InEpiphany, ThroughBaptism, IsTransfiguration, UntilAscension, UntilPentecost, AfterPentecost, InHolyWeek, InEastertide, IsEpiphany } from '@/components/Calendar';
+import { Entypo } from '@expo/vector-icons';
+import { Image } from 'expo-image';
 
 export function randstr(prefix: string) {
     return Math.random().toString(36).replace('0.',prefix + '_' || '');
@@ -253,12 +255,32 @@ interface HourServiceProps {
 
 
 export default function HourService(props: HourServiceProps): JSX.Element {
+    //const cross = useAssets([require('../assets/images/cross.png')])[0] as ImageSourcePropType;
+    const cross = require('../assets/images/luther_rose.png')
     const privLink: any = props.hour.makePrev();
     const nextLink: any = props.hour.makeNext();
+    const dateOptions: Intl.DateTimeFormatOptions = {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      }
     return (
         <View style={styles.container}>
-            <View style={styles.body}>
-                <Text style={styles.title}>{props.hour.title}</Text>
+            <View style={{flexDirection: 'row', flexWrap: 'nowrap', justifyContent: 'space-between', alignContent: 'center', width: '100%', paddingHorizontal: 15}}>
+                <View>
+                    <Image style={styles.image} source={cross} contentFit='cover'/>
+                    <Text style={styles.title}>{props.hour.title}</Text>
+                    <Text>{props.hour.date.toLocaleDateString("en-US", dateOptions)}</Text>
+                </View>
+                <View style={{justifyContent: 'center', alignItems: 'center'}}>
+                    <Link href="/info" asChild>
+                        <Pressable>
+                            <Entypo name="info-with-circle" size={24} />
+                        </Pressable>
+                    </Link>
+
+                </View>
             </View>
             <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
             <View style={styles.body}>
@@ -287,9 +309,9 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
     },
     title: {
-        fontSize: 16,
+        fontSize: 24,
         fontWeight: 'normal',
-        paddingTop: 20,
+        paddingTop: 0,
     },
     separator: {
         marginVertical: 20,
@@ -318,7 +340,12 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap',
         fontStyle: 'normal', 
         fontWeight: 'normal'
-    }
+    },
+    image: {
+        flex: 1,
+        width: '100%',
+        backgroundColor: '#0553',
+      },
 });
 
 export function Section(props: PropsWithChildren) {
@@ -491,7 +518,7 @@ export function Venite() {
 export function VoceMea() {
     return (
         <Section>
-            <SectionTitle>Voce mea ad Dominum</SectionTitle>
+            <SectionTitle>Voce Mea Ad Dominum Clamavi</SectionTitle>
             <CText>
                 O Lord, I call upon you; hasten to me!
                 Give ear to my voice when i call to you!

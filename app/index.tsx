@@ -26,7 +26,6 @@ export default function index() {
 
   const hour = new Date().getHours();
   let landingPath: string = '/matins';
-  console.log(`hour is ${hour}`)
   if (hour < 3 || hour > 19) { // 8pm - 4:59am
     landingPath = '/compline';
   } else if (hour < 11) { // < 11am
