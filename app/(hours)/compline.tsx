@@ -1,4 +1,4 @@
-import { CText, Gloria, GloryBe, Hour, Kyrie, LText, NText, OurFatherText, PrayerOfTheDayText, Section, SectionTitle, TextSpacer } from '@/components/Service';
+import { CText, Gloria, GloryBe, Hour, Kyrie, LText, NText, OurFatherText, Oremus, Section, SectionTitle, TextSpacer } from '@/components/Service';
 import HourService from '@/components/Service';
 import { View, Text } from '@/components/Themed';
 
@@ -152,7 +152,7 @@ export class Compline extends Hour {
           </Section>
           <Section>
             <SectionTitle>Call and Response Prayer</SectionTitle>
-            <PrayerOfTheDayText />
+            <Oremus />
             <LText>Hear my prayer, O Lord;</LText>
             <CText>listen to my cry.</CText>
             <TextSpacer />
