@@ -116,5 +116,5 @@ Resources:
               - cloudfront:CreateInvalidation
             Resource:
               - !GetAtt S3Bucket.Arn
+              - !Sub ${S3Bucket.Arn}/*
               - !Sub arn:aws:cloudfront::${AWS::AccountId}:distribution/${CloudFrontDistribution.Id}
-              - !Sub arn:aws:cloudfront::${AWS::AccountId}:distribution/${CloudFrontDistribution.Id}/*
