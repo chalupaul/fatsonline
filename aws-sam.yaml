@@ -9,6 +9,9 @@ Parameters:
   HostedZoneId:
     Type: String
     Default: Z084663938LQYFDODE4JC
+  CICDRoleName:
+    Type: String
+    Default: aws-sam-cli-managed-prod-pipe-PipelineExecutionRole-gXyYRANuS3YE
 Outputs:
   S3Bucket:
     Value: !Ref S3Bucket
@@ -99,7 +102,7 @@ Resources:
     Properties:
       PolicyName: fatsonline-deployer
       Roles: 
-          - aws-sam-cli-managed-prod-pipe-PipelineExecutionRole-*
+          - !Ref CICDRoleName
       PolicyDocument:
         Version: 2012-10-17,
         Statement: 
