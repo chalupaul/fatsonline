@@ -98,10 +98,10 @@ Resources:
     Type: AWS::IAM::Policy
     Properties:
       PolicyName: fatsonline-deployer
+      Roles: 
+          - aws-sam-cli-managed-prod-pipe-PipelineExecutionRole-*
       PolicyDocument:
         Version: 2012-10-17,
-        Roles: 
-          - aws-sam-cli-managed-prod-pipe-PipelineExecutionRole-*
         Statement: 
           - Effect: Allow
             Action: 
