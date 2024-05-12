@@ -100,11 +100,11 @@ Resources:
   DeployerRole:
     Type: AWS::IAM::Policy
     Properties:
-      PolicyName: fatsonline-deployer
+      PolicyName: FATSOnlineDeployer
       Roles: 
         - !Ref CICDRoleName
       PolicyDocument:
-        Version: 2012-10-17,
+        Version: "2012-10-17"
         Statement: 
           - Effect: Allow
             Action: 
