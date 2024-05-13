@@ -58,9 +58,9 @@ export default function Info(): JSX.Element {
           </View>
           <View style={{justifyContent: 'center', alignItems: 'center', alignSelf: 'center', paddingHorizontal: 40}}>
             <Image style={styles.image} source={cross} resizeMode='contain'/>
-            <Text style={{fontStyle: 'italic', paddingBottom: 5}}>Your <Text style={{fontWeight: 'bold'}}>word</Text> is a lamp to my feet and a light to my path. (Ps 119:104)</Text>
-            <Text style={{fontStyle: 'italic', paddingBottom: 5}}>For we walk by <Text style={{fontWeight: 'bold'}}>faith</Text>, not by sight. (2 Cor 5:7)</Text>
-            <Text style={{fontStyle: 'italic', paddingBottom: 5}}>For sin will have no dominion over you, since you are not under law but under <Text style={{fontWeight: 'bold'}}>grace</Text>. (Rom 6:14)</Text>
+            <Text style={{fontStyle: 'italic', padding: 5}}>Your <Text style={{fontWeight: 'bold'}}>word</Text> is a lamp to my feet and a light to my path. (Ps 119:104)</Text>
+            <Text style={{fontStyle: 'italic', padding: 5}}>For we walk by <Text style={{fontWeight: 'bold'}}>faith</Text>, not by sight. (2 Cor 5:7)</Text>
+            <Text style={{fontStyle: 'italic', padding: 5}}>For sin will have no dominion over you, since you are not under law but under <Text style={{fontWeight: 'bold'}}>grace</Text>. (Rom 6:14)</Text>
           </View>
           <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
           <View style={styles.footer}>
@@ -118,8 +118,8 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
-    height: 400,
-    width: 400,
+    height: 350,
+    width: 350,
     /*backgroundColor: '#0553',*/
   },
 });
