@@ -1,11 +1,10 @@
-import { StyleSheet, ImageSourcePropType } from 'react-native';
+import { StyleSheet, Image } from 'react-native';
 import { Text, TextProps, View } from '@/components/Themed';
 import { Href, Link, LinkComponent } from 'expo-router';
 import { Pressable } from 'react-native';
 import { PropsWithChildren } from 'react';
 import { InLent, InAdvent, In12DaysOfXmas, InEpiphany, ThroughBaptism, IsTransfiguration, UntilAscension, UntilPentecost, AfterPentecost, InHolyWeek, InEastertide, IsEpiphany } from '@/components/Calendar';
 import { Entypo } from '@expo/vector-icons';
-import { Image } from 'expo-image';
 
 export function randstr(prefix: string) {
     return Math.random().toString(36).replace('0.',prefix + '_' || '');
@@ -268,19 +267,23 @@ export default function HourService(props: HourServiceProps): JSX.Element {
     return (
         <View style={styles.container}>
             <View style={{flexDirection: 'row', flexWrap: 'nowrap', justifyContent: 'space-between', alignContent: 'center', width: '100%', paddingHorizontal: 15}}>
-                <View>
-                    <Image style={styles.image} source={cross} contentFit='cover'/>
-                    <Text style={styles.title}>{props.hour.title}</Text>
-                    <Text>{props.hour.date.toLocaleDateString("en-US", dateOptions)}</Text>
-                </View>
-                <View style={{justifyContent: 'center', alignItems: 'center'}}>
-                    <Link href="/info" asChild>
-                        <Pressable>
-                            <Entypo name="info-with-circle" size={24} />
-                        </Pressable>
-                    </Link>
+            <View style={{justifyContent: 'center', alignItems: 'center', paddingTop: 2.5}}>
+                <Link href="/" asChild>
+                    <Image style={styles.image} source={cross} resizeMode='contain'/>
+                </Link>
+            </View>
+            <View style={{flex: 1, paddingLeft: 10}}>
+                <Text style={styles.title}>{props.hour.title}</Text>
+                <Text>{props.hour.date.toLocaleDateString("en-US", dateOptions)}</Text>
+            </View>
+            <View style={{justifyContent: 'center', alignItems: 'center', flex: .05}}>
+                <Link href="/info" asChild>
+                    <Pressable>
+                        <Entypo name="info-with-circle" size={24} />
+                    </Pressable>
+                </Link>
 
-                </View>
+            </View>
             </View>
             <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
             <View style={styles.body}>
@@ -343,8 +346,9 @@ const styles = StyleSheet.create({
     },
     image: {
         flex: 1,
-        width: '100%',
-        backgroundColor: '#0553',
+        height: 50,
+        width: 50,
+        /*backgroundColor: '#0553',*/
       },
 });
 
