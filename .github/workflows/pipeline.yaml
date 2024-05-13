@@ -91,7 +91,7 @@ jobs:
           echo cfdistroid=$(sam list stack-outputs --stack-name ${PROD_STACK_NAME} \
             --output json | \
             jq -r '.[] | select(.OutputKey=="CFDistroID").OutputValue') >> $GITHUB_OUTPUT
-  Upload Site Artifacts:
+  UploadArtifacts:
     needs: [BuildApp, Infra]
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
