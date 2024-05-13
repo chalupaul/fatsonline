@@ -106,7 +106,7 @@ export class Vespers extends Hour {
               Blessed are you, O Lord our God, king of the universe,
               who led your people Israel by a pillar of cloud by day 
               and a pillar of fire by night:
-              Enlighten our dankness by the light of your Christ; 
+              Enlighten our darkness by the light of your Christ; 
               may your Word be a lamp to our feet and a light to our path;
               for you are merciful, and you love your whole creation,
               and we, your creatures glorify you, Father, Son, and Holy Spirit.
