@@ -120,6 +120,7 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 350,
     width: 350,
+    padding: 10
     /*backgroundColor: '#0553',*/
   },
 });
