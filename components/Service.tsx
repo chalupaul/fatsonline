@@ -291,9 +291,9 @@ export default function HourService(props: HourServiceProps): JSX.Element {
             </View>
             <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
             <View style={styles.footer}>
-                <View style={{paddingBottom: 40}}>{privLink !== null && privLink}</View>
+                <View style={{paddingBottom: 25}}>{privLink !== null && privLink}</View>
                 <View></View>
-                <View style={{paddingBottom: 40}}>
+                <View style={{paddingBottom: 25}}>
                     {nextLink !== null && nextLink}
                 </View>
             </View>

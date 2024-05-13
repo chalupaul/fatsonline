@@ -56,12 +56,15 @@ export default function Info(): JSX.Element {
                 Finally, Psalm 4 is read every day because that service just needs a Psalm!
               </Text>
           </View>
-          <View style={{alignSelf: 'center', padding: 20}}>
-            <Image source={cross} resizeMode='contain'/>
+          <View style={{justifyContent: 'center', alignItems: 'center', alignSelf: 'center'}}>
+            <Image style={styles.image} source={cross} resizeMode='contain'/>
+            <Text style={{fontStyle: 'italic', paddingBottom: 5}}>Your <Text style={{fontWeight: 'bold'}}>word</Text> is a lamp to my feet and a light to my path. (Ps 119:104)</Text>
+            <Text style={{fontStyle: 'italic', paddingBottom: 5}}>For we walk by <Text style={{fontWeight: 'bold'}}>faith</Text>, not by sight. (2 Cor 5:7)</Text>
+            <Text style={{fontStyle: 'italic', paddingBottom: 5}}>For sin will have no dominion over you, since you are not under law but under <Text style={{fontWeight: 'bold'}}>grace</Text>. (Rom 6:14)</Text>
           </View>
           <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
           <View style={styles.footer}>
-          <Link href="../" style={styles.title}>&lt; Back</Link>
+          <Link href="../" style={{...styles.title, paddingBottom: 25}}>&lt; Back</Link>
           <StatusBar style="light" />
           </View>
       </View>
@@ -112,5 +115,11 @@ const styles = StyleSheet.create({
       fontWeight: 'normal',
       paddingBottom: 10,
       marginHorizontal: 40
-  }
+  },
+  image: {
+    flex: 1,
+    height: 400,
+    width: 400,
+    /*backgroundColor: '#0553',*/
+  },
 });
