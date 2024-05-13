@@ -112,6 +112,6 @@ jobs:
       - name: Display structure of downloaded files
         run: ls -R
       - name: Sync to S3
-        run: aws s3 sync . s3://${{ needs.deploy-prod.outputs.s3output }}/
+        run: aws s3 sync . s3://${{ needs.Infra.outputs.s3output }}/
       - name: Invalidate CF cache
-        run: aws cloudfront create-invalidation --distribution-id ${{ needs.deploy-prod.outputs.cfdistroid }} --paths '/*'
+        run: aws cloudfront create-invalidation --distribution-id ${{ needs.Infra.outputs.cfdistroid }} --paths '/*'
