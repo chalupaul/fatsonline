@@ -1,11 +1,12 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Image } from 'react-native';
 import { View, Text } from '@/components/Themed';
 import { Link, router } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { A, LI, UL } from '@expo/html-elements';
+import { A } from '@expo/html-elements';
 
 export default function Info(): JSX.Element {
   const isPresented = router.canGoBack();
+  const cross = require('../assets/images/favicon.png')
   return (
       <View style={styles.container}>
           <View style={{flexDirection: 'row', flexWrap: 'nowrap', justifyContent: 'space-between', alignContent: 'center', width: '100%', paddingHorizontal: 15}}>
@@ -54,6 +55,9 @@ export default function Info(): JSX.Element {
                 day of the week. The same is true for the prayers listed in that section. I added enough other historical short prayers to have a different one every day. 
                 Finally, Psalm 4 is read every day because that service just needs a Psalm!
               </Text>
+          </View>
+          <View style={{alignSelf: 'center', padding: 20}}>
+            <Image source={cross} resizeMode='contain'/>
           </View>
           <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
           <View style={styles.footer}>
