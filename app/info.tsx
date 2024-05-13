@@ -56,7 +56,7 @@ export default function Info(): JSX.Element {
                 Finally, Psalm 4 is read every day because that service just needs a Psalm!
               </Text>
           </View>
-          <View style={{justifyContent: 'center', alignItems: 'center', alignSelf: 'center'}}>
+          <View style={{justifyContent: 'center', alignItems: 'center', alignSelf: 'center', paddingHorizontal: 40}}>
             <Image style={styles.image} source={cross} resizeMode='contain'/>
             <Text style={{fontStyle: 'italic', paddingBottom: 5}}>Your <Text style={{fontWeight: 'bold'}}>word</Text> is a lamp to my feet and a light to my path. (Ps 119:104)</Text>
             <Text style={{fontStyle: 'italic', paddingBottom: 5}}>For we walk by <Text style={{fontWeight: 'bold'}}>faith</Text>, not by sight. (2 Cor 5:7)</Text>
