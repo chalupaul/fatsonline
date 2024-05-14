@@ -19,11 +19,11 @@ export class Compline extends Hour {
 
         'Come to me, all who labor and are heavy laden, and I will give you rest. ' +
         'Take my yoke upon you, and learn from me, for I am gentle and lowly in heart, ' +
-        'and you will find rest for your souls. For my yoke is easy, and my burden is light. (Matt. 11:28-30',
+        'and you will find rest for your souls. For my yoke is easy, and my burden is light. (Matt. 11:28-30)',
 
         'Peace I leave with you; my peace I give to you. ' + 
         'Not as the world gives do I give to you. ' + 
-        'Let not your hearts be troubled, neither let them be afraid. (John 14:27',
+        'Let not your hearts be troubled, neither let them be afraid. (John 14:27)',
 
         'For I am sure that neither death nor life, nor angels nor rulers, nor things present nor things to come, ' + 
         'nor powers, nor height nor depth, nor anything else in all creation, ' +
@@ -113,9 +113,12 @@ export class Compline extends Hour {
               wherefore I pray God Almighty to have mercy on me, 
               forgive me all my sins, and bring me to everlasting life.
             </CText>
-            <CText>Amen</CText>
             <TextSpacer />
-            <LText>The almighty and merciful Lord grant you pardon, forgiveness, and remission of all your sins. Amen.</LText>
+            <NText>Amen.</NText>
+            <TextSpacer />
+            <LText>The almighty and merciful Lord grant you pardon, forgiveness, and remission of all your sins.</LText>
+            <TextSpacer />
+              <CText>Amen.</CText>
           </Section>
           <Section>
             <SectionTitle>Cum Invocarem</SectionTitle>
