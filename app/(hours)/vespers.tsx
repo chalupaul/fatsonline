@@ -13,7 +13,7 @@ export class Vespers extends Hour {
       this.next = "compline";
 
       // -1 for index starting at 0, -1 for the morning reading.
-      const psalmReading = ProduceCalendar(this.DaysInMonth() * 2, psalms2readings)[this.date.getUTCDate() * 2 - 1];
+      const psalmReading = ProduceCalendar(this.DaysInMonth() * 2, psalms2readings)[this.date.getDate() * 2 - 1];
       const psalmReadingTitle = MakeReadingTitles(psalmReading);
       const dailyReading = ProduceCalendar(this.DaysInMonth(), proverbs)[this.date.getDate() - 1]; 
       const dailyReadingTitle = MakeReadingTitles(dailyReading);

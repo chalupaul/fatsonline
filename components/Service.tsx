@@ -451,8 +451,6 @@ export function Gloria() {
             <SectionTitle>Gloria</SectionTitle>
             <LText>Glory to God in the highest!</LText>
             <CText>And on earth peace among those with whom he is pleased!</CText>
-            <TextSpacer />
-            <NText>Amen.</NText>
         </Section>
     )
 }

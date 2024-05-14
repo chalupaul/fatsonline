@@ -114,11 +114,8 @@ export class Compline extends Hour {
               forgive me all my sins, and bring me to everlasting life.
             </CText>
             <TextSpacer />
-            <NText>Amen.</NText>
-            <TextSpacer />
             <LText>The almighty and merciful Lord grant you pardon, forgiveness, and remission of all your sins.</LText>
-            <TextSpacer />
-              <CText>Amen.</CText>
+            <CText>Amen.</CText>
           </Section>
           <Section>
             <SectionTitle>Cum Invocarem</SectionTitle>
