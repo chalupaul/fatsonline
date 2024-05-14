@@ -417,10 +417,8 @@ export function GloryBe(props:TextProps) {
         <View>
             <CText>
                 Glory be to the Father, and to the Son, and to the Holy Spirit; 
-                as it was in the beginning, is now and will be forever.
+                as it was in the beginning, is now and will be forever. Amen
             </CText>
-            <TextSpacer />
-            <NText>Amen.</NText>
         </View>
         <View>{props.children}</View>
     </Section>
@@ -439,8 +437,8 @@ export function Kyrie() {
             <TextSpacer />
             <LText>O Lord,</LText>
             <CText>Have mercy upon us.</CText>
-            <TextSpacer />
-            <NText>Amen.</NText>
+            <LText>Help, save, comfort, and defend us, gracious Lord.</LText>
+            <CText>Amen.</CText>
         </Section>
     )
 }
@@ -624,10 +622,8 @@ export function OurFatherText() {
             Give us this day our daily bread, and forgive us our tresspasses
             as we forgive those who tresspass against us.
             And lead us not into temptation, but deliver us from evil.
-            For thine is the kingdom, and the power, and the glory forever and ever.
+            For thine is the kingdom, and the power, and the glory forever and ever. Amen
         </CText>
-        <TextSpacer />
-        <NText>Amen.</NText>
         </>
     )
 }
@@ -668,10 +664,8 @@ export function ApostlesCreed() {
             the communion of saints,
             the forgiveness of sins,
             the resurrection of the body,
-            and the life everlasting.
+            and the life everlasting. Amen
           </NText>
-          <TextSpacer />
-          <NText>Amen.</NText>
         </Section>
     )
 }
@@ -698,10 +692,8 @@ export function NiceneCreed() {
                 And I believe in the Holy Spirit, the Lord and Giver of Life, who proceeds from the Father and the Son, 
                 who with the Father and the Son together is worshiped and glorified, who spoke by the prophets. 
                 And I believe in one holy Christian and apostolic Church, I acknowledge one Baptism for the remission of sins, 
-                and I look for the resurrection of the dead and the life of the world to come.
+                and I look for the resurrection of the dead and the life of the world to come. Amen.
             </NText>
-            <TextSpacer />
-            <NText>Amen.</NText>
         </Section>
     )
 }

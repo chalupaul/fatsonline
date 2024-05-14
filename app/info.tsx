@@ -36,7 +36,10 @@ export default function Info(): JSX.Element {
               <Text style={styles.text}>
                 There are a few changes added too. I shored up some of the wording to make it more consistent between the different services, found a few 
                 places where an Allelulia would sneak in during Lent and cleaned that up, put the "be" back in the Glory Be, and put ridiculous Latin titles 
-                over the various sections because I like them. There are some fundamental changes to the readings though that are worth going over.
+                over the various sections because I like them. Finally, rather than reciting hymns I've never heard or sung before, I opted to toss in a Kyrie 
+                and a Gloria. In fact, you'll notice virtually all the historical theology has been removed. I've found a large amount of it to be out of sync with 
+                modern Biblical scholarship in some ways that become distracting or perhaps even misleading. In that vein, here are some of the more fundamental 
+                changes to the readings though that are worth going over:
               </Text>
               <Text style={styles.text}>
                 <Text style={{fontWeight: 'bold'}}>Matins: </Text>Read through the Bible in a year. The Old Testament is ordered according to the Tanakh, and the New Testament is roughly in order of 
