@@ -55,7 +55,7 @@ function RootLayoutNav() {
         <Stack.Screen name="(hours)/noon" options={{title: "Noon"}} />
         <Stack.Screen name="(hours)/vespers" options={{title: "Vespers"}} />
         <Stack.Screen name="(hours)/compline" options={{title: "Compline"}} />
-        <Stack.Screen name="/info" options={{ presentation: 'modal'}} />
+        <Stack.Screen name="info" options={{ presentation: 'modal'}} />
       </Stack>
     </ThemeProvider>
   );
