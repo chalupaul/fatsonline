@@ -437,6 +437,7 @@ export function Kyrie() {
             <TextSpacer />
             <LText>O Lord,</LText>
             <CText>Have mercy upon us.</CText>
+            <TextSpacer />
             <LText>Help, save, comfort, and defend us, gracious Lord.</LText>
             <CText>Amen.</CText>
         </Section>
