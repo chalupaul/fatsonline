@@ -129,7 +129,7 @@ export class Vespers extends Hour {
             <NText><Text style={{fontStyle: "italic"}}>Silence for Meditation.</Text></NText>
             <TextSpacer />
             <LText>
-              Let the incense our repentant prayer ascend before you,
+              Let the incense of our repentant prayer ascend before you,
               O Lord, and let your loving-kindness descend upon us,
               that with purified minds we may sing your praises
               with the Church on earth and the whole heavenly host,
