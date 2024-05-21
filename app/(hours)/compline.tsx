@@ -83,9 +83,22 @@ export class Compline extends Hour {
         'may all evil be redeemed by your love, all pain transformed through the suffering of Christ, ' +
         'and all dying glorified in his risen life.'
       ]
-
-      const lesson = lessons[this.date.getDay()];
-      const prayer = prayers[this.date.getDay()];
+      const isEarly = this.date.getHours() < 12;
+      // Early morning hours should count for the previous day. We don't do this for other services
+      // because they're dawn based. This one could easily be after midnight though.
+      let d: number;
+      if (isEarly) {
+        const day = this.date.getDay();
+        if (day === 0)  {
+          d = 6;
+        } else {
+          d = day - 1;
+        }
+      } else {
+        d = this.date.getDay();
+      }
+      const lesson = lessons[d];
+      const prayer = prayers[d];
 
       this.text = (
         <View style={{paddingBottom: 20}}>

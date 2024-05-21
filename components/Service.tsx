@@ -27,6 +27,8 @@ export class Hour {
         //this.date = new Date('2024-12-02');
         // Lent
         //this.date = new Date('2024-03-10');
+        // Other
+        //this.date = new Date('2024-05-13T12:01:00'));
         this.date = date;
 
         if (this.inAdvent()) {
@@ -163,17 +165,32 @@ export class Hour {
     }
 
     DaysInMonth() {
-        const month = this.date.getUTCMonth() + 1  // Remember indexes start at 0, but months start at 1
-        const year = this.date.getUTCFullYear()
+        const month = this.date.getMonth() + 1  // Remember indexes start at 0, but months start at 1
+        const year = this.date.getFullYear()
         const monthdate = new Date(year, month, 0).getDate();
         return monthdate
     }
+    isLeapYear() {
+        var year = this.date.getFullYear();
+        //if((year & 3) != 0) return false;
+        //return ((year % 100) != 0 || (year % 400) == 0);
+        const sample = new Date(year, 1, 29);
+        return sample.getMonth() == 1;
+    };
+    
     DaysInYear() {
-        const year = this.date.getUTCFullYear()
-        return ((year % 4 === 0 && year % 100 > 0) || year %400 == 0) ? 366 : 365;
+        const year = this.date.getFullYear()
+        return this.isLeapYear() ? 366 : 365;
+        //return ((year % 4 === 0 && year % 100 > 0) || year %400 == 0) ? 366 : 365;
     }
     DayOfYear() {
-        return (Date.UTC(this.date.getUTCFullYear(), this.date.getUTCMonth(), this.date.getUTCDate()) - Date.UTC(this.date.getUTCFullYear(), 0, 0)) / 24 / 60 / 60 / 1000;
+        var dayCount = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
+        var mn = this.date.getMonth();
+        var dn = this.date.getDate();
+        var dayOfYear = dayCount[mn] + dn;
+        if(mn > 1 && this.isLeapYear()) dayOfYear++;
+        return dayOfYear;
+        //return (Date.UTC(this.date.getFullYear(), this.date.getMonth(), this.date.getDate()) - Date.UTC(this.date.getFullYear(), 0, 0)) / 24 / 60 / 60 / 1000;
     }
 
     inLent() {
@@ -522,7 +539,7 @@ export function VoceMea() {
             <SectionTitle>Voce Mea Ad Dominum Clamavi</SectionTitle>
             <CText>
                 O Lord, I call upon you; hasten to me!
-                Give ear to my voice when i call to you!
+                Give ear to my voice when I call to you!
                 Let my prayer be counted as incense before you,
                 and the lifting up of my hands as the evening sacrifice!
             </CText>

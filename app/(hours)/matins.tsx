@@ -7,7 +7,6 @@ import { psalms2readings, OTNT } from '@/constants/BibleInfo';
 
 export class Matins extends Hour {
   constructor(date: Date) {
-      //super(new Date('2024-05-18T12:01:00'));
       super(date);
       this.title = "Morning Prayer";
       this.next = "noon";
