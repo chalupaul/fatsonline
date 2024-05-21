@@ -172,8 +172,6 @@ export class Hour {
     }
     isLeapYear() {
         var year = this.date.getFullYear();
-        //if((year & 3) != 0) return false;
-        //return ((year % 100) != 0 || (year % 400) == 0);
         const sample = new Date(year, 1, 29);
         return sample.getMonth() == 1;
     };
@@ -181,7 +179,6 @@ export class Hour {
     DaysInYear() {
         const year = this.date.getFullYear()
         return this.isLeapYear() ? 366 : 365;
-        //return ((year % 4 === 0 && year % 100 > 0) || year %400 == 0) ? 366 : 365;
     }
     DayOfYear() {
         var dayCount = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
@@ -190,7 +187,6 @@ export class Hour {
         var dayOfYear = dayCount[mn] + dn;
         if(mn > 1 && this.isLeapYear()) dayOfYear++;
         return dayOfYear;
-        //return (Date.UTC(this.date.getFullYear(), this.date.getMonth(), this.date.getDate()) - Date.UTC(this.date.getFullYear(), 0, 0)) / 24 / 60 / 60 / 1000;
     }
 
     inLent() {
