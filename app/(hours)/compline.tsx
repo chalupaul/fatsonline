@@ -1,6 +1,8 @@
-import { CText, Gloria, GloryBe, Hour, Kyrie, LText, NText, OurFatherText, Oremus, Section, SectionTitle, TextSpacer } from '@/components/Service';
+import { Chapter, MakeReadingTitles, ProduceCalendar } from '@/components/BiblePlan';
+import { CText, Gloria, GloryBe, Hour, Kyrie, LText, NText, OurFatherText, Oremus, Section, SectionTitle, TextSpacer, randstr } from '@/components/Service';
 import HourService from '@/components/Service';
 import { View, Text } from '@/components/Themed';
+import { proverbs } from '@/constants/BibleInfo';
 
 export class Compline extends Hour {
   constructor(date: Date) {
@@ -97,6 +99,8 @@ export class Compline extends Hour {
       } else {
         d = this.date.getDay();
       }
+      const dailyReading = ProduceCalendar(this.DaysInMonth(), proverbs)[this.date.getDate() - 1];
+      const dailyReadingTitle = MakeReadingTitles(dailyReading);
       const lesson = lessons[d];
       const prayer = prayers[d];
 
@@ -111,6 +115,10 @@ export class Compline extends Hour {
             <CText>To sing praise to your name, O Most High;</CText>
             <LText>to herald your love in the morning,</LText>
             <CText>your truth at the close of the day.</CText>
+          </Section>
+          <Section>
+            <SectionTitle>Meditatio</SectionTitle>
+              <NText>{lesson}</NText>
           </Section>
           <Section>
             <SectionTitle>Confessio</SectionTitle>
@@ -161,7 +169,18 @@ export class Compline extends Hour {
           <Gloria />
           <Section>
             <SectionTitle>Lectio</SectionTitle>
-              <NText>{lesson}</NText>
+            <Text>{dailyReadingTitle}</Text>
+              {
+                dailyReading.map((v: Chapter, i) => {
+                  return (
+                    <View key={randstr('lectio')}>
+                      <Section>
+                        <NText>{v.text}</NText>
+                      </Section>
+                    </View>
+                  )
+                })
+              }
           </Section>
           <Section>
             <SectionTitle>Call and Response Prayer</SectionTitle>
