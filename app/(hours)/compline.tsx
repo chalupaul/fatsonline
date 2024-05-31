@@ -118,14 +118,13 @@ export class Compline extends Hour {
           </Section>
           <Section>
             <SectionTitle>Meditatio</SectionTitle>
-              <NText>{lesson}</NText>
+            <NText>{lesson}</NText>
+            <TextSpacer />
+            <NText><Text style={{fontStyle: "italic"}}>Silence for Self-Examination.</Text></NText>
           </Section>
           <Section>
             <SectionTitle>Confessio</SectionTitle>
             <LText>Let us confess our sin in the presence of God and of one another.</LText>
-            <TextSpacer />
-            <NText><Text style={{fontStyle: "italic"}}>Silence for Self-Examination.</Text></NText>
-            <TextSpacer />
             <CText>
               I confess to God Almighty, before the whole company of heaven 
               and to you, my brothers and sisters, 
@@ -135,7 +134,7 @@ export class Compline extends Hour {
               forgive me all my sins, and bring me to everlasting life.
             </CText>
             <TextSpacer />
-            <LText>The almighty and merciful Lord grant you pardon, forgiveness, and remission of all your sins.</LText>
+            <LText>The almighty and merciful Lord grant us pardon, forgiveness, and remission of all our sins.</LText>
             <CText>Amen.</CText>
           </Section>
           <Section>
