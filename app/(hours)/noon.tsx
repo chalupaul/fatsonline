@@ -50,7 +50,7 @@ export class Noon extends Hour {
           <CText>But now in these last days he has spoken to us by his Son.</CText>
         </Section>
         <Section>
-          <SectionTitle>Call and Response Prayer</SectionTitle>
+          <SectionTitle>Vocatio et Responsio</SectionTitle>
           <LText>Show us your mercy, O Lord,</LText>
           <CText>and grant us your salvation.</CText>
           <TextSpacer />
