@@ -1,8 +1,9 @@
+
 import { Chapter, MakeReadingTitles, ProduceCalendar } from '@/components/BiblePlan';
-import { CText, Gloria, GloryBe, Hour, Kyrie, LText, NText, OurFatherText, Oremus, Section, SectionTitle, TextSpacer, randstr } from '@/components/Service';
+import { CText, GloryBe, Hour, LText, NText, OurFatherText, Oremus, Section, SectionTitle, TextSpacer, randstr } from '@/components/Service';
 import HourService from '@/components/Service';
 import { View, Text } from '@/components/Themed';
-import { proverbs } from '@/constants/BibleInfo';
+import { psalms2readings } from '@/constants/BibleInfo';
 
 export class Compline extends Hour {
   constructor(date: Date) {
@@ -99,10 +100,12 @@ export class Compline extends Hour {
       } else {
         d = this.date.getDay();
       }
-      const dailyReading = ProduceCalendar(this.DaysInMonth(), proverbs)[this.date.getDate() - 1];
-      const dailyReadingTitle = MakeReadingTitles(dailyReading);
       const lesson = lessons[d];
       const prayer = prayers[d];
+
+      const psalmReading = ProduceCalendar(this.DaysInMonth() * 4, psalms2readings)[this.date.getDate() * 4 - 1];
+      const psalmReadingTitle = MakeReadingTitles(psalmReading);
+      console.log(psalmReadingTitle)
 
       this.text = (
         <View style={{paddingBottom: 20}}>
@@ -117,13 +120,29 @@ export class Compline extends Hour {
             <CText>your truth at the close of the day.</CText>
           </Section>
           <Section>
-            <SectionTitle>Meditatio</SectionTitle>
+            <SectionTitle>Psalmody</SectionTitle>
+            <Text>{psalmReadingTitle.includes('-') ? psalmReadingTitle : psalmReadingTitle.replace('Psalms', 'Psalm')}</Text>
+            {
+              psalmReading.map((v: Chapter,i) => {
+                let final = i != psalmReading.length - 1 ? <TextSpacer /> : <View />;
+                return (
+                  <View key={randstr('psalm')}>
+                    <Section>
+                      <NText>{v.bookName.slice(0,-1)} {v.chapter}</NText>
+                    </Section>
+                    <NText>{v.text}</NText>
+                    {final}
+                  </View>
+                )
+              })
+            }
+          </Section>
+          <Section>
+            <SectionTitle>Meditatio et Confessio</SectionTitle>
             <NText>{lesson}</NText>
             <TextSpacer />
             <NText><Text style={{fontStyle: "italic"}}>Silence for Self-Examination.</Text></NText>
-          </Section>
-          <Section>
-            <SectionTitle>Confessio</SectionTitle>
+            <TextSpacer />
             <LText>Let us confess our sin in the presence of God and of one another.</LText>
             <CText>
               I confess to God Almighty, before the whole company of heaven 
@@ -137,53 +156,8 @@ export class Compline extends Hour {
             <LText>The almighty and merciful Lord grant us pardon, forgiveness, and remission of all our sins.</LText>
             <CText>Amen.</CText>
           </Section>
+          <Oremus />
           <Section>
-            <SectionTitle>Cum Invocarem</SectionTitle>
-            <NText>
-              Answer me when I call, O God of my righteousness! 
-              You have given me relief when I was in distress. 
-              Be gracious to me and hear my prayer! 
-              O men, how long shall my honor be turned into shame?
-              How long will you love vain words and seek after lies? Selah 
-            </NText>
-            <TextSpacer />
-            <NText>
-              But know that the Lord has set apart the godly for himself; 
-              the Lord hears when I call to him. 
-              Be angry, and do not sin; 
-              ponder in your own hearts on your beds, and be silent. Selah 
-              Offer right sacrifices, and put your trust in the Lord.
-            </NText>
-            <TextSpacer />
-            <NText>
-              There are many who say, “Who will show us some good? 
-              Lift up the light of your face upon us, O Lord!” 
-              You have put more joy in my heart 
-              than they have when their grain and wine abound. 
-              In peace I will both lie down and sleep; 
-              for you alone, O Lord, make me dwell in safety.
-            </NText>
-          </Section>
-          <Kyrie />
-          <Gloria />
-          <Section>
-            <SectionTitle>Lectio</SectionTitle>
-            <Text>{dailyReadingTitle}</Text>
-              {
-                dailyReading.map((v: Chapter, i) => {
-                  return (
-                    <View key={randstr('lectio')}>
-                      <Section>
-                        <NText>{v.text}</NText>
-                      </Section>
-                    </View>
-                  )
-                })
-              }
-          </Section>
-          <Section>
-            <SectionTitle>Vocatio et Responsio</SectionTitle>
-            <Oremus />
             <LText>Hear my prayer, O Lord;</LText>
             <CText>listen to my cry.</CText>
             <TextSpacer />
@@ -195,10 +169,6 @@ export class Compline extends Hour {
             <TextSpacer />
             <LText>{prayer}</LText>
             <CText>Amen.</CText>
-          </Section>
-          <Section>
-            <SectionTitle>Pater Noster</SectionTitle>
-            <OurFatherText />
           </Section>
           <Section>
             <SectionTitle>Nunc Dimittis Antiphon</SectionTitle>
@@ -224,6 +194,10 @@ export class Compline extends Hour {
               that awake we may watch with Christ and asleep
               we may rest in peace.
             </CText>
+          </Section>
+          <Section>
+            <SectionTitle>Pater Noster</SectionTitle>
+            <OurFatherText />
           </Section>
           <Section>
             <SectionTitle>Benediction</SectionTitle>

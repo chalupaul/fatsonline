@@ -2,7 +2,7 @@ import { Chapter, MakeReadingTitles, ProduceCalendar } from '@/components/BibleP
 import { ApostlesCreed, CText, Gloria, Hour, Kyrie, LText, NText, NiceneCreed, Oremus, OurFatherText, Section, SectionTitle, TextSpacer, randstr } from '@/components/Service';
 import HourService from '@/components/Service';
 import { View, Text } from '@/components/Themed';
-import { job } from '@/constants/BibleInfo';
+import { psalms2readings } from '@/constants/BibleInfo';
 
 export class Noon extends Hour {
   constructor(date: Date) {
@@ -11,10 +11,11 @@ export class Noon extends Hour {
     this.prev = "matins";
     this.next = "vespers";
 
-    const dailyReading = ProduceCalendar(this.DaysInMonth(), job)[this.date.getUTCDate() - 1]; 
-    const dailyReadingTitle = MakeReadingTitles(dailyReading);
-
     const creed = this.date.getDate() % 2 === 0 ? <NiceneCreed /> : <ApostlesCreed />
+
+    const psalmReading = ProduceCalendar(this.DaysInMonth() * 4, psalms2readings)[this.date.getDate() * 4 - 3];
+    const psalmReadingTitle = MakeReadingTitles(psalmReading);
+    console.log(psalmReadingTitle)
 
     this.text = (
       <View style={{paddingBottom: 20}}>
@@ -23,31 +24,23 @@ export class Noon extends Hour {
           <LText>Holy God, holy and mighty, holy and immortal,</LText>
           <CText>have mercy and hear us.</CText>
         </Section>
-        {creed}
         <Section>
-          <SectionTitle>Pater Noster</SectionTitle>
-          <OurFatherText />
-        </Section>
-        <Kyrie />
-        <Gloria />
-        <Section>
-          <SectionTitle>Lectio </SectionTitle>
-          <Text>{dailyReadingTitle}</Text>
+            <SectionTitle>Psalmody</SectionTitle>
+            <Text>{psalmReadingTitle.includes('-') ? psalmReadingTitle : psalmReadingTitle.replace('Psalms', 'Psalm')}</Text>
             {
-              dailyReading.map((v: Chapter, i) => {
+              psalmReading.map((v: Chapter,i) => {
+                let final = i != psalmReading.length - 1 ? <TextSpacer /> : <View />;
                 return (
-                  <View key={randstr('lectio')}>
+                  <View key={randstr('psalm')}>
                     <Section>
-                      <NText>{v.text}</NText>
+                      <NText>{v.bookName.slice(0,-1)} {v.chapter}</NText>
                     </Section>
+                    <NText>{v.text}</NText>
+                    {final}
                   </View>
                 )
               })
             }
-        </Section>
-        <Section>
-          <LText>In many and various ways God spoke to his people of old by the prophets.</LText>
-          <CText>But now in these last days he has spoken to us by his Son.</CText>
         </Section>
         <Section>
           <SectionTitle>Vocatio et Responsio</SectionTitle>
@@ -70,25 +63,18 @@ export class Noon extends Hour {
           <CText>nor the hope of the poor be taken away.</CText>
           <TextSpacer />
           <LText>Create in us clean hearts, O God,</LText>
-          <CText>and sustain us with your Holy Spirit.</CText>
+          <CText>and sustain us with your Holy Spirit. Amen.</CText>
         </Section>
+        {creed}
         <Section>
-          <SectionTitle>Dominus vobiscum</SectionTitle>
+          <SectionTitle>Dominus Vobiscum</SectionTitle>
           <LText>The Lord be with you.</LText>
           <CText>And also with you.</CText>
         </Section>
         <Oremus />
         <Section>
-          <LText>
-            Gracious Jesus, our Lord and our God, 
-            at this hour you bore our sins in your own body on the tree so that we,
-            being dead to sin, might live unto righteousness.
-            Have mercy upon us now and at the hour of our death,
-            and grant to us, your servants, with all others who devoutedly remember your blessed Passion,
-            a holy and peaceful life in this world and, through your grace, eternal glory in the life to come;
-            where, with the Father and the Holy Spirit, you live and reign, God forever.
-          </LText>
-          <CText>Amen.</CText>
+          <SectionTitle>Pater Noster</SectionTitle>
+          <OurFatherText />
         </Section>
         <Section>
           <SectionTitle>Benediction</SectionTitle>

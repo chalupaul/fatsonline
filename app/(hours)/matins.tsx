@@ -12,7 +12,7 @@ export class Matins extends Hour {
       this.next = "noon";
 
       // -1 for index starting at 0, -1 for the morning reading.
-      const psalmReading = ProduceCalendar(this.DaysInMonth() * 2, psalms2readings)[this.date.getDate() * 2 - 2];
+      const psalmReading = ProduceCalendar(this.DaysInMonth() * 4, psalms2readings)[this.date.getDate() * 4 - 4];
       const psalmReadingTitle = MakeReadingTitles(psalmReading);
       //const dailyReading = ProduceCalendar(this.DaysInYear(), OTNT)[this.DayOfYear() - 1]; 
       const dailyReading = ProduceCalendar(this.DaysInYear() * 2, OTNT)[this.DayOfYear() * 2 - 2];
@@ -87,7 +87,6 @@ export class Matins extends Hour {
             <SectionTitle>Benedictus Antiphon Repeated</SectionTitle>
             {this.canticleAntiphon}
           </Section>
-          <AgnusDei />
           {prayer}
           <Section>
             <SectionTitle>Benediction</SectionTitle>

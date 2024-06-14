@@ -2,7 +2,7 @@ import { Chapter, MakeReadingTitles, ProduceCalendar } from '@/components/BibleP
 import { CText, Gloria, GloryBe, Hour, Kyrie, LText, Magnificat, NText, Oremus, OurFather, Section, SectionTitle, TextSpacer, VoceMea, randstr } from '@/components/Service';
 import HourService from '@/components/Service';
 import { View, Text } from '@/components/Themed';
-import { OTNT, proverbs, psalms2readings } from '@/constants/BibleInfo';
+import { OTNT, psalms2readings } from '@/constants/BibleInfo';
 
 
 export class Vespers extends Hour {
@@ -12,8 +12,8 @@ export class Vespers extends Hour {
       this.prev = "noon";
       this.next = "compline";
 
-      // -1 for index starting at 0, -1 for the morning reading.
-      const psalmReading = ProduceCalendar(this.DaysInMonth() * 2, psalms2readings)[this.date.getDate() * 2 - 1];
+      // -1 for index starting at 0.
+      const psalmReading = ProduceCalendar(this.DaysInMonth() * 4, psalms2readings)[this.date.getDate() * 4 - 2];
       const psalmReadingTitle = MakeReadingTitles(psalmReading);
       //const dailyReading = ProduceCalendar(this.DaysInMonth(), proverbs)[this.date.getDate() - 1]; 
       const dailyReading = ProduceCalendar(this.DaysInYear() * 2, OTNT)[this.DayOfYear() * 2 - 1];
@@ -25,9 +25,9 @@ export class Vespers extends Hour {
           <LText key={randstr('vesperVersicle')}>The Spirit and the Church cry out:</LText>,
           <CText key={randstr('vesperVersicle')}>Come, Lord Jesus.</CText>,
           <LText key={randstr('vesperVersicle')}>All those who await his appearance pray:</LText>,
-          <CText>Come, Lord Jesus.</CText>,
-          <LText>The whole creation pleads:</LText>,
-          <CText>Come, Lord Jesus.</CText>
+          <CText key={randstr('vesperVersicle')}>Come, Lord Jesus.</CText>,
+          <LText key={randstr('vesperVersicle')}>The whole creation pleads:</LText>,
+          <CText key={randstr('vesperVersicle')}>Come, Lord Jesus.</CText>
         ]
       } else if (this.in12Days() || this.isEpiphany()) {
         versicle = [
