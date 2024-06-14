@@ -105,7 +105,6 @@ export class Compline extends Hour {
 
       const psalmReading = ProduceCalendar(this.DaysInMonth() * 4, psalms2readings)[this.date.getDate() * 4 - 1];
       const psalmReadingTitle = MakeReadingTitles(psalmReading);
-      console.log(psalmReadingTitle)
 
       this.text = (
         <View style={{paddingBottom: 20}}>
