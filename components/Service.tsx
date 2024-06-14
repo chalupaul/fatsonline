@@ -5,6 +5,7 @@ import { Pressable } from 'react-native';
 import { PropsWithChildren } from 'react';
 import { InLent, InAdvent, In12DaysOfXmas, InEpiphany, ThroughBaptism, IsTransfiguration, UntilAscension, UntilPentecost, AfterPentecost, InHolyWeek, InEastertide, IsEpiphany } from '@/components/Calendar';
 import { Entypo } from '@expo/vector-icons';
+import { Chapter } from './BiblePlan';
 
 export function randstr(prefix: string) {
     return Math.random().toString(36).replace('0.',prefix + '_' || '');
@@ -709,5 +710,31 @@ export function NiceneCreed() {
                 and I look for the resurrection of the dead and the life of the world to come. Amen.
             </NText>
         </Section>
+    )
+}
+
+export type PsalmodyProps = {
+    psalmReading: Chapter[]
+}
+
+export function Psalmody(props: PsalmodyProps) {
+    return (
+        <Section>
+            <SectionTitle>Psalmody</SectionTitle>
+            {
+              props.psalmReading.map((v: Chapter,i) => {
+                let final = i != props.psalmReading.length - 1 ? <TextSpacer /> : <View />;
+                return (
+                  <View key={randstr('psalm')}>
+                    <Text>{v.bookName.slice(0,-1)} {v.chapter}</Text>
+                    <Section>
+                      <NText>{v.text}</NText>
+                    </Section>
+                    {final}
+                  </View>
+                )
+              })
+            }
+          </Section>
     )
 }

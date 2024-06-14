@@ -1,5 +1,5 @@
-import { Chapter, MakeReadingTitles, ProduceCalendar } from '@/components/BiblePlan';
-import { ApostlesCreed, CText, Gloria, Hour, Kyrie, LText, NText, NiceneCreed, Oremus, OurFatherText, Section, SectionTitle, TextSpacer, randstr } from '@/components/Service';
+import { Chapter, ProduceCalendar } from '@/components/BiblePlan';
+import { ApostlesCreed, CText, Hour, LText, NText, NiceneCreed, Oremus, OurFatherText, Psalmody, Section, SectionTitle, TextSpacer, randstr } from '@/components/Service';
 import HourService from '@/components/Service';
 import { View, Text } from '@/components/Themed';
 import { psalms2readings } from '@/constants/BibleInfo';
@@ -14,7 +14,6 @@ export class Noon extends Hour {
     const creed = this.date.getDate() % 2 === 0 ? <NiceneCreed /> : <ApostlesCreed />
 
     const psalmReading = ProduceCalendar(this.DaysInMonth() * 4, psalms2readings)[this.date.getDate() * 4 - 3];
-    const psalmReadingTitle = MakeReadingTitles(psalmReading);
 
     this.text = (
       <View style={{paddingBottom: 20}}>
@@ -23,24 +22,7 @@ export class Noon extends Hour {
           <LText>Holy God, holy and mighty, holy and immortal,</LText>
           <CText>have mercy and hear us.</CText>
         </Section>
-        <Section>
-            <SectionTitle>Psalmody</SectionTitle>
-            <Text>{psalmReadingTitle.includes('-') ? psalmReadingTitle : psalmReadingTitle.replace('Psalms', 'Psalm')}</Text>
-            {
-              psalmReading.map((v: Chapter,i) => {
-                let final = i != psalmReading.length - 1 ? <TextSpacer /> : <View />;
-                return (
-                  <View key={randstr('psalm')}>
-                    <Section>
-                      <NText>{v.bookName.slice(0,-1)} {v.chapter}</NText>
-                    </Section>
-                    <NText>{v.text}</NText>
-                    {final}
-                  </View>
-                )
-              })
-            }
-        </Section>
+        <Psalmody psalmReading={psalmReading}/>
         <Section>
           <SectionTitle>Vocatio et Responsio</SectionTitle>
           <LText>Show us your mercy, O Lord,</LText>

@@ -1,5 +1,5 @@
 import { Chapter, MakeReadingTitles, ProduceCalendar } from '@/components/BiblePlan';
-import { CText, Gloria, GloryBe, Hour, Kyrie, LText, Magnificat, NText, Oremus, OurFather, Section, SectionTitle, TextSpacer, VoceMea, randstr } from '@/components/Service';
+import { CText, Gloria, GloryBe, Hour, Kyrie, LText, Magnificat, NText, Oremus, OurFather, Psalmody, Section, SectionTitle, TextSpacer, VoceMea, randstr } from '@/components/Service';
 import HourService from '@/components/Service';
 import { View, Text } from '@/components/Themed';
 import { OTNT, psalms2readings } from '@/constants/BibleInfo';
@@ -14,7 +14,6 @@ export class Vespers extends Hour {
 
       // -1 for index starting at 0.
       const psalmReading = ProduceCalendar(this.DaysInMonth() * 4, psalms2readings)[this.date.getDate() * 4 - 2];
-      const psalmReadingTitle = MakeReadingTitles(psalmReading);
       //const dailyReading = ProduceCalendar(this.DaysInMonth(), proverbs)[this.date.getDate() - 1]; 
       const dailyReading = ProduceCalendar(this.DaysInYear() * 2, OTNT)[this.DayOfYear() * 2 - 1];
       const dailyReadingTitle = MakeReadingTitles(dailyReading);
@@ -138,24 +137,7 @@ export class Vespers extends Hour {
             </LText>
             <CText>Amen.</CText>
           </Section>
-          <Section>
-            <SectionTitle>Psalmody</SectionTitle>
-            <Text>{psalmReadingTitle.includes('-') ? psalmReadingTitle : psalmReadingTitle.replace('Psalms', 'Psalm')}</Text>
-            {
-              psalmReading.map((v: Chapter,i) => {
-                let final = i != psalmReading.length - 1 ? <TextSpacer /> : <View />;
-                return (
-                  <View key={randstr('psalm')}>
-                    <Section>
-                      <NText>{v.bookName.slice(0,-1)} {v.chapter}</NText>
-                    </Section>
-                    <NText>{v.text}</NText>
-                    {final}
-                  </View>
-                )
-              })
-            }
-          </Section>
+          <Psalmody psalmReading={psalmReading}/>
           <Kyrie />
           <Gloria />
           <Section>

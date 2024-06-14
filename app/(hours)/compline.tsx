@@ -1,6 +1,6 @@
 
-import { Chapter, MakeReadingTitles, ProduceCalendar } from '@/components/BiblePlan';
-import { CText, GloryBe, Hour, LText, NText, OurFatherText, Oremus, Section, SectionTitle, TextSpacer, randstr } from '@/components/Service';
+import { Chapter, ProduceCalendar } from '@/components/BiblePlan';
+import { CText, GloryBe, Hour, LText, NText, OurFatherText, Oremus, Section, SectionTitle, TextSpacer, randstr, Psalmody } from '@/components/Service';
 import HourService from '@/components/Service';
 import { View, Text } from '@/components/Themed';
 import { psalms2readings } from '@/constants/BibleInfo';
@@ -104,7 +104,6 @@ export class Compline extends Hour {
       const prayer = prayers[d];
 
       const psalmReading = ProduceCalendar(this.DaysInMonth() * 4, psalms2readings)[this.date.getDate() * 4 - 1];
-      const psalmReadingTitle = MakeReadingTitles(psalmReading);
 
       this.text = (
         <View style={{paddingBottom: 20}}>
@@ -118,24 +117,7 @@ export class Compline extends Hour {
             <LText>to herald your love in the morning,</LText>
             <CText>your truth at the close of the day.</CText>
           </Section>
-          <Section>
-            <SectionTitle>Psalmody</SectionTitle>
-            <Text>{psalmReadingTitle.includes('-') ? psalmReadingTitle : psalmReadingTitle.replace('Psalms', 'Psalm')}</Text>
-            {
-              psalmReading.map((v: Chapter,i) => {
-                let final = i != psalmReading.length - 1 ? <TextSpacer /> : <View />;
-                return (
-                  <View key={randstr('psalm')}>
-                    <Section>
-                      <NText>{v.bookName.slice(0,-1)} {v.chapter}</NText>
-                    </Section>
-                    <NText>{v.text}</NText>
-                    {final}
-                  </View>
-                )
-              })
-            }
-          </Section>
+          <Psalmody psalmReading={psalmReading}/>
           <Section>
             <SectionTitle>Meditatio et Confessio</SectionTitle>
             <NText>{lesson}</NText>
