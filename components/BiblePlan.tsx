@@ -20,13 +20,31 @@ export class Chapter {
     }
 }
 
+function range(start: number, stop: number)
+{
+    var array = [];
+
+    var length = stop - start; 
+
+    for (var i = 0; i <= length; i++) { 
+        array[i] = start;
+        start++;
+    }
+
+    return array;
+}
+
 export function ProduceCalendar(totalDays: number, data: string) {
     // Building the chapters array
     const chaptersRaw: string[] = data.split(/\n/);
 
     const chapters: Chapter[] = chaptersRaw.map(line => {
-        const fields = line.split(',')
-        return new Chapter(fields[0], fields[1], Number(fields[2]), Number(fields[3]))
+        const fields = line.split(',');
+        const bookName = fields[0];
+        const chapter = fields[1];
+        const numVerses = Number(fields[2]);
+        const numWords = Number(fields[3]);
+        return new Chapter(bookName, chapter, numVerses, numWords)
     })
 
     const sizes: number[] = Array(totalDays).fill(Math.floor(chapters.length / totalDays));
@@ -59,8 +77,23 @@ export function ProduceCalendar(totalDays: number, data: string) {
     solver(buckets, dailyTarget);
     buckets.forEach(bucket => {
         bucket.forEach(chapter => {
-            // @ts-ignore 
-            chapter.text = ESV[chapter.bookName][chapter.chapter]
+            if (chapter.chapter.includes(':')) {
+                const chapterParts = chapter.chapter.split(':')
+                const realChapter = chapterParts[0]
+                const verses = chapterParts[1].split('-')
+                const realVerses = range(Number(verses[0]), Number(verses[1]))
+                const text: string[] = realVerses.map((verseNum: number) => {
+                    const realVerse = verseNum - 1;
+                    // @ts-ignore
+                    const verseText = ESV[chapter.bookName][realChapter][realVerse];
+                    return verseText;
+                })
+                chapter.text = text;
+            } else {
+                // @ts-ignore
+                chapter.text = ESV[chapter.bookName][chapter.chapter]    
+            }
+            
         })
     })
     return buckets;

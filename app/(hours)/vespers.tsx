@@ -68,10 +68,10 @@ export class Vespers extends Hour {
         versicle = [
           <LText key={randstr('vesperVersicle')}>Come, let us worship and bow down before God our King.</LText>,
           <CText key={randstr('vesperVersicle')}>Let us kneel before the Lord our God our maker.</CText>,
-          <LText key={randstr('vesperVersicle')}>Come, let us worship and bow down before Christ our God and our King</LText>,
-          <CText key={randstr('vesperVersicle')}>Holy, holy, holy is the Lord of hosts.</CText>,
+          <LText key={randstr('vesperVersicle')}>Come, let us worship and bow down before Christ our God and our King.</LText>,
+          <CText key={randstr('vesperVersicle')}>Let us enter his gates with thanksgiving.</CText>,
           <LText key={randstr('vesperVersicle')}>Come, let us worship Christ, our King and our God, and bow down before Him.</LText>,
-          <CText key={randstr('vesperVersicle')}>The whole earth is full of his glory.</CText>
+          <CText key={randstr('vesperVersicle')}>Let us enter his courts with praise.</CText>
         ]
       }
 
@@ -95,13 +95,6 @@ export class Vespers extends Hour {
             </CText>
           </Section>
           <Section>
-            <SectionTitle>Dominus vobiscum</SectionTitle>
-            <LText>The Lord be with you.</LText>
-            <CText>And also with you.</CText>
-            <LText>Let us give thanks to the Lord our God.</LText>
-            <CText>It is right to give him thanks and praise.</CText>
-          </Section>
-          <Section>
             <LText>
               Blessed are you, O Lord our God, king of the universe,
               who led your people Israel by a pillar of cloud by day 
@@ -119,7 +112,6 @@ export class Vespers extends Hour {
             <CText>The lifting up of my hands as the evening sacrifice.</CText>
           </Section>
           <VoceMea />
-          <GloryBe />
           <Section>
             <SectionTitle>Antiphon Repeated</SectionTitle>
             <LText>Let my prayer rise before you as incense;</LText>
@@ -138,8 +130,6 @@ export class Vespers extends Hour {
             <CText>Amen.</CText>
           </Section>
           <Psalmody psalmReading={psalmReading}/>
-          <Kyrie />
-          <Gloria />
           <Section>
             <SectionTitle>Lectio</SectionTitle>
             <Text>{dailyReadingTitle}</Text>
@@ -156,15 +146,10 @@ export class Vespers extends Hour {
               }
           </Section>
           <Section>
-            <LText>In many and various ways God spoke to his people of old by the prophets.</LText>
-            <CText>But now in these last days he has spoken to us by his Son.</CText>
-          </Section>
-          <Section>
             <SectionTitle>Magnificat Antiphon</SectionTitle>
             {this.canticleAntiphon}
           </Section>
           <Magnificat />
-          <GloryBe />
           <Section>
             <SectionTitle>Magnificat Antiphon Repeated</SectionTitle>
             {this.canticleAntiphon}

@@ -1,7 +1,7 @@
-import { Chapter, ProduceCalendar } from '@/components/BiblePlan';
-import { ApostlesCreed, CText, Hour, LText, NText, NiceneCreed, Oremus, OurFatherText, Psalmody, Section, SectionTitle, TextSpacer, randstr } from '@/components/Service';
+import { ProduceCalendar } from '@/components/BiblePlan';
+import { ApostlesCreed, CText, GloryBe, Hour, LText, NText, NiceneCreed, Oremus, OurFatherText, Psalmody, Section, SectionTitle, TextSpacer, randstr } from '@/components/Service';
 import HourService from '@/components/Service';
-import { View, Text } from '@/components/Themed';
+import { View } from '@/components/Themed';
 import { psalms2readings } from '@/constants/BibleInfo';
 
 export class Noon extends Hour {
@@ -47,11 +47,6 @@ export class Noon extends Hour {
           <CText>and sustain us with your Holy Spirit. Amen.</CText>
         </Section>
         {creed}
-        <Section>
-          <SectionTitle>Dominus Vobiscum</SectionTitle>
-          <LText>The Lord be with you.</LText>
-          <CText>And also with you.</CText>
-        </Section>
         <Oremus />
         <Section>
           <SectionTitle>Pater Noster</SectionTitle>

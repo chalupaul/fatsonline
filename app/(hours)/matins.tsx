@@ -1,5 +1,5 @@
 import { ProduceCalendar, MakeReadingTitles, Chapter } from '@/components/BiblePlan';
-import { Benedictus, CText, Gloria, GloryBe, Hour, Kyrie, LText, NText, Oremus, OurFather, Psalmody, Section, SectionTitle, TextSpacer, Venite, randstr } from '@/components/Service';
+import { Benedictus, CText, Gloria, GloryBe, Hour, Kyrie, LText, NText, Oremus, OurFather, PostLectionary, PostPsalmody, Psalmody, Section, SectionTitle, TextSpacer, Venite, randstr } from '@/components/Service';
 import HourService from '@/components/Service';
 import { View, Text } from '@/components/Themed';
 import { psalms2readings, OTNT } from '@/constants/BibleInfo';
@@ -32,14 +32,11 @@ export class Matins extends Hour {
             {this.antiphon}
           </Section>
           <Venite />
-          <GloryBe />
           <Section>
             <SectionTitle>Antiphon Repeated</SectionTitle>
             {this.antiphon}
           </Section>
           <Psalmody psalmReading={psalmReading}/>
-          <Kyrie />
-          <Gloria />
           <Section>
             <SectionTitle>Lectio </SectionTitle>
             <Text>{dailyReadingTitle}</Text>
@@ -56,15 +53,10 @@ export class Matins extends Hour {
               }
           </Section>
           <Section>
-            <LText>In many and various ways God spoke to his people of old by the prophets.</LText>
-            <CText>But now in these last days he has spoken to us by his Son.</CText>
-          </Section>
-          <Section>
             <SectionTitle>Benedictus Antiphon</SectionTitle>
             {this.canticleAntiphon}
           </Section>
           <Benedictus />
-          <GloryBe />
           <Section>
             <SectionTitle>Benedictus Antiphon Repeated</SectionTitle>
             {this.canticleAntiphon}

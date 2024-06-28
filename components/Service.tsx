@@ -30,7 +30,8 @@ export class Hour {
         //this.date = new Date('2024-03-10');
         // Other
         //this.date = new Date('2024-05-13T12:01:00'));
-        this.date = date;
+        //this.date = date;
+        this.date = new Date('2024-06-25');
 
         if (this.inAdvent()) {
           this.antiphon = [
@@ -709,6 +710,24 @@ export function NiceneCreed() {
                 And I believe in one holy Christian and apostolic Church, I acknowledge one Baptism for the remission of sins, 
                 and I look for the resurrection of the dead and the life of the world to come. Amen.
             </NText>
+        </Section>
+    )
+}
+
+export function PostPsalmody() {
+    return (
+        <Section>
+            <LText>And I am sure of this, that he who began a good work in you</LText>
+            <CText>will bring it to completion at the day of Jesus Christ</CText>
+        </Section>
+    )
+}
+
+export function PostLectionary() {
+    return (
+        <Section>
+            <LText>In many and various ways God spoke to his people of old by the prophets.</LText>
+            <CText>But now in these last days he has spoken to us by his Son.</CText>
         </Section>
     )
 }

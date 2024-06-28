@@ -167,7 +167,6 @@ export class Compline extends Hour {
               a light for revelation to the Gentiles, and for glory to your people Israel. 
             </CText>
           </Section>
-          <GloryBe />
           <Section>
             <SectionTitle>Nunc Dimittis Antiphon Repeated</SectionTitle>
             <CText>
