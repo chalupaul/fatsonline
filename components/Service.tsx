@@ -28,10 +28,11 @@ export class Hour {
         //this.date = new Date('2024-12-02');
         // Lent
         //this.date = new Date('2024-03-10');
+        // ps119
+        //this.date = new Date('2024-06-25');
         // Other
         //this.date = new Date('2024-05-13T12:01:00'));
-        //this.date = date;
-        this.date = new Date('2024-06-25');
+        this.date = date;
 
         if (this.inAdvent()) {
           this.antiphon = [
