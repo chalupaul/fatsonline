@@ -1,5 +1,5 @@
 import { Chapter, MakeReadingTitles, ProduceCalendar } from '@/components/BiblePlan';
-import { CText, Gloria, GloryBe, Hour, Kyrie, LText, Magnificat, NText, Oremus, OurFather, Psalmody, Section, SectionTitle, TextSpacer, VoceMea, randstr } from '@/components/Service';
+import { CText, Gloria, GloryBe, Hour, Kyrie, LText, Magnificat, NText, Oremus, OurFather, PostLectionary, PostPsalmody, Psalmody, Section, SectionTitle, TextSpacer, VoceMea, randstr } from '@/components/Service';
 import HourService from '@/components/Service';
 import { View, Text } from '@/components/Themed';
 import { OTNT, psalms2readings } from '@/constants/BibleInfo';
@@ -96,6 +96,14 @@ export class Vespers extends Hour {
           </Section>
           <Section>
             <LText>
+              Let us give thanks to the Lord our God.
+            </LText>
+            <CText>
+              It is right to give our thanks and praise.
+            </CText>
+          </Section>
+          <Section>
+            <LText>
               Blessed are you, O Lord our God, king of the universe,
               who led your people Israel by a pillar of cloud by day 
               and a pillar of fire by night:
@@ -129,7 +137,9 @@ export class Vespers extends Hour {
             </LText>
             <CText>Amen.</CText>
           </Section>
+          <GloryBe inLent={this.inLent()} />
           <Psalmody psalmReading={psalmReading}/>
+          <PostPsalmody />
           <Section>
             <SectionTitle>Lectio</SectionTitle>
             <Text>{dailyReadingTitle}</Text>
@@ -145,6 +155,7 @@ export class Vespers extends Hour {
                 })
               }
           </Section>
+          <PostLectionary />
           <Section>
             <SectionTitle>Magnificat Antiphon</SectionTitle>
             {this.canticleAntiphon}

@@ -25,8 +25,10 @@ export class Matins extends Hour {
             <SectionTitle>Versicle</SectionTitle>
             <LText>Oh Lord, open my lips,</LText>
             <CText>and my mouth shall declare your praise.</CText>
+            <TextSpacer />
+            <LText>Make haste, O God, to deliver me!</LText>
+            <CText>O Lord, make haste to help me!</CText>
           </Section>
-            <GloryBe>{!this.inLent() && <CText>Alleluia! Alleluia!</CText>}</GloryBe>
           <Section>
             <SectionTitle>Antiphon</SectionTitle>
             {this.antiphon}
@@ -36,7 +38,9 @@ export class Matins extends Hour {
             <SectionTitle>Antiphon Repeated</SectionTitle>
             {this.antiphon}
           </Section>
+          <GloryBe inLent={this.inLent()} />
           <Psalmody psalmReading={psalmReading}/>
+          <PostPsalmody />
           <Section>
             <SectionTitle>Lectio </SectionTitle>
             <Text>{dailyReadingTitle}</Text>
@@ -52,6 +56,7 @@ export class Matins extends Hour {
                 })
               }
           </Section>
+          <PostLectionary />
           <Section>
             <SectionTitle>Benedictus Antiphon</SectionTitle>
             {this.canticleAntiphon}

@@ -426,17 +426,24 @@ export function TextSpacer() {
     return <View><span>&nbsp;</span></View>
 }
 
-export function GloryBe(props:TextProps) {
+type GloryBeProps = {
+    inLent: boolean,
+    children?: React.ReactNode
+}
+
+export function GloryBe(props:GloryBeProps) {
     return (
     <Section>
         <SectionTitle>Gloria Patri</SectionTitle>
         <View>
-            <CText>
+            <LText>
                 Glory be to the Father, and to the Son, and to the Holy Spirit; 
+            </LText>
+            <CText>
                 as it was in the beginning, is now and will be forever. Amen
             </CText>
+            {!props.inLent && <View><TextSpacer /><NText>Alleluia! Alleluia!</NText></View>}
         </View>
-        <View>{props.children}</View>
     </Section>
     )
 }
@@ -727,8 +734,8 @@ export function PostPsalmody() {
 export function PostLectionary() {
     return (
         <Section>
-            <LText>In many and various ways God spoke to his people of old by the prophets.</LText>
-            <CText>But now in these last days he has spoken to us by his Son.</CText>
+            <LText>Long ago, at many times and in many ways, God spoke to our fathers by the prophets.</LText>
+            <CText>But in these last days he has spoken to us by his Son, whom he appointed the heir of all things, through whom also he created the world.</CText>
         </Section>
     )
 }

@@ -117,6 +117,7 @@ export class Compline extends Hour {
             <LText>to herald your love in the morning,</LText>
             <CText>your truth at the close of the day.</CText>
           </Section>
+          <GloryBe inLent={this.inLent()} />
           <Psalmody psalmReading={psalmReading}/>
           <Section>
             <SectionTitle>Meditatio et Confessio</SectionTitle>
@@ -139,6 +140,7 @@ export class Compline extends Hour {
           </Section>
           <Oremus />
           <Section>
+            <SectionTitle>Preces</SectionTitle>
             <LText>Hear my prayer, O Lord;</LText>
             <CText>listen to my cry.</CText>
             <TextSpacer />

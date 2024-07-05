@@ -1,5 +1,5 @@
 import { ProduceCalendar } from '@/components/BiblePlan';
-import { ApostlesCreed, CText, GloryBe, Hour, LText, NText, NiceneCreed, Oremus, OurFatherText, Psalmody, Section, SectionTitle, TextSpacer, randstr } from '@/components/Service';
+import { ApostlesCreed, CText, GloryBe, Hour, LText, NText, NiceneCreed, Oremus, OurFatherText, PostPsalmody, Psalmody, Section, SectionTitle, TextSpacer, randstr } from '@/components/Service';
 import HourService from '@/components/Service';
 import { View } from '@/components/Themed';
 import { psalms2readings } from '@/constants/BibleInfo';
@@ -22,9 +22,10 @@ export class Noon extends Hour {
           <LText>Holy God, holy and mighty, holy and immortal,</LText>
           <CText>have mercy and hear us.</CText>
         </Section>
+        <GloryBe inLent={this.inLent()} />
         <Psalmody psalmReading={psalmReading}/>
         <Section>
-          <SectionTitle>Vocatio et Responsio</SectionTitle>
+          <SectionTitle>Preces</SectionTitle>
           <LText>Show us your mercy, O Lord,</LText>
           <CText>and grant us your salvation.</CText>
           <TextSpacer />
