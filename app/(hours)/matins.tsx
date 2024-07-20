@@ -1,5 +1,5 @@
 import { ProduceCalendar, MakeReadingTitles, Chapter } from '@/components/BiblePlan';
-import { Benedictus, CText, Gloria, GloryBe, Hour, Kyrie, LText, NText, Oremus, OurFather, PostLectionary, PostPsalmody, Psalmody, Section, SectionTitle, TextSpacer, Venite, randstr } from '@/components/Service';
+import { Benedictus, CText, Gloria, GloryBe, Hour, Kyrie, LText, NText, Oremus, OurFather, PostLectionary, Psalmody, Section, SectionTitle, TextSpacer, Venite, randstr } from '@/components/Service';
 import HourService from '@/components/Service';
 import { View, Text } from '@/components/Themed';
 import { psalms2readings, OTNT } from '@/constants/BibleInfo';
@@ -22,7 +22,7 @@ export class Matins extends Hour {
       this.text = (
         <View style={{paddingBottom: 20}}>
           <Section>
-            <SectionTitle>Versicle</SectionTitle>
+            <SectionTitle>Invitatory</SectionTitle>
             <LText>Oh Lord, open my lips,</LText>
             <CText>and my mouth shall declare your praise.</CText>
             <TextSpacer />
@@ -33,14 +33,12 @@ export class Matins extends Hour {
             <SectionTitle>Antiphon</SectionTitle>
             {this.antiphon}
           </Section>
-          <Venite />
+          <Psalmody psalmReading={psalmReading}/>
           <Section>
             <SectionTitle>Antiphon Repeated</SectionTitle>
             {this.antiphon}
           </Section>
           <GloryBe inLent={this.inLent()} />
-          <Psalmody psalmReading={psalmReading}/>
-          <PostPsalmody />
           <Section>
             <SectionTitle>Lectio </SectionTitle>
             <Text>{dailyReadingTitle}</Text>
@@ -88,7 +86,7 @@ export default function Service() {
 function NormalPrayer() {
   return (
     <>
-    <Oremus />
+    <Oremus>Begin with five minutes of silence. Then pray for yourself, your family, church, neighbors, nation, and missions.</Oremus>
     <Section>
       <LText>
         O Lord, almighty and everlasting God, you have brought us in safety to this new day; 
@@ -106,7 +104,7 @@ function NormalPrayer() {
 function SundayPrayer() {
   return (
     <>
-      <Oremus />
+      <Oremus>Pray for yourself, your family, church, neighbors, nation, and missions.</Oremus>
       <Section>
         <LText>As many as have been baptized into Christ have put on Christ.</LText>
         <CText>Amen.</CText>

@@ -21,6 +21,7 @@ export class Hour {
     nextLink?: LinkComponent;
     antiphon?: React.JSX.Element[];
     canticleAntiphon?: React.JSX.Element;
+    versicle?: React.JSX.Element[];
     
 
     constructor(date: Date) {
@@ -39,6 +40,14 @@ export class Hour {
             <LText key={randstr('antiphon')}>Give glory to the coming King.</LText>,
             <CText key={randstr('antiphon')}>Oh, come let us worship him.</CText>
           ];
+          this.versicle = [
+            <LText key={randstr('vesperVersicle')}>The Spirit and the Church cry out:</LText>,
+            <CText key={randstr('vesperVersicle')}>Come, Lord Jesus.</CText>,
+            <LText key={randstr('vesperVersicle')}>All those who await his appearance pray:</LText>,
+            <CText key={randstr('vesperVersicle')}>Come, Lord Jesus.</CText>,
+            <LText key={randstr('vesperVersicle')}>The whole creation pleads:</LText>,
+            <CText key={randstr('vesperVersicle')}>Come, Lord Jesus.</CText>
+          ]
           
           if (this.date.getMonth() == 11 && this.date.getDate() == 17) {
             this.canticleAntiphon = (<CText>
@@ -96,11 +105,19 @@ export class Hour {
               Fear not Mary, you have found favor with the Lord: Behold, you shall conceive and bear a Son. Alleluia.
             </CText>)
           }
-        } else if (this.in12Days()) {
-          this.antiphon = [
-            <LText key={randstr('antiphon')}>Alleluia. Unto us a child is born.</LText>,
-            <CText key={randstr('antiphon')}>Oh come, let us worship him. Alleluia.</CText>
-          ];
+        } else if (this.in12Days() || this.isEpiphany()) {
+            this.antiphon = [
+                <LText key={randstr('antiphon')}>Alleluia. Unto us a child is born.</LText>,
+                <CText key={randstr('antiphon')}>Oh come, let us worship him. Alleluia.</CText>
+            ];
+            this.versicle = [
+                <LText key={randstr('vesperVersicle')}>The people who walked in darkness have seen a great light.</LText>,
+                <CText key={randstr('vesperVersicle')}>The light shines in the darkness, and the darkness has not overcome it.</CText>,
+                <LText key={randstr('vesperVersicle')}>Those who dwelt in the land of deep darkness, on them has light shined.</LText>,
+                <CText key={randstr('vesperVersicle')}>We have beheld Christ's glory, glory as of the only Son from the Father.</CText>,
+                <LText key={randstr('vesperVersicle')}>For to us a child is born, to us a Son is given.</LText>,
+                <CText key={randstr('vesperVersicle')}>In him was life, and the life was the light of man.</CText>
+            ];
           this.canticleAntiphon = (
             <CText>
               Today Christ is born; today salvation has appeared. Today the just exult and say, "Glory to God in the highest."
@@ -111,14 +128,30 @@ export class Hour {
             <LText key={randstr('antiphon')}>The Word was made flesh, and we beheld his glory.</LText>,
             <CText key={randstr('antiphon')}>Oh, come, let us worship him.</CText>
           ];
+          this.versicle = [
+            <LText key={randstr('vesperVersicle')}>We have seen the light of the world,</LText>,
+            <CText key={randstr('vesperVersicle')}>on high mountains of celebration.</CText>,
+            <LText key={randstr('vesperVersicle')}>We have seen the Son of God,</LText>,
+            <CText key={randstr('vesperVersicle')}>in obedience in the river Jordan.</CText>,
+            <LText key={randstr('vesperVersicle')}>In glory Jesus meets us here,</LText>,
+            <CText key={randstr('vesperVersicle')}>raising us from the river to bright heights of heavenly glory. </CText>
+          ]
           this.canticleAntiphon = (<CText>
             Our Lord and Savior, begotten before all ages, revealed himself to the world. Alleluia.
           </CText>);
         } else if (this.inEpiphany()) {
-          this.antiphon = [
-            <LText key={randstr('antiphon')}>Give glory to God, our light and our life.</LText>,
-            <CText key={randstr('antiphon')}>Oh, come, let us worship him.</CText>
-          ];
+            this.versicle = [
+                <LText key={randstr('vesperVersicle')}>Jesus Christ is the Light of the world,</LText>,
+                <CText key={randstr('vesperVersicle')}>the light no darkness can overcome.</CText>,
+                <LText key={randstr('vesperVersicle')}>Stay with us, Lord, for it is evening,</LText>,
+                <CText key={randstr('vesperVersicle')}>and the day is almost over.</CText>,
+                <LText key={randstr('vesperVersicle')}>Let your light scatter the darkness,</LText>,
+                <CText key={randstr('vesperVersicle')}>and illumine your Church.</CText>
+            ];
+            this.antiphon = [
+                <LText key={randstr('antiphon')}>Give glory to God, our light and our life.</LText>,
+                <CText key={randstr('antiphon')}>Oh, come, let us worship him.</CText>
+            ];
           this.canticleAntiphon = (<CText>
             Our Lord and Savior, begotten before all ages, revealed himself to the world. Alleluia.
           </CText>);
@@ -127,6 +160,14 @@ export class Hour {
             <LText key={randstr('antiphon')}>The Lord is near to those who call on him.</LText>,
             <CText key={randstr('antiphon')}>Oh, come, let us worship him.</CText>
           ];
+          this.versicle = [
+            <LText key={randstr('vesperVersicle')}>Behold, now is the acceptable time;</LText>,
+            <CText key={randstr('vesperVersicle')}>now is the day of salvation.</CText>,
+            <LText key={randstr('vesperVersicle')}>Turn us again, O God of our salvation,</LText>,
+            <CText key={randstr('vesperVersicle')}>that the light of your face may shine on us.</CText>,
+            <LText key={randstr('vesperVersicle')}>May your justice shine like the sun;</LText>,
+            <CText key={randstr('vesperVersicle')}>and may the poor be lifted up.</CText>
+          ]
           if (this.inHolyWeek()) {
             this.canticleAntiphon = (<CText>
               Glory to the cross of our Lord Jesus Christ, our salvation, life, and resurrection.
@@ -141,6 +182,14 @@ export class Hour {
             <LText key={randstr('antiphon')}>Alleluia. The Lord is risen indeed.</LText>,
             <CText key={randstr('antiphon')}>Oh, come, let us worship him. Alleluia.</CText>
           ];
+          this.versicle = [
+            <LText key={randstr('vesperVersicle')}>Jesus Christ is risen from the dead.</LText>,
+            <CText key={randstr('vesperVersicle')}>Alleluia, alleluia, alleluia!</CText>,
+            <LText key={randstr('vesperVersicle')}>We are illumined by the brightness of his rising.</LText>,
+            <CText key={randstr('vesperVersicle')}>Alleluia, alleluia, alleluia!</CText>,
+            <LText key={randstr('vesperVersicle')}>Death has no more dominion over us.</LText>,
+            <CText key={randstr('vesperVersicle')}>Alleluia, alleluia, alleluia!</CText>
+          ]
           this.canticleAntiphon = (<CText>
             This is the day the Lord has made. Alleluia. Let us rejoice and be glad in it. Alleluia.
           </CText>);
@@ -148,6 +197,14 @@ export class Hour {
           this.antiphon = [
             <LText key={randstr('antiphon')}>Alleluia. Christ the Lord ascends into heaven.</LText>,
             <CText key={randstr('antiphon')}>Oh, come, let us worship him. Alleluia.</CText>
+          ];
+          this.versicle = [
+            <LText key={randstr('vesperVersicle')}>God of rushing wind, bringing life to this world.</LText>,
+            <CText key={randstr('vesperVersicle')}>Pour your Spirit upon us.</CText>,
+            <LText key={randstr('vesperVersicle')}>God of fire, warming us with your justice.</LText>,
+            <CText key={randstr('vesperVersicle')}>Pour your Spirit upon the nations.</CText>,
+            <LText key={randstr('vesperVersicle')}>God of fresh water, springing forth from your Church.</LText>,
+            <CText key={randstr('vesperVersicle')}>Pour living water into this thirsty world.</CText>
           ];
           this.canticleAntiphon = (<CText>
             This is the day the Lord has made. Alleluia. Let us rejoice and be glad in it. Alleluia.
@@ -157,6 +214,14 @@ export class Hour {
             <LText key={randstr('antiphon')}>Give glory to God, our light and our life.</LText>,
             <CText key={randstr('antiphon')}>Oh, come, let us worship him. Allelulia.</CText>
           ];
+          this.versicle = [
+            <LText key={randstr('vesperVersicle')}>Come, let us worship and bow down before God our King.</LText>,
+            <CText key={randstr('vesperVersicle')}>Let us kneel before the Lord our God our maker.</CText>,
+            <LText key={randstr('vesperVersicle')}>Come, let us worship and bow down before Christ our God and our King.</LText>,
+            <CText key={randstr('vesperVersicle')}>Let us enter his gates with thanksgiving.</CText>,
+            <LText key={randstr('vesperVersicle')}>Come, let us worship Christ, our King and our God, and bow down before Him.</LText>,
+            <CText key={randstr('vesperVersicle')}>Let us enter his courts with praise.</CText>
+          ]
           this.canticleAntiphon = (<CText>
             When he ascended on high he led a host of captives, and he gave gifts to men.
           </CText>)
@@ -164,6 +229,7 @@ export class Hour {
         else {
           this.antiphon = []
           this.canticleAntiphon = <></>
+          this.versicle = []
         }
     }
 
@@ -487,14 +553,15 @@ export function AgnusDei() {
     )
 }
 
-export function Oremus() {
+export function Oremus(props:TextProps) {
+    const prayerText = props.children == undefined ? "Prayer is Spoken." : props.children
     return (
         <>
         <Section>
             <SectionTitle>Oremus</SectionTitle>
             <LText>Let us pray...</LText>
             <TextSpacer />
-            <NText><Text style={{fontStyle: "italic"}}>Prayer is Spoken.</Text></NText>
+            <NText><Text style={{fontStyle: "italic"}}>{prayerText}</Text></NText>
         </Section>
             
         </>

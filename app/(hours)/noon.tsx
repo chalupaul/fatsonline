@@ -1,5 +1,5 @@
 import { ProduceCalendar } from '@/components/BiblePlan';
-import { ApostlesCreed, CText, GloryBe, Hour, LText, NText, NiceneCreed, Oremus, OurFatherText, PostPsalmody, Psalmody, Section, SectionTitle, TextSpacer, randstr } from '@/components/Service';
+import { ApostlesCreed, CText, GloryBe, Hour, LText, NText, NiceneCreed, Oremus, OurFatherText, Psalmody, Section, SectionTitle, TextSpacer, randstr } from '@/components/Service';
 import HourService from '@/components/Service';
 import { View } from '@/components/Themed';
 import { psalms2readings } from '@/constants/BibleInfo';
@@ -18,12 +18,22 @@ export class Noon extends Hour {
     this.text = (
       <View style={{paddingBottom: 20}}>
         <Section>
-          <SectionTitle>Versicle</SectionTitle>
+          <SectionTitle>Invitatory</SectionTitle>
           <LText>Holy God, holy and mighty, holy and immortal,</LText>
           <CText>have mercy and hear us.</CText>
         </Section>
-        <GloryBe inLent={this.inLent()} />
+        <Section>
+            <SectionTitle>Antiphon</SectionTitle>
+            <LText>Give peace, O Lord, to those who wait for you, that your prophets be found true.</LText>
+            <CText>Hear the prayers of your servant, and of your people Israel.</CText>
+        </Section>
         <Psalmody psalmReading={psalmReading}/>
+        <Section>
+            <SectionTitle>Antiphon Repeated</SectionTitle>
+            <LText>Give peace, O Lord, to those who wait for you, that your prophets be found true.</LText>
+            <CText>Hear the prayers of your servant, and of your people Israel.</CText>
+        </Section>
+        <GloryBe inLent={this.inLent()} />
         <Section>
           <SectionTitle>Preces</SectionTitle>
           <LText>Show us your mercy, O Lord,</LText>
@@ -48,7 +58,7 @@ export class Noon extends Hour {
           <CText>and sustain us with your Holy Spirit. Amen.</CText>
         </Section>
         {creed}
-        <Oremus />
+        <Oremus>Pray for the lost, for compassion, and to be sent where the Lord wishes. Last, ask God to show you someone who needs prayer right now and wait in silence.</Oremus>
         <Section>
           <SectionTitle>Pater Noster</SectionTitle>
           <OurFatherText />

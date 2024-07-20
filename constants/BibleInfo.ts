@@ -1040,11 +1040,8 @@ Revelation,20,15,493
 Revelation,21,27,688
 Revelation,22,21,549`;
 
-// Designed for reading the psalms twice per day, which basically
-// means that Psalm 119 is split out into 2 parts.
-// 
-// Psalm 95 is removed (Psalms,95,11,202) b/c its in every matins
-// Psalm 141 is removed (Psalms,141,10,205) b/c its in every vespers
+// Psalm 78 is split out into 2 parts (Psalms,78,72,1150)
+// Psalm 119 is split out into 4 parts.
 export const psalms2readings = `Psalms,1,6,124
 Psalms,2,12,193
 Psalms,3,8,126
@@ -1122,7 +1119,8 @@ Psalms,74,23,406
 Psalms,75,10,182
 Psalms,76,12,191
 Psalms,77,20,314
-Psalms,78,72,1150
+Psalms,78,1-31,529
+Psalms,78,32-72,621
 Psalms,79,13,264
 Psalms,80,19,317
 Psalms,81,16,271
@@ -1139,6 +1137,7 @@ Psalms,91,16,273
 Psalms,92,15,233
 Psalms,93,5,93
 Psalms,94,23,330
+Psalms,95,11,202
 Psalms,96,13,225
 Psalms,97,12,185
 Psalms,98,9,173
@@ -1187,6 +1186,7 @@ Psalms,137,9,155
 Psalms,138,8,171
 Psalms,139,24,400
 Psalms,140,13,240
+Psalms,141,10,205
 Psalms,142,7,147
 Psalms,143,12,245
 Psalms,144,15,283

@@ -108,7 +108,7 @@ export class Compline extends Hour {
       this.text = (
         <View style={{paddingBottom: 20}}>
           <Section>
-            <SectionTitle>Versicle</SectionTitle>
+            <SectionTitle>Invitatory</SectionTitle>
             <LText>The Lord almighty grant us a quiet night and peace at the last.</LText>
             <CText>Amen.</CText>
             <TextSpacer />
@@ -117,8 +117,18 @@ export class Compline extends Hour {
             <LText>to herald your love in the morning,</LText>
             <CText>your truth at the close of the day.</CText>
           </Section>
-          <GloryBe inLent={this.inLent()} />
+          <Section>
+            <SectionTitle>Antiphon</SectionTitle>
+            <LText>How precious is your mercy, O God!</LText>
+            <CText>The children of men seek shelter in the shadow of your wings.</CText>
+        </Section>
           <Psalmody psalmReading={psalmReading}/>
+          <Section>
+            <SectionTitle>Antiphon Repeated</SectionTitle>
+            <LText>How precious is your mercy, O God!</LText>
+            <CText>The children of men seek shelter in the shadow of your wings.</CText>
+        </Section>
+          <GloryBe inLent={this.inLent()} />
           <Section>
             <SectionTitle>Meditatio et Confessio</SectionTitle>
             <NText>{lesson}</NText>
@@ -138,7 +148,7 @@ export class Compline extends Hour {
             <LText>The almighty and merciful Lord grant us pardon, forgiveness, and remission of all our sins.</LText>
             <CText>Amen.</CText>
           </Section>
-          <Oremus />
+          <Oremus>Cast your worries and cares before the Lord, pray for patience and peace while you wait.</Oremus>
           <Section>
             <SectionTitle>Preces</SectionTitle>
             <LText>Hear my prayer, O Lord;</LText>

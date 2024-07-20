@@ -18,68 +18,11 @@ export class Vespers extends Hour {
       const dailyReading = ProduceCalendar(this.DaysInYear() * 2, OTNT)[this.DayOfYear() * 2 - 1];
       const dailyReadingTitle = MakeReadingTitles(dailyReading);
 
-      let versicle: React.JSX.Element[];
-      if (this.inAdvent()) {
-        versicle = [
-          <LText key={randstr('vesperVersicle')}>The Spirit and the Church cry out:</LText>,
-          <CText key={randstr('vesperVersicle')}>Come, Lord Jesus.</CText>,
-          <LText key={randstr('vesperVersicle')}>All those who await his appearance pray:</LText>,
-          <CText key={randstr('vesperVersicle')}>Come, Lord Jesus.</CText>,
-          <LText key={randstr('vesperVersicle')}>The whole creation pleads:</LText>,
-          <CText key={randstr('vesperVersicle')}>Come, Lord Jesus.</CText>
-        ]
-      } else if (this.in12Days() || this.isEpiphany()) {
-        versicle = [
-          <LText key={randstr('vesperVersicle')}>The people who walked in darkness have seen a great light.</LText>,
-          <CText key={randstr('vesperVersicle')}>The light shines in the darkness, and the darkness has not overcome it.</CText>,
-          <LText key={randstr('vesperVersicle')}>Those who dwelt in the land of deep darkness, on them has light shined.</LText>,
-          <CText key={randstr('vesperVersicle')}>We have beheld Christ's glory, glory as of the only Son from the Father.</CText>,
-          <LText key={randstr('vesperVersicle')}>For to us a child is born, to us a Son is given.</LText>,
-          <CText key={randstr('vesperVersicle')}>In him was life, and the life was the light of man.</CText>
-        ]
-      } else if (this.inEpiphany()) {
-        versicle = [
-          <LText key={randstr('vesperVersicle')}>Jesus Christ is the Light of the world,</LText>,
-          <CText key={randstr('vesperVersicle')}>the light no darkness can overcome.</CText>,
-          <LText key={randstr('vesperVersicle')}>Stay with us, Lord, for it is evening,</LText>,
-          <CText key={randstr('vesperVersicle')}>and the day is almost over.</CText>,
-          <LText key={randstr('vesperVersicle')}>Let your light scatter the darkness,</LText>,
-          <CText key={randstr('vesperVersicle')}>and illumine your Church.</CText>
-        ]
-      } else if (this.inLent()) {
-        versicle = [
-          <LText key={randstr('vesperVersicle')}>Behold, now is the acceptable time;</LText>,
-          <CText key={randstr('vesperVersicle')}>now is the day of salvation.</CText>,
-          <LText key={randstr('vesperVersicle')}>Turn us again, O God of our salvation,</LText>,
-          <CText key={randstr('vesperVersicle')}>that the light of your face may shine on us.</CText>,
-          <LText key={randstr('vesperVersicle')}>May your justice shine like the sun;</LText>,
-          <CText key={randstr('vesperVersicle')}>and may the poor be lifted up.</CText>
-        ]
-      } else if (this.inEasterTide()) {
-        versicle = [
-          <LText key={randstr('vesperVersicle')}>Jesus Christ is risen from the dead.</LText>,
-          <CText key={randstr('vesperVersicle')}>Alleluia, alleluia, alleluia!</CText>,
-          <LText key={randstr('vesperVersicle')}>We are illumined by the brightness of his rising.</LText>,
-          <CText key={randstr('vesperVersicle')}>Alleluia, alleluia, alleluia!</CText>,
-          <LText key={randstr('vesperVersicle')}>Death has no more dominion over us.</LText>,
-          <CText key={randstr('vesperVersicle')}>Alleluia, alleluia, alleluia!</CText>
-        ]
-      } else {
-        versicle = [
-          <LText key={randstr('vesperVersicle')}>Come, let us worship and bow down before God our King.</LText>,
-          <CText key={randstr('vesperVersicle')}>Let us kneel before the Lord our God our maker.</CText>,
-          <LText key={randstr('vesperVersicle')}>Come, let us worship and bow down before Christ our God and our King.</LText>,
-          <CText key={randstr('vesperVersicle')}>Let us enter his gates with thanksgiving.</CText>,
-          <LText key={randstr('vesperVersicle')}>Come, let us worship Christ, our King and our God, and bow down before Him.</LText>,
-          <CText key={randstr('vesperVersicle')}>Let us enter his courts with praise.</CText>
-        ]
-      }
-
       this.text = (
         <View style={{paddingBottom: 20}}>
           <Section>
-            <SectionTitle>Versicle</SectionTitle>
-            {versicle}
+            <SectionTitle>Invitatory</SectionTitle>
+            {this.versicle}
           </Section>
           <Section>
             <LText>Joyous light of glory:</LText>
@@ -119,7 +62,7 @@ export class Vespers extends Hour {
             <LText>Let my prayer rise before you as incense;</LText>
             <CText>The lifting up of my hands as the evening sacrifice.</CText>
           </Section>
-          <VoceMea />
+          <Psalmody psalmReading={psalmReading}/>
           <Section>
             <SectionTitle>Antiphon Repeated</SectionTitle>
             <LText>Let my prayer rise before you as incense;</LText>
@@ -138,8 +81,6 @@ export class Vespers extends Hour {
             <CText>Amen.</CText>
           </Section>
           <GloryBe inLent={this.inLent()} />
-          <Psalmody psalmReading={psalmReading}/>
-          <PostPsalmody />
           <Section>
             <SectionTitle>Lectio</SectionTitle>
             <Text>{dailyReadingTitle}</Text>
@@ -165,7 +106,7 @@ export class Vespers extends Hour {
             <SectionTitle>Magnificat Antiphon Repeated</SectionTitle>
             {this.canticleAntiphon}
           </Section>
-          <Oremus />
+          <Oremus>Review the events of the day and thank God for His generosity and lavish gifts.</Oremus>
           <Section>
             <LText>
               Rejoicing in the fellowship of all the saints, 
