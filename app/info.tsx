@@ -20,45 +20,46 @@ export default function Info(): JSX.Element {
                 I'm a proud Lutheran and I love Jesus. I've spent a long time looking for a daily office that I liked, 
                 and finally found 
                 <A href="https://www.alpb.org/product/for-all-the-saints-a-prayer-book-for-and-by-the-church/"> For All The Saints </A> 
-                from the American Lutheran Publishing Board. After working through it in its entirity, I found myself wanting to make a few changes. 
+                from the American Lutheran Publishing Board. Now after working through it in its entirity, I find myself wanting to make a few changes. 
               </Text>
               <Text style={styles.text}>
-                For starters, I wanted to make it easier to have lessons in every liturgy. The four daily lessons in the book have only one set of opening and closing prayers, 
-                meaning it looks like it was meant to be read only once. Additionally, I wanted a reading system that went through the entire 
-                Bible in a year and didn't skip over the weird or boring parts. I wanted a monthly Psalter that could flex and 
-                accomidate February just as well as it could May, and also was aware of the daily readings. In other words, I didn't want to read Psalm 95 every morning in Matins, 
-                then immediately read it again as part of the monthly Psalm reading. 
+                For starters, I want to make it easier to have lessons in every service. The four daily lessons in the book have only one set of opening and closing prayers, 
+                meaning it looks like it is meant to be read only once per day. Additionally, I want a reading system that covers the entire 
+                Bible in a year without skipping over the weird or boring parts. I also want a monthly Psalter that flexes to accomidate February just as well as it does May.
               </Text>
               <Text style={styles.text}>
-                Also, I found myself hurrying through the historical writings of church fathers and influential pastors of the past, ultimately skipping them most days. 
-                The topics they write about are out of touch with today's world, and I found them increasingly nationalistic, morally legalistic, and espousing theological concepts 
-                that are no longer as widely believed in modern scholarship.
+                Speaking of the lessons, I find myself hurrying through the historical writings of Church fathers and influential pastors of the past, ultimately skipping them most days. 
+                The topics they wrote about are out of touch with today's world, and I find their texts increasingly nationalistic, morally legalistic, and espousing theological concepts 
+                that are no longer widely attested in modern scholarship. This has honestly become more damaging than beneficial for me, and the genesis of this project is addressing that very thing. 
               </Text>
               <Text style={styles.text}>
-                The prayers also had some similar problems, but mostly I found they were one sentence prayers closed by a length mantra invoking the Trinity, which feels like a relic of 
-                the early church days when they were fighting through all that. It just really started feeling like vain words.
-              </Text>
-              <Text style={styles.text}>                
-                And once you cut both the lessons and the prayers, you realize most of what is left is a daily plan and selections of Biblical text to be read. In reality, what I was 
-                realizing was that as wonderful as this printed book is, there's some inflexibility to it, as every new option requires more and more pages. 
-                And as good as it was, For All The Saints was already 4 full volumes, each one over a thousand pages. Really, it was time to make something digital.
-              </Text>
-              <Text style={styles.text}>
-                So what you see here is basically that--a digital approximation of the daily prayers in For All The Saints. All the writings of church fathers 
-                and influential pastors of the past are removed, as are all the prayers in the lessons and psalms. What remains is only the liturgical parts and 
-                a Bible in a year lectionary. 
+                The prayers also have some similar theological problems, but mostly I find they are simply one sentence prayers closed by a lengthy mantra invoking the Trinity like you would "empower a spell". This mantra feels like a relic of 
+                earlier church days when the councils were fighting through Trinitarianism and Christology. But now, they just feel like vain words. The same is true for components of the service that are frequently repeated
+                like the Glory Be, and even the Venite. Finally, the hymns are problematic. For starters, the hymns seem to be mostly medieval which makes relating to them difficult. 
+                Similar to the prayer problem, their last verse is almost always just invoking the Trinity like an Athanasian zealot. But the main issue is that they are just no longer appropriate for these services. 
+                Let's face it: These are basically done by individuals or at best a their immediate family.
+                Singing a medieval hymn nobody has ever heard sung before is not exactly edifying to the participants, especially if you're by yourself. 
               </Text>
               <Text style={styles.text}>
-                The Bible in a year lectionary part you may find a bit strange, so it's worth going over. It starts in Tanakh order of the Old Testament, 
-                and New Testament is Gospels matrixed into epistles. 
+                So anyway, once I decided to cut all that, most of what is left is just a seasonal structured liturgy plan. So what you see here is basically a digital approximation 
+                of the underpinning structure in For All The Saints. All the writings of influential pastors of the past are removed, as are all the prayers in the lessons, and hymns. What remains is only the liturgical parts, and 
+                I have added a bit to that in order to make the services smoother. There is also a Bible in a year lectionary in ESV. 
+                Thus what you see is my attepmt to bring this wonderful form of daily prayer to a modern Lutheran audience who wants to pray the hours more devotionally,
+                all the while staying in tradition with the original office of hours that this whole notion is based on.
+              </Text>
+              <Text style={styles.text}>
+                To that end, you'll find quite a few changes. The confession is said every service, first and foremost.  I think the Book of Common Prayer gets this part right. 
+                After all, it's not like I only sin right before Vespers. I have also added some prayer hints to the various services. This is mostly based on the original hourly themes, 
+                but includes contemplative morning meditation in Matins and the Examen in Vespers. Finally, after some experimentation I discovered that Psalm fatigue is real.
+                After you do Vinete/Jubilate and then 3 more immediately following, it gets harder to effectively pray a Psalm with every new one. 
+                So this breviary foregoes the traditional daily Psalms in favor of just having a monthly Psalm rotation in all services.
+              </Text>
+              <Text style={styles.text}>
+                The Bible in a year lectionary part you may find a bit strange, so it's worth going over. It starts in the usual order of the Old Testament, 
+                but the New Testament changes quite a bit with the Gospels matrixed into the epistles. 
                 It's basically Mark, Peters, and Jude followed by Matthew, James, and Hebrews, then Luke, Acts, and Paul according to written order, then the Johanine corpus. 
-                You'll read this both in Matins and Vespers. Nones and Compline go through Job and Proverbs respectively on a mothly cadence.
-              </Text>
-              <Text style={styles.text}>
-                There are a few changes added too to the services that will be different than the printed For All The Saints. I shored up some of the wording to make 
-                it more consistent between the different services, fixed a few places where an Allelulia would sneak in during Lent, added a few short lessons and prayers 
-                so that there was one every day of the week, put the "be" back in the Glory Be, and added ridiculous Latin titles over the various sections just because I like them. 
-                Finally, rather than reciting hymns I've never heard or sung before, I opted to toss in a Kyrie and a Gloria. There are probably a few more changes, but you get the gist.
+                This is basically so that the Gospels are spread out a bit more and the epistles are closer to their related Gospel material. 
+                These readings are only in Matins and Vespers. Noon has alternating Apostles and Nicene creeds, and Compline is the shortest as most of the time it is undergone immediately before bed.
               </Text>
           </View>
           <View style={{justifyContent: 'center', alignItems: 'center', alignSelf: 'center', paddingHorizontal: 40}}>

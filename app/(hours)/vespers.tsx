@@ -1,5 +1,5 @@
 import { Chapter, MakeReadingTitles, ProduceCalendar } from '@/components/BiblePlan';
-import { CText, Gloria, GloryBe, Hour, Kyrie, LText, Magnificat, NText, Oremus, OurFather, PostLectionary, PostPsalmody, Psalmody, Section, SectionTitle, TextSpacer, VoceMea, randstr } from '@/components/Service';
+import { CText, Confiteor, Examen, Gloria, GloryBe, Hour, Kyrie, LText, Magnificat, NText, Oremus, OurFather, PostLectionary, PostPsalmody, Psalmody, Section, SectionTitle, TextSpacer, VoceMea, randstr } from '@/components/Service';
 import HourService from '@/components/Service';
 import { View, Text } from '@/components/Themed';
 import { OTNT, psalms2readings } from '@/constants/BibleInfo';
@@ -24,7 +24,11 @@ export class Vespers extends Hour {
             <SectionTitle>Invitatory</SectionTitle>
             {this.versicle}
           </Section>
+          <Confiteor day={this.dayOfWeek}/>
           <Section>
+            <SectionTitle>Lucernarium</SectionTitle>
+            <NText><Text style={{fontStyle: "italic"}}>A candle may be lit.</Text></NText>
+            <TextSpacer />
             <LText>Joyous light of glory:</LText>
             <CText>
               Of the immortal father;
@@ -58,37 +62,24 @@ export class Vespers extends Hour {
             <CText>Amen.</CText>
           </Section>
           <Section>
-            <SectionTitle>Antiphon</SectionTitle>
+            <SectionTitle>Introit</SectionTitle>
             <LText>Let my prayer rise before you as incense;</LText>
             <CText>The lifting up of my hands as the evening sacrifice.</CText>
-          </Section>
-          <Psalmody psalmReading={psalmReading}/>
-          <Section>
-            <SectionTitle>Antiphon Repeated</SectionTitle>
+            <Psalmody psalmReading={psalmReading}/>
             <LText>Let my prayer rise before you as incense;</LText>
             <CText>The lifting up of my hands as the evening sacrifice.</CText>
-          </Section>
-          <Section>
-            <NText><Text style={{fontStyle: "italic"}}>Silence for Meditation.</Text></NText>
-            <TextSpacer />
-            <LText>
-              Let the incense of our repentant prayer ascend before you,
-              O Lord, and let your loving-kindness descend upon us,
-              that with purified minds we may sing your praises
-              with the Church on earth and the whole heavenly host,
-              and may glorify you forever and ever.
-            </LText>
-            <CText>Amen.</CText>
           </Section>
           <GloryBe inLent={this.inLent()} />
           <Section>
             <SectionTitle>Lectio</SectionTitle>
-            <Text>{dailyReadingTitle}</Text>
               {
                 dailyReading.map((v: Chapter, i) => {
                   return (
                     <View key={randstr('lectio')}>
                       <Section>
+                        <NText>
+                          <Text style={{fontStyle: "italic"}}>{dailyReadingTitle}</Text>
+                        </NText>
                         <NText>{v.text}</NText>
                       </Section>
                     </View>
@@ -98,16 +89,22 @@ export class Vespers extends Hour {
           </Section>
           <PostLectionary />
           <Section>
-            <SectionTitle>Magnificat Antiphon</SectionTitle>
+            <SectionTitle>Magnificat</SectionTitle>
             {this.canticleAntiphon}
-          </Section>
           <Magnificat />
-          <Section>
-            <SectionTitle>Magnificat Antiphon Repeated</SectionTitle>
             {this.canticleAntiphon}
           </Section>
-          <Oremus>Review the events of the day and thank God for His generosity and lavish gifts.</Oremus>
+          <Examen />
           <Section>
+            <LText>
+              Let the incense of our repentant prayer ascend before you,
+              O Lord, and let your loving-kindness descend upon us,
+              that with purified minds we may sing your praises
+              with the Church on earth and the whole heavenly host,
+              and may glorify you forever and ever.
+            </LText>
+            <CText>Amen.</CText>
+            <TextSpacer />
             <LText>
               Rejoicing in the fellowship of all the saints, 
               let us commend ourselves, one another, 

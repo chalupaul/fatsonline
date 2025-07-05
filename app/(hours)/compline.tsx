@@ -1,15 +1,43 @@
 
 import { Chapter, ProduceCalendar } from '@/components/BiblePlan';
-import { CText, GloryBe, Hour, LText, NText, OurFatherText, Oremus, Section, SectionTitle, TextSpacer, randstr, Psalmody } from '@/components/Service';
+import { CText, GloryBe, Hour, LText, NText, OurFatherText, Oremus, Section, SectionTitle, TextSpacer, randstr, Psalmody, Confiteor } from '@/components/Service';
 import HourService from '@/components/Service';
 import { View, Text } from '@/components/Themed';
 import { psalms2readings } from '@/constants/BibleInfo';
+
+type LessonProps = {
+  title: string,
+  text: string
+}
+
+function Lesson(props: LessonProps) {
+  return (
+    <Section>
+      <SectionTitle>Lectio</SectionTitle>
+      <NText>
+        <Text style={{fontStyle: "italic"}}>{props.title}</Text>
+      </NText>
+      <NText>{props.text}</NText>
+      <TextSpacer />
+  </Section>
+  )
+}
 
 export class Compline extends Hour {
   constructor(date: Date) {
       super(date);
       this.title = "Prayer at the Close of the Day";
       this.prev = "vespers";
+
+      const titles = [
+        'Jer. 14:7-9',
+        'Matt. 11:28-30',
+        'John 14:27',
+        'Rom. 8:38-39',
+        'I Pet. 5:6-9',
+        'Jude 17-21',
+        '2 Tim 2:10-13'
+      ]
 
       const lessons = [
         'Though our iniquities testify against us, act, O Lord, ' +
@@ -18,35 +46,35 @@ export class Compline extends Hour {
         'like a traveler who turns aside to tarry for a night? ' + 
         'Why should you be like a man confused, like a mighty warrior who cannot save? '+
         'Yet you, O Lord, are in the midst of us, and we are called by your name;' +
-        'do not leave us. (Jer. 14:7-9)',
+        'do not leave us.',
 
         'Come to me, all who labor and are heavy laden, and I will give you rest. ' +
         'Take my yoke upon you, and learn from me, for I am gentle and lowly in heart, ' +
-        'and you will find rest for your souls. For my yoke is easy, and my burden is light. (Matt. 11:28-30)',
+        'and you will find rest for your souls. For my yoke is easy, and my burden is light.',
 
         'Peace I leave with you; my peace I give to you. ' + 
         'Not as the world gives do I give to you. ' + 
-        'Let not your hearts be troubled, neither let them be afraid. (John 14:27)',
+        'Let not your hearts be troubled, neither let them be afraid.',
 
         'For I am sure that neither death nor life, nor angels nor rulers, nor things present nor things to come, ' + 
         'nor powers, nor height nor depth, nor anything else in all creation, ' +
-        'will be able to separate us from the love of God in Christ Jesus our Lord. (Rom. 8:38-39)',
+        'will be able to separate us from the love of God in Christ Jesus our Lord.',
 
         'Humble yourselves, therefore, under the mighty hand of God so that at the proper time he may exalt you, ' + 
         'casting all your anxieties on him, because he cares for you. ' + 
         'Be sober-minded; be watchful. Your adversary the devil prowls around like a roaring lion, ' +
         'seeking someone to devour. Resist him, firm in your faith, ' + 
-        'knowing that the same kinds of suffering are being experienced by your brotherhood throughout the world. (I Pet. 5:6-9)',
+        'knowing that the same kinds of suffering are being experienced by your brotherhood throughout the world.',
 
         'But you must remember, beloved, the predictions of the apostles of our Lord Jesus Christ. ' +
         'They said to you, “In the last time there will be scoffers, following their own ungodly passions.” ' +
         'It is these who cause divisions, worldly people, devoid of the Spirit. ' + 
         'But you, beloved, building yourselves up in your most holy faith and praying in the Holy Spirit, ' + 
-        'keep yourselves in the love of God, waiting for the mercy of our Lord Jesus Christ that leads to eternal life. (Jude 17-21)',
+        'keep yourselves in the love of God, waiting for the mercy of our Lord Jesus Christ that leads to eternal life.',
 
         'Therefore I endure everything for the sake of the elect, that they also may obtain the salvation that is in Christ Jesus with eternal glory. ' +
         'The saying is trustworthy, for: If we have died with him, we will also live with him; if we endure, we will also reign with him; ' +
-        'if we deny him, he also will deny us; if we are faithless, he remains faithful—for he cannot deny himself. (2 Tim 2:10-13)'
+        'if we deny him, he also will deny us; if we are faithless, he remains faithful—for he cannot deny himself.'
       ]
 
       const prayers = [
@@ -101,6 +129,7 @@ export class Compline extends Hour {
         d = this.date.getDay();
       }
       const lesson = lessons[d];
+      const title = titles[d];
       const prayer = prayers[d];
 
       const psalmReading = ProduceCalendar(this.DaysInMonth() * 4, psalms2readings)[this.date.getDate() * 4 - 1];
@@ -117,37 +146,17 @@ export class Compline extends Hour {
             <LText>to herald your love in the morning,</LText>
             <CText>your truth at the close of the day.</CText>
           </Section>
+          <Confiteor day={this.dayOfWeek}/>
           <Section>
-            <SectionTitle>Antiphon</SectionTitle>
+            <SectionTitle>Introit</SectionTitle>
             <LText>How precious is your mercy, O God!</LText>
             <CText>The children of men seek shelter in the shadow of your wings.</CText>
-        </Section>
-          <Psalmody psalmReading={psalmReading}/>
-          <Section>
-            <SectionTitle>Antiphon Repeated</SectionTitle>
+            <Psalmody psalmReading={psalmReading}/>
             <LText>How precious is your mercy, O God!</LText>
             <CText>The children of men seek shelter in the shadow of your wings.</CText>
         </Section>
           <GloryBe inLent={this.inLent()} />
-          <Section>
-            <SectionTitle>Meditatio et Confessio</SectionTitle>
-            <NText>{lesson}</NText>
-            <TextSpacer />
-            <NText><Text style={{fontStyle: "italic"}}>Silence for Self-Examination.</Text></NText>
-            <TextSpacer />
-            <LText>Let us confess our sin in the presence of God and of one another.</LText>
-            <CText>
-              I confess to God Almighty, before the whole company of heaven 
-              and to you, my brothers and sisters, 
-              that I have sinned in thought, word, and deed 
-              by my fault, by my own fault, by my own most grievous fault; 
-              wherefore I pray God Almighty to have mercy on me, 
-              forgive me all my sins, and bring me to everlasting life.
-            </CText>
-            <TextSpacer />
-            <LText>The almighty and merciful Lord grant us pardon, forgiveness, and remission of all our sins.</LText>
-            <CText>Amen.</CText>
-          </Section>
+          <Lesson title={title} text={lesson}/>
           <Oremus>Cast your worries and cares before the Lord, pray for patience and peace while you wait.</Oremus>
           <Section>
             <SectionTitle>Preces</SectionTitle>
@@ -164,15 +173,14 @@ export class Compline extends Hour {
             <CText>Amen.</CText>
           </Section>
           <Section>
-            <SectionTitle>Nunc Dimittis Antiphon</SectionTitle>
-            <CText>
+            <SectionTitle>Nunc Dimittis</SectionTitle>
+            <LText>
               Guide us waking, O Lord, and guard us sleeping;
               that awake we may watch with Christ and asleep
               we may rest in peace.
-            </CText>
+            </LText>
           </Section>
           <Section>
-            <SectionTitle>Nunc Dimittis</SectionTitle>
             <CText>
               Lord, now you are letting your servant depart in peace, according to your word; 
               for my eyes have seen your salvation that you have prepared in the presence of all peoples, 
@@ -180,12 +188,11 @@ export class Compline extends Hour {
             </CText>
           </Section>
           <Section>
-            <SectionTitle>Nunc Dimittis Antiphon Repeated</SectionTitle>
-            <CText>
+            <LText>
               Guide us waking, O Lord, and guard us sleeping;
               that awake we may watch with Christ and asleep
               we may rest in peace.
-            </CText>
+            </LText>
           </Section>
           <Section>
             <SectionTitle>Pater Noster</SectionTitle>

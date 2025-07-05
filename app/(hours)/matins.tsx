@@ -1,5 +1,5 @@
 import { ProduceCalendar, MakeReadingTitles, Chapter } from '@/components/BiblePlan';
-import { Benedictus, CText, Gloria, GloryBe, Hour, Kyrie, LText, NText, Oremus, OurFather, PostLectionary, Psalmody, Section, SectionTitle, TextSpacer, Venite, randstr } from '@/components/Service';
+import { Benedictus, CText, Confiteor, Gloria, GloryBe, Hour, Kyrie, LText, NText, Oremus, OurFather, PostLectionary, Psalmody, Section, SectionTitle, TextSpacer, Venite, randstr } from '@/components/Service';
 import HourService from '@/components/Service';
 import { View, Text } from '@/components/Themed';
 import { psalms2readings, OTNT } from '@/constants/BibleInfo';
@@ -29,24 +29,35 @@ export class Matins extends Hour {
             <LText>Make haste, O God, to deliver me!</LText>
             <CText>O Lord, make haste to help me!</CText>
           </Section>
+          <Confiteor day={this.dayOfWeek}/>
           <Section>
-            <SectionTitle>Antiphon</SectionTitle>
-            {this.antiphon}
+            <SectionTitle>Laudimus</SectionTitle>
+            <NText><Text style={{fontStyle: "italic"}}>Incense may be burned.</Text></NText>
+            <TextSpacer />
+            <LText>
+            Awake, O sleeper, and arise from the dead, and Christ will shine on you. (Eph. 5:14b)
+            </LText>
+            <CText>
+              The night is passed and the day is at hand.  
+              Let us, therefore cast off the works of darkness and put on the armour of light.  
+              Let us walk honestly, as in the day.
+            </CText>
           </Section>
-          <Psalmody psalmReading={psalmReading}/>
           <Section>
-            <SectionTitle>Antiphon Repeated</SectionTitle>
+            <SectionTitle>Introit</SectionTitle>
+            {this.antiphon}
+            <Psalmody psalmReading={psalmReading}/>
             {this.antiphon}
           </Section>
           <GloryBe inLent={this.inLent()} />
           <Section>
-            <SectionTitle>Lectio </SectionTitle>
-            <Text>{dailyReadingTitle}</Text>
+            <SectionTitle>Lectio</SectionTitle>
               {
                 dailyReading.map((v: Chapter, i) => {
                   return (
                     <View key={randstr('lectio')}>
                       <Section>
+                        <NText>{dailyReadingTitle}</NText>
                         <NText>{v.text}</NText>
                       </Section>
                     </View>
@@ -56,12 +67,9 @@ export class Matins extends Hour {
           </Section>
           <PostLectionary />
           <Section>
-            <SectionTitle>Benedictus Antiphon</SectionTitle>
+            <SectionTitle>Benedictus</SectionTitle>
             {this.canticleAntiphon}
-          </Section>
           <Benedictus />
-          <Section>
-            <SectionTitle>Benedictus Antiphon Repeated</SectionTitle>
             {this.canticleAntiphon}
           </Section>
           {prayer}
@@ -86,7 +94,7 @@ export default function Service() {
 function NormalPrayer() {
   return (
     <>
-    <Oremus>Begin with five minutes of silence. Then pray for yourself, your family, church, neighbors, nation, and missions.</Oremus>
+    <Oremus>Pray for yourself, your family, church, neighbors, nation, and missions.</Oremus>
     <Section>
       <LText>
         O Lord, almighty and everlasting God, you have brought us in safety to this new day; 

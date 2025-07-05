@@ -1,5 +1,5 @@
 import { ProduceCalendar } from '@/components/BiblePlan';
-import { ApostlesCreed, CText, GloryBe, Hour, LText, NText, NiceneCreed, Oremus, OurFatherText, Psalmody, Section, SectionTitle, TextSpacer, randstr } from '@/components/Service';
+import { ApostlesCreed, CText, Confiteor, Gloria, GloryBe, Hour, Kyrie, LText, NText, NiceneCreed, Oremus, OurFather, OurFatherText, Psalmody, Section, SectionTitle, TextSpacer, randstr } from '@/components/Service';
 import HourService from '@/components/Service';
 import { View } from '@/components/Themed';
 import { psalms2readings } from '@/constants/BibleInfo';
@@ -22,18 +22,20 @@ export class Noon extends Hour {
           <LText>Holy God, holy and mighty, holy and immortal,</LText>
           <CText>have mercy and hear us.</CText>
         </Section>
+        <Confiteor day={this.dayOfWeek}/>
+        <Kyrie />
+        <Gloria />
         <Section>
-            <SectionTitle>Antiphon</SectionTitle>
-            <LText>Give peace, O Lord, to those who wait for you, that your prophets be found true.</LText>
-            <CText>Hear the prayers of your servant, and of your people Israel.</CText>
-        </Section>
-        <Psalmody psalmReading={psalmReading}/>
-        <Section>
-            <SectionTitle>Antiphon Repeated</SectionTitle>
-            <LText>Give peace, O Lord, to those who wait for you, that your prophets be found true.</LText>
-            <CText>Hear the prayers of your servant, and of your people Israel.</CText>
+          <SectionTitle>Introit</SectionTitle>
+          <LText>Give peace, O Lord, to those who wait for you, that your prophets be found true.</LText>
+          <CText>Hear the prayers of your servant, and of your people Israel.</CText>
+          <Psalmody psalmReading={psalmReading}/>
+          <LText>Give peace, O Lord, to those who wait for you, that your prophets be found true.</LText>
+          <CText>Hear the prayers of your servant, and of your people Israel.</CText>
         </Section>
         <GloryBe inLent={this.inLent()} />
+        {creed}
+        <Oremus>Pray for the lost, for compassion, and to be sent where the Lord wishes. Last, ask God to show you someone who needs prayer right now and wait in silence.</Oremus>
         <Section>
           <SectionTitle>Preces</SectionTitle>
           <LText>Show us your mercy, O Lord,</LText>
@@ -57,12 +59,7 @@ export class Noon extends Hour {
           <LText>Create in us clean hearts, O God,</LText>
           <CText>and sustain us with your Holy Spirit. Amen.</CText>
         </Section>
-        {creed}
-        <Oremus>Pray for the lost, for compassion, and to be sent where the Lord wishes. Last, ask God to show you someone who needs prayer right now and wait in silence.</Oremus>
-        <Section>
-          <SectionTitle>Pater Noster</SectionTitle>
-          <OurFatherText />
-        </Section>
+        <OurFather />
         <Section>
           <SectionTitle>Benediction</SectionTitle>
           <LText>Let us bless the Lord.</LText>

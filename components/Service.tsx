@@ -1,4 +1,4 @@
-import { StyleSheet, Image } from 'react-native';
+import { StyleSheet, Image, FlatList } from 'react-native';
 import { Text, TextProps, View } from '@/components/Themed';
 import { Href, Link, LinkComponent } from 'expo-router';
 import { Pressable } from 'react-native';
@@ -6,13 +6,15 @@ import { PropsWithChildren } from 'react';
 import { InLent, InAdvent, In12DaysOfXmas, InEpiphany, ThroughBaptism, IsTransfiguration, UntilAscension, UntilPentecost, AfterPentecost, InHolyWeek, InEastertide, IsEpiphany } from '@/components/Calendar';
 import { Entypo } from '@expo/vector-icons';
 import { Chapter } from './BiblePlan';
+import React from 'react';
 
-export function randstr(prefix: string) {
+export function randstr(prefix: string): string {
     return Math.random().toString(36).replace('0.',prefix + '_' || '');
 }
 
 export class Hour {
     date: Date = new Date();
+    dayOfWeek: number;
     title?: string;
     text?: JSX.Element;
     prev?: string;
@@ -34,6 +36,7 @@ export class Hour {
         // Other
         //this.date = new Date('2024-05-13T12:01:00'));
         this.date = date;
+        this.dayOfWeek = this.date.getDay();
 
         if (this.inAdvent()) {
           this.antiphon = [
@@ -50,60 +53,60 @@ export class Hour {
           ]
           
           if (this.date.getMonth() == 11 && this.date.getDate() == 17) {
-            this.canticleAntiphon = (<CText>
+            this.canticleAntiphon = (<LText>
               O Wisdom, 
               proceeding from the mouth of the Most High, 
               pervading and permeating all ceration, 
               mightily ordering all things: 
               Come and teach us the way of prudence.
-            </CText>)
+            </LText>)
           } else if (this.date.getMonth() == 11 && this.date.getDate() == 18) {
-            this.canticleAntiphon = (<CText>
+            this.canticleAntiphon = (<LText>
               O Adonai and ruler of the house of Israel,
               who appeared to Moses in the burning bush
               and gave him the Law on Sinai:
               Come with an outstretched arm and redeem us.
-            </CText>)
+            </LText>)
           } else if (this.date.getMonth() == 11 && this.date.getDate() == 19) {
-            this.canticleAntiphon = (<CText>
+            this.canticleAntiphon = (<LText>
               O Root of Jesse,
               standing as an ensign before the peoples,
               before whom all kings are mute,
               to whom the nations will do homage:
               Come quickly to deliver us.
-            </CText>)
+            </LText>)
           } else if (this.date.getMonth() == 11 && this.date.getDate() == 20) {
-            this.canticleAntiphon = (<CText>
+            this.canticleAntiphon = (<LText>
               O Key of David and scepter of the house of Israel,
               you open and no one can close,
               you close and no one can open:
               Come and rescue the prisoners 
               who are in darkness and the shadow of death.
-            </CText>)
+            </LText>)
           } else if (this.date.getMonth() == 11 && this.date.getDate() == 21) {
-            this.canticleAntiphon = (<CText>
+            this.canticleAntiphon = (<LText>
               O Dayspring,
               splendor of light everlasting:
               Come and enlighten those who sit in darknessand in the shadow of death.
-            </CText>)
+            </LText>)
           } else if (this.date.getMonth() == 11 && this.date.getDate() == 22) {
-            this.canticleAntiphon = (<CText>
+            this.canticleAntiphon = (<LText>
               O King of the nations,
               the ruler they long for,
               the cornerstone uniting all people:
               Come and save us all, whom you formed out of clay.
-            </CText>)
+            </LText>)
           } else if (this.date.getMonth() == 11 && this.date.getDate() == 23) {
-            this.canticleAntiphon = (<CText>
+            this.canticleAntiphon = (<LText>
               O Emmanuel,
               our king and our lawgiver,
               the anointed of the nations and their Savior:
               Come and save us,  o Lord our God.
-            </CText>)
+            </LText>)
           } else {
-            this.canticleAntiphon = (<CText>
+            this.canticleAntiphon = (<LText>
               Fear not Mary, you have found favor with the Lord: Behold, you shall conceive and bear a Son. Alleluia.
-            </CText>)
+            </LText>)
           }
         } else if (this.in12Days() || this.isEpiphany()) {
             this.antiphon = [
@@ -119,9 +122,9 @@ export class Hour {
                 <CText key={randstr('vesperVersicle')}>In him was life, and the life was the light of man.</CText>
             ];
           this.canticleAntiphon = (
-            <CText>
+            <LText>
               Today Christ is born; today salvation has appeared. Today the just exult and say, "Glory to God in the highest."
-            </CText>
+            </LText>
           );
         } else if (this.isTransfiguration() || this.throughBaptism()) {
           this.antiphon = [
@@ -136,9 +139,9 @@ export class Hour {
             <LText key={randstr('vesperVersicle')}>In glory Jesus meets us here,</LText>,
             <CText key={randstr('vesperVersicle')}>raising us from the river to bright heights of heavenly glory. </CText>
           ]
-          this.canticleAntiphon = (<CText>
+          this.canticleAntiphon = (<LText>
             Our Lord and Savior, begotten before all ages, revealed himself to the world. Alleluia.
-          </CText>);
+          </LText>);
         } else if (this.inEpiphany()) {
             this.versicle = [
                 <LText key={randstr('vesperVersicle')}>Jesus Christ is the Light of the world,</LText>,
@@ -152,9 +155,9 @@ export class Hour {
                 <LText key={randstr('antiphon')}>Give glory to God, our light and our life.</LText>,
                 <CText key={randstr('antiphon')}>Oh, come, let us worship him.</CText>
             ];
-          this.canticleAntiphon = (<CText>
+          this.canticleAntiphon = (<LText>
             Our Lord and Savior, begotten before all ages, revealed himself to the world. Alleluia.
-          </CText>);
+          </LText>);
         } else if (this.inLent()) {
           this.antiphon = [
             <LText key={randstr('antiphon')}>The Lord is near to those who call on him.</LText>,
@@ -169,13 +172,13 @@ export class Hour {
             <CText key={randstr('vesperVersicle')}>and may the poor be lifted up.</CText>
           ]
           if (this.inHolyWeek()) {
-            this.canticleAntiphon = (<CText>
+            this.canticleAntiphon = (<LText>
               Glory to the cross of our Lord Jesus Christ, our salvation, life, and resurrection.
-            </CText>);
+            </LText>);
           } else {
-            this.canticleAntiphon = (<CText>
+            this.canticleAntiphon = (<LText>
               Let justice roll down like water, and righteousness like an overflowing stream.
-            </CText>);
+            </LText>);
           }
         } else if (this.isBeforeAscension()) {
           this.antiphon = [
@@ -190,9 +193,9 @@ export class Hour {
             <LText key={randstr('vesperVersicle')}>Death has no more dominion over us.</LText>,
             <CText key={randstr('vesperVersicle')}>Alleluia, alleluia, alleluia!</CText>
           ]
-          this.canticleAntiphon = (<CText>
+          this.canticleAntiphon = (<LText>
             This is the day the Lord has made. Alleluia. Let us rejoice and be glad in it. Alleluia.
-          </CText>);
+          </LText>);
         } else if (this.isBeforePentecost()) {
           this.antiphon = [
             <LText key={randstr('antiphon')}>Alleluia. Christ the Lord ascends into heaven.</LText>,
@@ -206,9 +209,9 @@ export class Hour {
             <LText key={randstr('vesperVersicle')}>God of fresh water, springing forth from your Church.</LText>,
             <CText key={randstr('vesperVersicle')}>Pour living water into this thirsty world.</CText>
           ];
-          this.canticleAntiphon = (<CText>
+          this.canticleAntiphon = (<LText>
             This is the day the Lord has made. Alleluia. Let us rejoice and be glad in it. Alleluia.
-          </CText>);
+          </LText>);
         } else if (this.isAfterPentecost()) {
           this.antiphon = [
             <LText key={randstr('antiphon')}>Give glory to God, our light and our life.</LText>,
@@ -222,9 +225,9 @@ export class Hour {
             <LText key={randstr('vesperVersicle')}>Come, let us worship Christ, our King and our God, and bow down before Him.</LText>,
             <CText key={randstr('vesperVersicle')}>Let us enter his courts with praise.</CText>
           ]
-          this.canticleAntiphon = (<CText>
+          this.canticleAntiphon = (<LText>
             When he ascended on high he led a host of captives, and he gave gifts to men.
-          </CText>)
+          </LText>)
         }
         else {
           this.antiphon = []
@@ -556,15 +559,52 @@ export function AgnusDei() {
 export function Oremus(props:TextProps) {
     const prayerText = props.children == undefined ? "Prayer is Spoken." : props.children
     return (
-        <>
         <Section>
             <SectionTitle>Oremus</SectionTitle>
             <LText>Let us pray...</LText>
             <TextSpacer />
             <NText><Text style={{fontStyle: "italic"}}>{prayerText}</Text></NText>
         </Section>
-            
-        </>
+    )
+}
+
+export type ExamenEntry = {
+    key: number
+    text: string
+}
+export function Examen() {
+    const steps = [
+        {
+            key: 1,
+            text: "Thank God for His generosity and lavish gifts."
+        },
+        {
+            key: 2,
+            text: "Ask Him reveal to you areas where His Spirit is working."
+        },
+        {
+            key: 3,
+            text: "Review the actions of your day."
+        },
+        {
+            key: 4,
+            text:  "Reflect if the events of today brought you closer or further from God."
+        },
+        {
+            key: 5,
+            text: "Think of tomorrow's events and ask God for help in the trials to come."
+        }
+    ];
+    const renderEntry = (item: ExamenEntry) => <Text key={item.key + '-examen'} style={{fontStyle: "italic"}}>{item.key}. {item.text}</Text>
+    return (
+        <Section>
+            <SectionTitle>Oremus</SectionTitle>
+            <LText>Let us pray...</LText>
+            <TextSpacer />
+            <NText>
+                <FlatList data={steps} renderItem={({item}) => renderEntry(item)}/>
+            </NText>
+        </Section>
     )
 }
 
@@ -651,7 +691,6 @@ export function VoceMea() {
 export function Benedictus() {
     return (
         <Section>
-            <SectionTitle>Benedictus</SectionTitle>
             <CText>
                 Blessed be the Lord God of Israel, 
                 for he has visited and redeemed his people 
@@ -685,7 +724,6 @@ export function Benedictus() {
 export function Magnificat() {
     return (
         <Section>
-            <SectionTitle>Magnificat</SectionTitle>
             <CText>
                 My soul magnifies the Lord, 
                 and my spirit rejoices in God my Savior, 
@@ -708,7 +746,7 @@ export function OurFatherText() {
     return (
         <>
         <CText>
-            Our Father, who art in heaven, halowed be thy name.
+            Our Father, who art in heaven, hallowed be thy name.
             Thy kingdom come, thy will be done, on earth as it is in heaven.
             Give us this day our daily bread, and forgive us our tresspasses
             as we forgive those who tresspass against us.
@@ -732,6 +770,9 @@ export function ApostlesCreed() {
     return (
         <Section>
           <SectionTitle>Apostles Creed</SectionTitle>
+          <LText>
+            We confess the faith of the Church using the words of the Apostles Creed
+          </LText>
           <CText>
             I believe in God, the father almighty, creator of heaven and earth.
           </CText>
@@ -765,6 +806,9 @@ export function NiceneCreed() {
     return (
         <Section>
             <SectionTitle>Nicene Creed</SectionTitle>
+            <LText>
+                We confess the faith of our Church using the words of the Nicene Creed:
+            </LText>
             <CText>
                 I believe in one God, the Father Almighty, maker of heaven and earth and of all things visible and invisible.
             </CText>
@@ -802,9 +846,79 @@ export function PostLectionary() {
     return (
         <Section>
             <LText>Long ago, at many times and in many ways, God spoke to our fathers by the prophets.</LText>
-            <CText>But in these last days he has spoken to us by his Son, whom he appointed the heir of all things, through whom also he created the world.</CText>
+            <CText>
+                But in these last days he has spoken to us by his Son, whom he appointed the heir of all things, 
+                through whom also he created the world.
+            </CText>
         </Section>
     )
+}
+
+export function Confiteor(props: ConfiteorProps) {
+    const parts = [
+            <React.Fragment key={randstr('confiteor')}>
+                <LText>Almighty and most merciful Father,</LText>
+                <CText>
+                    We have erred and strayed from your ways like lost sheep. We have followed too much the devices and desires of our own hearts. 
+                    We have offended against your holy laws. We have left undone those things which we ought to have done, 
+                    and we have done those things which we ought not to have done; and apart from your grace, there is no health in us. 
+                </CText>
+                <LText>O Lord,</LText>
+                <CText>
+                    Have mercy upon us. Spare all those who confess their faults. Restore all those who are penitent, 
+                    according to your promises declared to all people in Christ Jesus our Lord. And grant, O most merciful Father, for his sake, 
+                    that we may now live a godly, righteous, and sober life, to the glory of your holy Name. Amen.
+                </CText>
+            </React.Fragment>,
+            <React.Fragment key={randstr('confiteor')}>
+                <LText>In Jesus name,</LText>
+                <CText>
+                    I confess to God Almighty, before the whole company of heaven 
+                    and to you, my brothers and sisters, 
+                    that I have sinned exceedingly in thought, word, and deed 
+                    by my fault, by my own fault, by my own most grievous fault; 
+                    wherefore I pray God Almighty to have mercy on me, 
+                    forgive me all my sins, and bring me to everlasting life. Amen.
+                </CText>
+            </React.Fragment>,
+            <React.Fragment key={randstr('confiteor')}>
+                <LText>Most merciful God,</LText>
+                <CText>
+                    We confess that we are by nature sinful and unclean. We have sinned against you in thought, word, and deed, 
+                    by what we have done and by what we have left undone. We have not loved You with our whole heart; 
+                    we have not loved our neighbors as ourselves. We justly deserve Your present and eternal punishment. 
+                    For the sake of Your Son, Jesus Christ, have mercy on us. Forgive us, renew us, and lead us, 
+                    so that we may delight in Your will and walk in Your ways to the glory of your Holy Name. Amen.
+                </CText>
+            </React.Fragment>
+    ]
+    const sunday = (
+        <React.Fragment key={randstr('confiteor')}>
+            <LText>O Lord our God,</LText>,
+            <CText>
+                We confess that we have sinned against You in thought, word and deed. We have also omitted to do what Your holy law requires of us. 
+                But now with repentance and contrition we turn again to Your love and mercy. 
+                We entreat You to forgive us our transgression and to cleanse us from all sin. 
+                Lord, fill our heart with the light of Your truth. Strengthen our will by Your grace. 
+                Teach us both to desire and to do only what pleases You. Amen.
+            </CText>
+        </React.Fragment>
+    )
+    const days = [sunday, ...parts, ...parts]
+    const contents = days[props.day]
+    return (
+        <Section>
+            <SectionTitle>Confiteor</SectionTitle>
+            <NText><Text style={{fontStyle: "italic"}}>Silence for Self-Examination.</Text></NText>
+            <TextSpacer />
+            {contents}
+        </Section>
+    )
+    
+}
+
+export type ConfiteorProps = {
+    day: number
 }
 
 export type PsalmodyProps = {
@@ -814,14 +928,15 @@ export type PsalmodyProps = {
 export function Psalmody(props: PsalmodyProps) {
     return (
         <Section>
-            <SectionTitle>Psalmody</SectionTitle>
             {
               props.psalmReading.map((v: Chapter,i) => {
                 let final = i != props.psalmReading.length - 1 ? <TextSpacer /> : <View />;
                 return (
                   <View key={randstr('psalm')}>
-                    <Text>{v.bookName.slice(0,-1)} {v.chapter}</Text>
                     <Section>
+                      <NText>
+                        <Text style={{fontStyle: "italic"}}>{v.bookName.slice(0,-1)} {v.chapter}</Text>
+                      </NText>
                       <NText>{v.text}</NText>
                     </Section>
                     {final}
