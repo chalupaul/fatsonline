@@ -1,6 +1,6 @@
 
 import { Chapter, ProduceCalendar } from '@/components/BiblePlan';
-import { CText, GloryBe, Hour, LText, NText, OurFatherText, Oremus, Section, SectionTitle, TextSpacer, randstr, Psalmody, Confiteor } from '@/components/Service';
+import { CText, GloryBe, Hour, LText, NText, OurFatherText, Oremus, Section, SectionTitle, TextSpacer, randstr, Psalmody, Confiteor, OurFather } from '@/components/Service';
 import HourService from '@/components/Service';
 import { View, Text } from '@/components/Themed';
 import { psalms2readings } from '@/constants/BibleInfo';
@@ -194,10 +194,7 @@ export class Compline extends Hour {
               we may rest in peace.
             </LText>
           </Section>
-          <Section>
-            <SectionTitle>Pater Noster</SectionTitle>
-            <OurFatherText />
-          </Section>
+          <OurFather />
           <Section>
             <SectionTitle>Benediction</SectionTitle>
             <LText>The almighty and merciful Lord, the Father, the Son, and the Holy Spirit, bless us and keep us.</LText>
