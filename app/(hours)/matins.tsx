@@ -52,18 +52,21 @@ export class Matins extends Hour {
           <GloryBe inLent={this.inLent()} />
           <Section>
             <SectionTitle>Lectio</SectionTitle>
-              {
-                dailyReading.map((v: Chapter, i) => {
-                  return (
-                    <View key={randstr('lectio')}>
-                      <Section>
-                        <NText>{dailyReadingTitle}</NText>
-                        <NText>{v.text}</NText>
-                      </Section>
-                    </View>
-                  )
-                })
-              }
+            <NText>
+              <Text style={{fontStyle: "italic"}}>{dailyReadingTitle}</Text>
+            </NText>
+            {
+              dailyReading.map((v: Chapter, i) => {
+                return (
+                  <View key={randstr('lectio')}>
+                    <Section>
+                      
+                      <NText>{v.text}</NText>
+                    </Section>
+                  </View>
+                )
+              })
+            }
           </Section>
           <PostLectionary />
           <Section>
