@@ -1,5 +1,5 @@
 import { ProduceCalendar, MakeReadingTitles, Chapter } from '@/components/BiblePlan';
-import { Benedictus, CText, Confiteor, Gloria, GloryBe, Hour, Kyrie, LText, NText, Oremus, OurFather, PostLectionary, Psalmody, Section, SectionTitle, TextSpacer, Venite, randstr } from '@/components/Service';
+import { Benedictus, CText, Confiteor, Gloria, GloryBe, Hour, Kyrie, LText, Lectio, NText, Oremus, OurFather, PostLectionary, Psalmody, Section, SectionTitle, TextSpacer, Venite, VerseText, VerseTitle, randstr } from '@/components/Service';
 import HourService from '@/components/Service';
 import { View, Text } from '@/components/Themed';
 import { psalms2readings, OTNT } from '@/constants/BibleInfo';
@@ -35,7 +35,7 @@ export class Matins extends Hour {
             <NText><Text style={{fontStyle: "italic"}}>Incense may be burned.</Text></NText>
             <TextSpacer />
             <LText>
-            Awake, O sleeper, and arise from the dead, and Christ will shine on you. (Eph. 5:14b)
+            Awake, O sleeper, and arise from the dead, and Christ will shine on you.
             </LText>
             <CText>
               The night is passed and the day is at hand.  
@@ -50,24 +50,7 @@ export class Matins extends Hour {
             {this.antiphon}
           </Section>
           <GloryBe inLent={this.inLent()} />
-          <Section>
-            <SectionTitle>Lectio</SectionTitle>
-            <NText>
-              <Text style={{fontStyle: "italic"}}>{dailyReadingTitle}</Text>
-            </NText>
-            {
-              dailyReading.map((v: Chapter, i) => {
-                return (
-                  <View key={randstr('lectio')}>
-                    <Section>
-                      
-                      <NText>{v.text}</NText>
-                    </Section>
-                  </View>
-                )
-              })
-            }
-          </Section>
+          <Lectio verse={dailyReadingTitle} text={dailyReading}/>
           <PostLectionary />
           <Section>
             <SectionTitle>Benedictus</SectionTitle>

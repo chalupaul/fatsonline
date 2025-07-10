@@ -1,27 +1,9 @@
 
 import { Chapter, ProduceCalendar } from '@/components/BiblePlan';
-import { CText, GloryBe, Hour, LText, NText, OurFatherText, Oremus, Section, SectionTitle, TextSpacer, randstr, Psalmody, Confiteor, OurFather } from '@/components/Service';
+import { CText, GloryBe, Hour, LText, NText, OurFatherText, Oremus, Section, SectionTitle, TextSpacer, randstr, Psalmody, Confiteor, OurFather, Lectio } from '@/components/Service';
 import HourService from '@/components/Service';
 import { View, Text } from '@/components/Themed';
 import { psalms2readings } from '@/constants/BibleInfo';
-
-type LessonProps = {
-  title: string,
-  text: string
-}
-
-function Lesson(props: LessonProps) {
-  return (
-    <Section>
-      <SectionTitle>Lectio</SectionTitle>
-      <NText>
-        <Text style={{fontStyle: "italic"}}>{props.title}</Text>
-      </NText>
-      <NText>{props.text}</NText>
-      <TextSpacer />
-  </Section>
-  )
-}
 
 export class Compline extends Hour {
   constructor(date: Date) {
@@ -30,13 +12,13 @@ export class Compline extends Hour {
       this.prev = "vespers";
 
       const titles = [
-        'Jer. 14:7-9',
-        'Matt. 11:28-30',
+        'Jeremiah 14:7-9',
+        'Matthew 11:28-30',
         'John 14:27',
-        'Rom. 8:38-39',
-        'I Pet. 5:6-9',
+        'Romans 8:38-39',
+        'I Peter 5:6-9',
         'Jude 17-21',
-        '2 Tim 2:10-13'
+        '2 Timothy 2:10-13'
       ]
 
       const lessons = [
@@ -128,8 +110,16 @@ export class Compline extends Hour {
       } else {
         d = this.date.getDay();
       }
-      const lesson = lessons[d];
+      const lessonText = lessons[d];
       const title = titles[d];
+      const titleParts = titles[d].split(' ');
+      const bookname=titleParts[0]
+      const chapter=titleParts[1].split(':')[0]
+      // these aren't used here so we can just 0 them out
+      const numVerses = 0
+      const numWords = 0
+      const lesson = new Chapter(bookname, chapter, numVerses, numWords)
+      lesson.text = [lessonText]
       const prayer = prayers[d];
 
       const psalmReading = ProduceCalendar(this.DaysInMonth() * 4, psalms2readings)[this.date.getDate() * 4 - 1];
@@ -156,7 +146,7 @@ export class Compline extends Hour {
             <CText>The children of men seek shelter in the shadow of your wings.</CText>
         </Section>
           <GloryBe inLent={this.inLent()} />
-          <Lesson title={title} text={lesson}/>
+          <Lectio verse={title} text={[lesson]}/>
           <Oremus>Cast your worries and cares before the Lord, pray for patience and peace while you wait.</Oremus>
           <Section>
             <SectionTitle>Preces</SectionTitle>

@@ -854,6 +854,10 @@ export function PostLectionary() {
     )
 }
 
+export type ConfiteorProps = {
+    day: number
+}
+
 export function Confiteor(props: ConfiteorProps) {
     const parts = [
             <React.Fragment key={randstr('confiteor')}>
@@ -917,8 +921,30 @@ export function Confiteor(props: ConfiteorProps) {
     
 }
 
-export type ConfiteorProps = {
-    day: number
+export type VerseTextProps = {
+    text: string[]
+}
+
+export type VerseTitleProps = {
+    text: string
+}
+
+export function VerseText(props: VerseTextProps) {
+    return (
+        <NText>
+            {props.text.join(" ").replace('- ','-')}
+        </NText>
+    )
+}
+
+export function VerseTitle(props: VerseTitleProps) {
+    return (
+        <Section>
+            <NText>
+                <Text style={{fontStyle: "italic"}}>{props.text}</Text>
+            </NText>
+        </Section>
+    )
 }
 
 export type PsalmodyProps = {
@@ -930,20 +956,40 @@ export function Psalmody(props: PsalmodyProps) {
         <Section>
             {
               props.psalmReading.map((v: Chapter,i) => {
-                let final = i != props.psalmReading.length - 1 ? <TextSpacer /> : <View />;
+                const psalmName = `${v.bookName.slice(0,-1)} ${v.chapter}`
                 return (
                   <View key={randstr('psalm')}>
                     <Section>
-                      <NText>
-                        <Text style={{fontStyle: "italic"}}>{v.bookName.slice(0,-1)} {v.chapter}</Text>
-                      </NText>
-                      <NText>{v.text}</NText>
+                        <VerseTitle text={psalmName}/>
+                        <VerseText text={v.text} />
                     </Section>
-                    {final}
                   </View>
                 )
               })
             }
           </Section>
+    )
+}
+
+export type LectioProps = {
+    verse: string
+    text: Chapter[]
+}
+
+export function Lectio(props: LectioProps) {
+    return (
+        <Section>
+            <SectionTitle>Lectio</SectionTitle>
+                <VerseTitle text={props.verse}/>
+            {
+                props.text.map((v: Chapter) => {
+                return (
+                    <View key={randstr('lectio')}>
+                        <VerseText text={v.text}/>
+                    </View>
+                )
+                })
+            }
+        </Section>
     )
 }

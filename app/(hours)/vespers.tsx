@@ -1,5 +1,5 @@
 import { Chapter, MakeReadingTitles, ProduceCalendar } from '@/components/BiblePlan';
-import { CText, Confiteor, Examen, Gloria, GloryBe, Hour, Kyrie, LText, Magnificat, NText, Oremus, OurFather, PostLectionary, PostPsalmody, Psalmody, Section, SectionTitle, TextSpacer, VoceMea, randstr } from '@/components/Service';
+import { CText, Confiteor, Examen, Gloria, GloryBe, Hour, Kyrie, LText, Lectio, Magnificat, NText, Oremus, OurFather, PostLectionary, PostPsalmody, Psalmody, Section, SectionTitle, TextSpacer, VoceMea, randstr } from '@/components/Service';
 import HourService from '@/components/Service';
 import { View, Text } from '@/components/Themed';
 import { OTNT, psalms2readings } from '@/constants/BibleInfo';
@@ -70,23 +70,7 @@ export class Vespers extends Hour {
             <CText>The lifting up of my hands as the evening sacrifice.</CText>
           </Section>
           <GloryBe inLent={this.inLent()} />
-          <Section>
-            <SectionTitle>Lectio</SectionTitle>
-            <NText>
-              <Text style={{fontStyle: "italic"}}>{dailyReadingTitle}</Text>
-            </NText>
-            {
-              dailyReading.map((v: Chapter, i) => {
-                return (
-                  <View key={randstr('lectio')}>
-                    <Section>
-                      <NText>{v.text}</NText>
-                    </Section>
-                  </View>
-                )
-              })
-            }
-          </Section>
+          <Lectio verse={dailyReadingTitle} text={dailyReading}/>
           <PostLectionary />
           <Section>
             <SectionTitle>Magnificat</SectionTitle>
