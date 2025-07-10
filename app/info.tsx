@@ -1,8 +1,32 @@
-import { StyleSheet, Image } from 'react-native';
+import { StyleSheet, Image, TouchableOpacity, Linking } from 'react-native';
 import { View, Text } from '@/components/Themed';
 import { Link, router } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { A } from '@expo/html-elements';
+
+type ExternalLinkProps = {
+  url: string
+  text: string
+}
+const ExternalLink = (props: ExternalLinkProps) => {
+  const handlePress = async () => {
+    const supported = await Linking.canOpenURL(props.url);
+
+    if (supported) {
+      await Linking.openURL(props.url);
+    } else {
+      console.error(`Don't know how to open this URL: ${props.url}`);
+    }
+  };
+
+  return (
+    <TouchableOpacity onPress={handlePress}>
+      <Text style={{ color: 'blue', textDecorationLine: 'underline'}}>
+        {props.text}
+      </Text>
+    </TouchableOpacity>
+  );
+};
 
 export default function Info(): JSX.Element {
   const isPresented = router.canGoBack();
@@ -18,9 +42,8 @@ export default function Info(): JSX.Element {
           <View style={styles.body}>
               <Text style={styles.text}>
                 I'm a proud Lutheran and I love Jesus. I've spent a long time looking for a daily office that I liked, 
-                and finally found 
-                <A href="https://www.alpb.org/product/for-all-the-saints-a-prayer-book-for-and-by-the-church/"> For All The Saints </A> 
-                from the American Lutheran Publishing Board. Now after working through it in its entirity, I find myself wanting to make a few changes. 
+                and finally found <ExternalLink url="https://www.alpb.org/product/for-all-the-saints-a-prayer-book-for-and-by-the-church/" text="For All The Saints" /> from 
+                the American Lutheran Publishing Board. Now after working through it in its entirity, I find myself wanting to make a few changes. 
               </Text>
               <Text style={styles.text}>
                 For starters, I want to make it easier to have lessons in every service. The four daily lessons in the book have only one set of opening and closing prayers, 
@@ -55,14 +78,15 @@ export default function Info(): JSX.Element {
                 So this breviary foregoes the traditional daily Psalms in favor of just having a monthly Psalm rotation in all services.
               </Text>
               <Text style={styles.text}>
-                The Bible in a year lectionary part you may find a bit strange, so it's worth going over. It starts in the usual order of the Old Testament, 
-                but the New Testament changes quite a bit with the Gospels matrixed into the epistles. 
+                The Bible in a year lectionary part you may find a bit strange, so it's worth going over. 
+                It starts in the Old Testament with Hebrew Scripture order, which is likely <ExternalLink url="https://en.wikipedia.org/wiki/Hebrew_Bible#Books" text="different than you're used to"/> seeing, but has some neat advantages.
+                The New Testament changes quite a bit as with the Gospels matrixed into the epistles. 
                 It's basically Mark, Peters, and Jude followed by Matthew, James, and Hebrews, then Luke, Acts, and Paul according to written order, then the Johanine corpus. 
                 This is basically so that the Gospels are spread out a bit more and the epistles are closer to their related Gospel material. 
                 These readings are only in Matins and Vespers. Noon has alternating Apostles and Nicene creeds, and Compline is the shortest as most of the time it is undergone immediately before bed.
               </Text>
           </View>
-          <View style={{justifyContent: 'center', alignItems: 'center', alignSelf: 'center', paddingHorizontal: 40}}>
+          <View style={{justifyContent: 'center', alignItems: 'center', alignSelf: 'center', paddingHorizontal: 40, paddingTop: 40}}>
             <Image style={styles.image} source={cross} resizeMode='contain'/>
             <Text style={{fontStyle: 'italic', padding: 5}}>Your <Text style={{fontWeight: 'bold'}}>word</Text> is a lamp to my feet and a light to my path. (Ps 119:104)</Text>
             <Text style={{fontStyle: 'italic', padding: 5}}>For we walk by <Text style={{fontWeight: 'bold'}}>faith</Text>, not by sight. (2 Cor 5:7)</Text>
